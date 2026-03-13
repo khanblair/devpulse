@@ -1,0 +1,12 @@
+📅 *{day_name}* — Day {day_number}  🔥 {streak}-day streak
+
+{commits_block}
+
+{devlog}
+
+🤖 *yoyo-evolve* Day {yoyo_day}
+`{yoyo_message}`
+
+{target_warning}
+
+📋 {site_url}

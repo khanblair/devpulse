@@ -1,0 +1,15 @@
+📊 *Week {week_number} — deep report*
+
+{commits_summary}
+
+{weekly_report}
+
+🎯 *Targets — {targets_hit}/{targets_total} hit*
+{targets_block}
+
+❓ _{question}_
+
+🤖 *yoyo this week* Day {yoyo_day}
+`{yoyo_message}`
+
+📋 {site_url}

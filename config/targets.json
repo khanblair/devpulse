@@ -1,0 +1,18 @@
+{
+  "_comment": "Edit these targets directly or use /settarget in your Telegram bot",
+  "weekly": {
+    "commits": 15,
+    "active_repos": 2,
+    "feat_commits": 3,
+    "streak_days": 5
+  },
+  "daily": {
+    "min_commits": 1
+  },
+  "repos": {
+    "_comment": "Add per-repo targets here. Example below — replace with your repos",
+    "example-repo": {
+      "weekly_commits": 4
+    }
+  }
+}

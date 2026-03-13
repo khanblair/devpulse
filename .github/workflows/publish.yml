@@ -1,0 +1,55 @@
+name: publisher-daily
+
+on:
+  workflow_run:
+    workflows: ["analyst-daily"]
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: checkout devpulse
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          ref: main
+
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: install dependencies
+        run: pip install -r requirements.txt
+
+      - name: pull latest data from analyst commit
+        run: git pull origin main
+
+      - name: build site
+        env:
+          GH_USERNAME: ${{ secrets.GH_USERNAME }}
+        run: python scripts/publisher/build_site.py
+
+      - name: send telegram digest
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GH_USERNAME: ${{ secrets.GH_USERNAME }}
+        run: python scripts/publisher/telegram.py
+
+      - name: commit updated site
+        run: |
+          git config user.name "devpulse-bot"
+          git config user.email "devpulse-bot@users.noreply.github.com"
+          git add docs/
+          git diff --staged --quiet || git commit -m "publish: site updated [skip ci]"
+          git push

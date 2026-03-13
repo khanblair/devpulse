@@ -1,0 +1,44 @@
+name: collector-bot
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: checkout devpulse
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: install dependencies
+        run: pip install httpx
+
+      - name: run bot handler
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_USERNAME: ${{ secrets.GH_USERNAME }}
+        run: python scripts/collector/bot.py
+
+      - name: commit any target changes
+        run: |
+          git config user.name "devpulse-bot"
+          git config user.email "devpulse-bot@users.noreply.github.com"
+          git add config/targets.json data/
+          git diff --staged --quiet || git commit -m "bot: targets updated via telegram [skip ci]"
+          git push

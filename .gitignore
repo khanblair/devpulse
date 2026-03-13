@@ -1,0 +1,62 @@
+# ─────────────────────────────────────────────
+#  devpulse — .gitignore
+# ─────────────────────────────────────────────
+
+# ── Environment & secrets ─────────────────────
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# ── Python ────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+.Python
+.venv/
+venv/
+env/
+ENV/
+pip-log.txt
+pip-delete-this-directory.txt
+.eggs/
+*.egg-info/
+dist/
+build/
+
+# ── Testing & coverage ────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ── IDEs & editors ────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ── Logs ──────────────────────────────────────
+*.log
+logs/
+
+# ── OS ────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# ── Data backups (keep originals only) ────────
+data/*.bak
+data/*.tmp
+
+# ── Node (if any tooling added later) ─────────
+node_modules/
+npm-debug.log*
