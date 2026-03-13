@@ -31,11 +31,58 @@
         "url": "https://github.com/khanblair/aria-agent/commit/6d6dbfd8f4f1deec190ea054015caca481d24e7d"
       }
     ],
-    "mood": null,
-    "devlog": null,
+    "mood": "focused",
+    "devlog": "Added a notify trigger to devpulse and fixed connection errors in aria-agent. Both were routine maintenance tasks with no new features. No files changed beyond the commits.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 13,
+      "message": "Day 13 (16:35): session wrap-up",
+      "sha": "01fa07a",
+      "summary": null,
+      "date": "2026-03-13"
+    },
+    "target_report": {
+      "week_ending": "2026-03-13",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 2,
+          "pct": 13,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 2,
+          "pct": 100,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 1,
+          "pct": 20,
+          "status": "missed"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 1,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
