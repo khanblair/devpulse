@@ -1,0 +1,31 @@
+name: notify-devpulse
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - name: send push event to devpulse
+        run: |
+          curl -s -X POST \
+            -H "Authorization: token ${{ secrets.DEVPULSE_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Content-Type: application/json" \
+            https://api.github.com/repos/khanblair/devpulse/dispatches \
+            -d '{
+              "event_type": "push_event",
+              "client_payload": {
+                "repository": {
+                  "name": "${{ github.event.repository.name }}"
+                },
+                "ref": "${{ github.ref }}",
+                "commits": ${{ toJson(github.event.commits) }}
+              }
+            }'
