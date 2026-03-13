@@ -1,16 +1,17 @@
-name: collector-collect
+name: collector-poll
 
 on:
-  repository_dispatch:
-    types: [push_event]
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  collect:
+  poll:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
 
     steps:
       - name: checkout devpulse
@@ -26,17 +27,16 @@ jobs:
       - name: install dependencies
         run: pip install httpx
 
-      - name: run collector
+      - name: poll all repos
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GH_USERNAME: ${{ secrets.GH_USERNAME }}
-          PAYLOAD: ${{ toJson(github.event.client_payload) }}
-        run: python scripts/collector/collect.py
+        run: python scripts/collector/poll.py
 
       - name: commit updated log
         run: |
           git config user.name "devpulse-bot"
           git config user.email "devpulse-bot@users.noreply.github.com"
           git add data/log.json
-          git diff --staged --quiet || git commit -m "log: commit recorded [skip ci]"
+          git diff --staged --quiet || git commit -m "log: commits polled [skip ci]"
           git push
