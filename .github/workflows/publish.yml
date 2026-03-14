@@ -32,7 +32,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: pull latest data from analyst commit
-        run: git pull origin main
+        run: git pull origin main --rebase
 
       - name: build site
         env:
