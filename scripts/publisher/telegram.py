@@ -69,6 +69,13 @@ def progress_bar(value: int, target: int, width: int = 8) -> str:
     return "█" * filled + "░" * (width - filled)
 
 
+def escape_md(text: str) -> str:
+    """Escape Telegram Markdown v1 special characters in plain text content."""
+    for ch in ("_", "*", "`", "["):
+        text = text.replace(ch, f"\\{ch}")
+    return text
+
+
 def send_message(text: str) -> bool:
     if not BOT_TOKEN or not CHAT_ID:
         print("missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID")
@@ -121,7 +128,7 @@ def format_daily(log: dict, today: str, settings: dict) -> str:
         for repo, repo_commits in repos.items():
             lines.append(f"`{repo}` · {len(repo_commits)} commit(s)")
             for c in repo_commits[:5]:
-                lines.append(f"  {c['sha']} {c['message'][:60]}")
+                lines.append(f"  {c['sha']} {escape_md(c['message'][:60])}")
             if len(repo_commits) > 5:
                 lines.append(f"  _...and {len(repo_commits) - 5} more_")
 
@@ -133,15 +140,15 @@ def format_daily(log: dict, today: str, settings: dict) -> str:
             f"+{total_added} / -{total_removed} lines"
         )
         if mood:
-            lines.append(f"mood: _{mood}_")
+            lines.append(f"mood: _{escape_md(mood)}_")
 
     if devlog and devlog != "No commits today.":
-        lines.append(f"\n_{devlog}_")
+        lines.append(f"\n_{escape_md(devlog)}_")
 
     if yoyo.get("message"):
         day_label = f"Day {yoyo['day']}" if yoyo.get("day") else ""
         lines.append(f"\n🤖 *yoyo-evolve* {day_label}")
-        lines.append(f"`{yoyo['message'][:80]}`")
+        lines.append(f"`{yoyo['message'][:80]}`")  # backtick context — safe
 
     # daily target check
     if target_report and target_report.get("scores"):
@@ -187,7 +194,7 @@ def format_weekly(log: dict, today: str, settings: dict) -> str:
     )
 
     if weekly_report:
-        lines.append(weekly_report)
+        lines.append(escape_md(weekly_report))
         lines.append("")
 
     # targets scorecard
@@ -219,14 +226,14 @@ def format_weekly(log: dict, today: str, settings: dict) -> str:
                 )
 
     if question:
-        lines.append(f"\n❓ _{question}_")
+        lines.append(f"\n❓ _{escape_md(question)}_")
 
     if yoyo.get("message"):
         day_label = f"Day {yoyo['day']}" if yoyo.get("day") else ""
         lines.append(f"\n🤖 *yoyo this week* {day_label}")
         lines.append(f"`{yoyo['message'][:80]}`")
         if yoyo.get("summary"):
-            lines.append(f"_{yoyo['summary'][:120]}_")
+            lines.append(f"_{escape_md(yoyo['summary'][:120])}_")
 
     if site_url:
         lines.append(f"\n📋 [Full report + graphs]({site_url})")
