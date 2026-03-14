@@ -269,6 +269,48 @@
         "removed": 0,
         "extensions": [],
         "url": "https://github.com/khanblair/lms-monorepo/commit/90666cce3ea18885c5a904292ba23e14d038ac93"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "c3043d5",
+        "message": "feat: initialize Expo mobile application configuration with `app.json`",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T15:10:44Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/c3043d5a84b2599052170a589a6f0cda91a445dd"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "3ddb925",
+        "message": "feat: Add initial EAS ignore file and Expo configuration for the mobile application.",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T15:02:57Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/3ddb925a886c5a29b871695f7ed7a201434a23e3"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "58167cf",
+        "message": "feat: Configure EAS builds and move Expo app configuration to the mobile app directory.",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T14:53:53Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/58167cfbf851bf6e3297ed5346d1821e0e315aba"
       }
     ],
     "mood": null,
