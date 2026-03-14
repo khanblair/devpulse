@@ -199,6 +199,20 @@
         "removed": 0,
         "extensions": [],
         "url": "https://github.com/khanblair/lms-monorepo/commit/eabba26f22836fca2147e2a81608ae1ab822c75c"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "f6443c6",
+        "message": "feat: add SidebarContext for managing sidebar state and mobile open status",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T10:12:39Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/f6443c6cd61b434a22fd9c8c7867e7320d092b5b"
       }
     ],
     "mood": null,
