@@ -10,6 +10,7 @@ Sundays: deep weekly format with targets scorecard.
 
 import json
 import os
+import sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -247,7 +248,9 @@ def main() -> None:
         print(f"sending daily digest for {today}")
         message = format_daily(log, today, settings)
 
-    send_message(message)
+    ok = send_message(message)
+    if not ok:
+        sys.exit(1)
 
 
 if __name__ == "__main__":

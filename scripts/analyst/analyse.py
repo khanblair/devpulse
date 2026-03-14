@@ -137,6 +137,14 @@ def main() -> None:
         print(f"weekly report: {weekly[:60]}...")
 
     # ── Save enriched log ──────────────────────────────────────────────────────
+    # Re-read log.json before saving to pick up any commits that poll.py may
+    # have appended while the analyst was running (race condition guard).
+    fresh_log = load_json(LOG_FILE)
+    for date_str, fresh_entry in fresh_log.items():
+        if date_str in log:
+            log[date_str]["commits"] = fresh_entry.get("commits", log[date_str]["commits"])
+        else:
+            log[date_str] = fresh_entry
     log[today] = entry
     save_json(LOG_FILE, log)
     print("log saved")
