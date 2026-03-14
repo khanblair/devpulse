@@ -479,6 +479,34 @@
         "removed": 0,
         "extensions": [],
         "url": "https://github.com/khanblair/lms-monorepo/commit/2c9eee90d473009434d83a168b177481652ce04d"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "0537faf",
+        "message": "feat: Add new `mobile` application with its `package.json` and update `bun.lock` to include its dependencies.",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T16:53:28Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/0537faf3f57d424cb3414f9ad4b2279dcffa3cd4"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "f148cdc",
+        "message": "feat: Add new mobile application with Expo configuration and update bun lockfile dependencies.",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T16:47:54Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/f148cdcbe65770dd293f25f6a982122e2ae37bc9"
       }
     ],
     "mood": null,
