@@ -123,7 +123,7 @@ def graph_mood_timeline(log: dict) -> None:
         lx += 80
 
     svg = svg_wrap("".join(parts), width, height)
-    (ASSETS_DIR / "mood-timeline.svg").write_text(svg)
+    (ASSETS_DIR / "mood-timeline.svg").write_text(svg, encoding="utf-8")
     print("mood-timeline.svg saved")
 
 
@@ -195,7 +195,7 @@ def graph_commit_heatmap(log: dict) -> None:
             )
 
     svg = svg_wrap("".join(parts), width, height)
-    (ASSETS_DIR / "commit-heatmap.svg").write_text(svg)
+    (ASSETS_DIR / "commit-heatmap.svg").write_text(svg, encoding="utf-8")
     print("commit-heatmap.svg saved")
 
 
@@ -211,7 +211,7 @@ def graph_language_drift() -> None:
             f'fill="{MUTED}">No language data yet</text>',
             400, 50
         )
-        (ASSETS_DIR / "language-drift.svg").write_text(empty)
+        (ASSETS_DIR / "language-drift.svg").write_text(empty, encoding="utf-8")
         return
 
     months = sorted(monthly.keys())[-8:]
@@ -277,7 +277,7 @@ def graph_language_drift() -> None:
         lx += len(lang) * 7 + 20
 
     svg = svg_wrap("".join(parts), width, height)
-    (ASSETS_DIR / "language-drift.svg").write_text(svg)
+    (ASSETS_DIR / "language-drift.svg").write_text(svg, encoding="utf-8")
     print("language-drift.svg saved")
 
 
@@ -340,7 +340,7 @@ def graph_hourly_pattern(log: dict) -> None:
             )
 
     svg = svg_wrap("".join(parts), width, height)
-    (ASSETS_DIR / "hourly-pattern.svg").write_text(svg)
+    (ASSETS_DIR / "hourly-pattern.svg").write_text(svg, encoding="utf-8")
     print("hourly-pattern.svg saved")
 
 
@@ -363,7 +363,7 @@ def graph_repo_activity(log: dict) -> None:
             f'fill="{MUTED}">No repo activity yet</text>',
             300, 50
         )
-        (ASSETS_DIR / "repo-activity.svg").write_text(empty)
+        (ASSETS_DIR / "repo-activity.svg").write_text(empty, encoding="utf-8")
         return
 
     repos = repo_counts.most_common(10)
@@ -412,7 +412,7 @@ def graph_repo_activity(log: dict) -> None:
         )
 
     svg = svg_wrap("".join(parts), width, height)
-    (ASSETS_DIR / "repo-activity.svg").write_text(svg)
+    (ASSETS_DIR / "repo-activity.svg").write_text(svg, encoding="utf-8")
     print("repo-activity.svg saved")
 
 
@@ -489,7 +489,7 @@ def graph_streak_chart(log: dict) -> None:
     )
 
     svg = svg_wrap("".join(parts), width, height)
-    (ASSETS_DIR / "streak-chart.svg").write_text(svg)
+    (ASSETS_DIR / "streak-chart.svg").write_text(svg, encoding="utf-8")
     print("streak-chart.svg saved")
 
 
@@ -507,7 +507,7 @@ def graph_targets_scorecard(log: dict) -> None:
             f'fill="{MUTED}">No targets configured</text>',
             300, 50
         )
-        (ASSETS_DIR / "targets-scorecard.svg").write_text(empty)
+        (ASSETS_DIR / "targets-scorecard.svg").write_text(empty, encoding="utf-8")
         return
 
     scores = report.get("scores", {})
@@ -520,7 +520,7 @@ def graph_targets_scorecard(log: dict) -> None:
             f'fill="{MUTED}">No targets set</text>',
             300, 50
         )
-        (ASSETS_DIR / "targets-scorecard.svg").write_text(empty)
+        (ASSETS_DIR / "targets-scorecard.svg").write_text(empty, encoding="utf-8")
         return
 
     bar_h = 22
@@ -587,7 +587,7 @@ def graph_targets_scorecard(log: dict) -> None:
         )
 
     svg = svg_wrap("".join(parts), width, height)
-    (ASSETS_DIR / "targets-scorecard.svg").write_text(svg)
+    (ASSETS_DIR / "targets-scorecard.svg").write_text(svg, encoding="utf-8")
     print("targets-scorecard.svg saved")
 
 

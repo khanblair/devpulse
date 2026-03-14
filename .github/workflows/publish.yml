@@ -32,7 +32,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: pull latest data from analyst commit
-        run: git pull origin main
+        run: git pull origin main --rebase
 
       - name: build site
         env:
@@ -51,5 +51,5 @@ jobs:
           git config user.name "devpulse-bot"
           git config user.email "devpulse-bot@users.noreply.github.com"
           git add docs/
-          git diff --staged --quiet || git commit -m "publish: site updated [skip ci]"
+          git diff --staged --quiet || git commit -m "publish: site updated"
           git push

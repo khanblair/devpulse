@@ -124,6 +124,22 @@ def fetch_commits_since(username: str, repo: str, since: str) -> list[dict]:
         return []
 
 
+def fetch_commit_detail(username: str, repo: str, sha: str) -> dict:
+    """Fetch a single commit's full detail (files + stats)."""
+    headers = get_headers()
+    try:
+        resp = httpx.get(
+            f"{GH_API}/repos/{username}/{repo}/commits/{sha}",
+            headers=headers,
+            timeout=15,
+        )
+        if resp.status_code == 200:
+            return resp.json()
+    except Exception as e:
+        print(f"failed to fetch commit detail {sha}: {e}")
+    return {}
+
+
 def parse_commit(repo: str, raw: dict) -> dict:
     commit = raw.get("commit", {})
     author = commit.get("author", {})
@@ -193,6 +209,11 @@ def poll() -> None:
             sha = raw.get("sha", "")[:7]
             if sha in existing_shas:
                 continue
+            # Fetch full detail to get files and stats (list endpoint omits these)
+            full_sha = raw.get("sha", "")
+            detail = fetch_commit_detail(username, repo, full_sha)
+            if detail:
+                raw = detail
             commit = parse_commit(repo, raw)
             log[today]["commits"].append(commit)
             existing_shas.add(sha)
