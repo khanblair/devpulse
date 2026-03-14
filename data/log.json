@@ -171,6 +171,34 @@
         "removed": 0,
         "extensions": [],
         "url": "https://github.com/khanblair/lms-monorepo/commit/9487a6c13f5526233e000131336e0ba91d3bad95"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "b84b363",
+        "message": "feat: Introduce Tailwind CSS configuration for the web application, integrating heroui and defining custom theme colors.",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T10:05:41Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/b84b3638da420bb28ddf655818dd43164962156a"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "eabba26",
+        "message": "feat(web): refine sidebar functionality and enhance dashboard responsiveness",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T09:46:37Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/eabba26f22836fca2147e2a81608ae1ab822c75c"
       }
     ],
     "mood": null,
