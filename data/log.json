@@ -101,6 +101,20 @@
         "removed": 0,
         "extensions": [],
         "url": "https://github.com/khanblair/unihostel-monorepo/commit/7fc4aa1a4ab49c4c20ad146b409398daea7fcff7"
+      },
+      {
+        "repo": "unihostel-monorepo",
+        "branch": "main",
+        "sha": "e9c5252",
+        "message": "fix: correctly track app folders after removing nested git repositories",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T05:49:36Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/unihostel-monorepo/commit/e9c5252fe39407ffeea43142a9840a0a723ed6b5"
       }
     ],
     "mood": null,
