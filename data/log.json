@@ -115,6 +115,34 @@
         "removed": 0,
         "extensions": [],
         "url": "https://github.com/khanblair/unihostel-monorepo/commit/e9c5252fe39407ffeea43142a9840a0a723ed6b5"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "52fad84",
+        "message": "Ensure apps/web is fully merged into monorepo",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T06:49:09Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/52fad8407bb9e6b4bd1b65a2e55b70b305a0b626"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "7c4df7b",
+        "message": "Initialize LMS Monorepo with Bun, Next.js, Expo, and Convex",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T06:45:13Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/7c4df7b3ed86816acb7c642617ce7a813917739b"
       }
     ],
     "mood": null,
