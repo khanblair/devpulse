@@ -5,22 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>devpulse — {{ settings.name }}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Berkeley+Mono:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0e0e0f;
-  --bg2: #141416;
-  --bg3: #1a1a1d;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.13);
-  --text: #e8e6df;
-  --muted: #7a7870;
-  --dim: #3a3835;
-  --accent: #c8f060;
-  --accent2: #f0a040;
-  --accent3: #60c8f0;
-  --red: #f06060;
-  --mono: 'Berkeley Mono', 'Courier New', monospace;
+  --bg:       #f0f2f7;
+  --surface:  #ffffff;
+  --surface2: #f8f9fc;
+  --border:   #e4e8f0;
+  --text:     #1a1d2e;
+  --muted:    #6b7280;
+  --dim:      #9ca3af;
+  --accent:   #6c63ff;
+  --accent-bg:#ede9ff;
+  --green:    #22c55e;
+  --green-bg: #dcfce7;
+  --orange:   #f59e0b;
+  --orange-bg:#fef3c7;
+  --red:      #ef4444;
+  --red-bg:   #fee2e2;
+  --blue:     #3b82f6;
+  --blue-bg:  #dbeafe;
+  --shadow:   0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --radius:   12px;
+  --radius-sm:8px;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --serif: 'Fraunces', Georgia, serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,521 +37,867 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--mono);
-  font-size: 13px;
-  line-height: 1.65;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
   min-height: 100vh;
 }
-.page { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
 
-/* ── header ── */
-header {
-  padding: 52px 0 40px;
+/* ── layout ── */
+.topbar {
+  background: var(--surface);
   border-bottom: 1px solid var(--border);
-  margin-bottom: 52px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
 }
-.header-top {
+.topbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 56px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
 }
-.site-id {
-  font-family: var(--mono);
-  font-size: 11px;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-logo {
+  width: 30px; height: 30px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.brand-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+.brand-sub {
+  font-size: 12px;
   color: var(--muted);
-  letter-spacing: 0.1em;
+  font-weight: 400;
 }
-.live {
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.live-badge {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 10px;
 }
 .live-dot {
-  width: 5px; height: 5px;
-  background: var(--accent);
+  width: 6px; height: 6px;
+  background: var(--green);
   border-radius: 50%;
   animation: pulse 2.5s ease-in-out infinite;
 }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
-.day-number {
-  font-family: var(--serif);
-  font-size: clamp(60px, 12vw, 108px);
-  font-weight: 300;
-  line-height: 0.92;
-  color: var(--text);
-  margin-bottom: 12px;
-  font-style: italic;
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.generated-label {
+  font-size: 11px;
+  color: var(--dim);
 }
-.day-number span { color: var(--accent); font-style: normal; }
-.tagline {
-  font-size: 13px;
-  color: var(--muted);
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 24px 80px;
+}
+
+/* ── hero stat cards ── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
   margin-bottom: 28px;
 }
-.header-stats {
-  display: flex;
-  gap: 40px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
 }
-.hstat-val { font-size: 20px; font-weight: 700; }
-.hstat-label { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-
-/* ── sections ── */
-section { margin-bottom: 56px; }
-.section-label {
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 18px;
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.stat-card.c-purple::before { background: var(--accent); }
+.stat-card.c-green::before  { background: var(--green); }
+.stat-card.c-orange::before { background: var(--orange); }
+.stat-card.c-blue::before   { background: var(--blue); }
+.stat-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
+  font-size: 16px;
+  margin-bottom: 14px;
 }
-.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.c-purple .stat-icon { background: var(--accent-bg); }
+.c-green  .stat-icon { background: var(--green-bg); }
+.c-orange .stat-icon { background: var(--orange-bg); }
+.c-blue   .stat-icon { background: var(--blue-bg); }
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
 
-/* ── devlog ── */
-.devlog {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: 8px;
-  padding: 24px 28px;
+/* ── two-column layout ── */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+  align-items: start;
 }
-.devlog-date { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+.main-col { display: flex; flex-direction: column; gap: 20px; }
+.side-col  { display: flex; flex-direction: column; gap: 20px; }
+
+/* ── card ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-title-icon {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+.card-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: var(--surface2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+.card-body { padding: 20px; }
+
+/* ── today devlog ── */
+.devlog-date-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.devlog-date-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+}
 .devlog-text {
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 300;
-  line-height: 1.65;
+  font-style: italic;
   color: var(--text);
+  line-height: 1.7;
+}
+.devlog-empty {
+  font-size: 13px;
+  color: var(--dim);
   font-style: italic;
 }
-.no-commits { color: var(--muted); font-style: italic; }
+
+/* ── mood badge ── */
+.mood-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+}
+.mood-focused     { background: var(--accent-bg); color: var(--accent); }
+.mood-grinding    { background: var(--orange-bg); color: #b45309; }
+.mood-exploratory { background: #f3e8ff; color: #7c3aed; }
+.mood-frustrated  { background: var(--red-bg); color: var(--red); }
+.mood-cleanup     { background: #d1fae5; color: #059669; }
+.mood-relieved    { background: var(--green-bg); color: #16a34a; }
+.mood-scattered   { background: var(--blue-bg); color: var(--blue); }
 
 /* ── commits ── */
 .repo-block {
-  background: var(--bg2);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  margin-bottom: 10px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
+  margin-bottom: 10px;
 }
+.repo-block:last-child { margin-bottom: 0; }
 .repo-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 18px;
+  padding: 10px 16px;
+  background: var(--surface2);
   border-bottom: 1px solid var(--border);
 }
-.repo-name { font-weight: 700; font-size: 12px; }
-.repo-meta { font-size: 10px; color: var(--muted); display: flex; gap: 14px; }
-.add { color: var(--accent); }
-.rem { color: var(--red); }
+.repo-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.repo-name::before { content: '⬡'; font-size: 10px; }
+.repo-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.add { color: var(--green); font-weight: 600; }
+.rem { color: var(--red); font-weight: 600; }
 .commit-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
-  padding: 8px 18px;
-  border-bottom: 1px solid var(--dim);
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--border);
   font-size: 12px;
+  transition: background 0.15s;
 }
 .commit-row:last-child { border-bottom: none; }
-.sha { color: var(--dim); font-size: 10px; min-width: 48px; }
-.commit-msg { flex: 1; }
-.commit-msg .type-feat { color: var(--accent); }
-.commit-msg .type-fix { color: var(--accent2); }
-.commit-msg .type-chore { color: var(--muted); }
-.commit-msg .type-refactor { color: var(--accent3); }
-.commit-time { font-size: 10px; color: var(--dim); }
+.commit-row:hover { background: var(--surface2); }
+.sha {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: var(--dim);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  min-width: 52px;
+  text-align: center;
+}
+.commit-msg { flex: 1; color: var(--text); line-height: 1.4; }
+.type-feat    { color: var(--accent); font-weight: 600; }
+.type-fix     { color: var(--orange); font-weight: 600; }
+.type-chore   { color: var(--muted); font-weight: 600; }
+.type-refactor{ color: var(--blue); font-weight: 600; }
+.commit-time  { font-size: 10px; color: var(--dim); white-space: nowrap; }
 
 /* ── yoyo vs you ── */
-.parallel { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.parallel-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 18px 20px;
+.parallel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
-.parallel-label { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
-.parallel-day { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.parallel-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+}
+.parallel-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.parallel-day {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
 .parallel-day.accent { color: var(--accent); }
-.parallel-day.muted { color: var(--muted); }
-.parallel-summary { font-size: 12px; color: var(--muted); line-height: 1.5; font-style: italic; }
-.parallel-commits { font-size: 11px; color: var(--muted); margin-top: 8px; }
+.parallel-day.muted  { color: var(--dim); }
+.parallel-summary { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.parallel-commits { font-size: 11px; color: var(--dim); margin-top: 6px; }
 
 /* ── graphs ── */
-.graph-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.graph-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
 .graph-block {
-  background: var(--bg2);
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius);
   padding: 16px;
+  box-shadow: var(--shadow);
   overflow: hidden;
 }
 .graph-block.full { grid-column: 1 / -1; }
-.graph-block svg { width: 100%; height: auto; }
-.no-data { color: var(--muted); font-size: 11px; font-style: italic; padding: 8px 0; }
+.graph-block svg  { width: 100%; height: auto; display: block; }
+.no-data {
+  font-size: 12px;
+  color: var(--dim);
+  font-style: italic;
+  padding: 12px 0;
+  text-align: center;
+}
 
 /* ── fingerprint ── */
-.fp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
-.fp-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 14px 16px;
+.fp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
-.fp-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
-.fp-value { font-size: 15px; font-weight: 700; color: var(--text); }
-.fp-empty { color: var(--muted); font-style: italic; font-size: 12px; }
+.fp-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.fp-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 4px;
+}
+.fp-value { font-size: 16px; font-weight: 700; color: var(--text); }
+.fp-empty { font-size: 12px; color: var(--dim); font-style: italic; padding: 8px 0; }
 
 /* ── graveyard ── */
-.graveyard-list { display: flex; flex-direction: column; gap: 8px; }
 .graveyard-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 16px;
-  background: var(--bg2);
+  padding: 10px 14px;
+  background: var(--surface2);
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
   font-size: 12px;
 }
-.graveyard-repo { color: var(--muted); }
-.graveyard-days { color: var(--red); font-size: 10px; }
-.all-clear { color: var(--muted); font-style: italic; font-size: 12px; }
+.graveyard-item:last-child { margin-bottom: 0; }
+.graveyard-repo { color: var(--text); font-weight: 500; }
+.graveyard-days {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--red);
+  background: var(--red-bg);
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+.all-clear {
+  font-size: 12px;
+  color: var(--green);
+  background: var(--green-bg);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-weight: 500;
+}
 
 /* ── question ── */
-.question-block {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent2);
-  border-radius: 8px;
-  padding: 24px 28px;
-}
 .question-text {
   font-family: var(--serif);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 300;
   font-style: italic;
   color: var(--text);
-  line-height: 1.5;
+  line-height: 1.65;
+  border-left: 3px solid var(--orange);
+  padding-left: 16px;
 }
 
 /* ── weekly report ── */
-.weekly-block {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 24px 28px;
-}
 .weekly-text {
-  font-family: var(--serif);
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 1.75;
+  font-size: 13px;
   color: var(--text);
+  line-height: 1.8;
   white-space: pre-line;
 }
 
 /* ── journal ── */
 .journal-entry {
-  padding: 16px 0;
+  padding: 14px 0;
   border-bottom: 1px solid var(--border);
 }
 .journal-entry:last-child { border-bottom: none; }
-.journal-date { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
-.journal-log { font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--muted); }
-.journal-stats { font-size: 11px; color: var(--dim); margin-top: 4px; }
-
-/* ── mood badge ── */
-.mood-badge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: var(--bg3);
-  color: var(--muted);
+.journal-date-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
 }
-.mood-focused { background: rgba(200,240,96,0.15); color: #c8f060; }
-.mood-grinding { background: rgba(240,160,64,0.15); color: #f0a040; }
-.mood-exploratory { background: rgba(160,96,240,0.15); color: #a060f0; }
-.mood-frustrated { background: rgba(240,96,96,0.15); color: #f06060; }
-.mood-cleanup { background: rgba(96,208,160,0.15); color: #60d0a0; }
-.mood-relieved { background: rgba(240,208,96,0.15); color: #f0d060; }
-.mood-scattered { background: rgba(96,200,240,0.15); color: #60c8f0; }
+.journal-date {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.journal-log {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+.journal-stats {
+  font-size: 11px;
+  color: var(--dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.journal-stats::before { content: '↪'; }
 
 /* ── footer ── */
 footer {
-  padding: 32px 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 24px;
   border-top: 1px solid var(--border);
-  font-size: 10px;
-  color: var(--dim);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--dim);
 }
+.footer-brand { font-weight: 600; color: var(--muted); }
 
+/* ── responsive ── */
+@media (max-width: 900px) {
+  .content-grid { grid-template-columns: 1fr; }
+  .side-col { order: -1; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 600px) {
+  .topbar-inner { padding: 0 16px; }
+  .page { padding: 16px 16px 60px; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .stat-value { font-size: 22px; }
   .parallel { grid-template-columns: 1fr; }
   .graph-grid { grid-template-columns: 1fr; }
   .graph-block.full { grid-column: 1; }
-  .header-stats { gap: 24px; }
+  .fp-grid { grid-template-columns: 1fr 1fr; }
+  .generated-label { display: none; }
+  .brand-sub { display: none; }
 }
 </style>
 </head>
 <body>
+
+<!-- ── top bar ── -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-logo">dp</div>
+      <div>
+        <div class="brand-name">devpulse</div>
+        <div class="brand-sub">{{ settings.name }}</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="live-badge">
+        <span class="live-dot"></span>
+        updated daily
+      </div>
+      <div class="generated-label">{{ generated_at }}</div>
+    </div>
+  </div>
+</div>
+
 <div class="page">
 
-<!-- ── header ── -->
-<header>
-  <div class="header-top">
-    <span class="site-id">devpulse / {{ settings.name | lower }}</span>
-    <span class="live"><span class="live-dot"></span>updated daily</span>
-  </div>
-  <div class="day-number">Day <span>{{ day_number }}</span></div>
-  <div class="tagline">a developer growing up in public</div>
-  <div class="header-stats">
-    <div>
-      <div class="hstat-val">🔥 {{ streak }}</div>
-      <div class="hstat-label">day streak</div>
+  <!-- ── hero stats ── -->
+  <div class="stat-grid">
+    <div class="stat-card c-purple">
+      <div class="stat-icon">📅</div>
+      <div class="stat-value">{{ day_number }}</div>
+      <div class="stat-label">Days Active</div>
     </div>
-    <div>
-      <div class="hstat-val">{{ total_commits }}</div>
-      <div class="hstat-label">total commits</div>
+    <div class="stat-card c-orange">
+      <div class="stat-icon">🔥</div>
+      <div class="stat-value">{{ streak }}</div>
+      <div class="stat-label">Day Streak</div>
     </div>
-    <div>
-      <div class="hstat-val">{{ total_days }}</div>
-      <div class="hstat-label">days tracked</div>
+    <div class="stat-card c-green">
+      <div class="stat-icon">✦</div>
+      <div class="stat-value">{{ total_commits }}</div>
+      <div class="stat-label">Total Commits</div>
     </div>
-    <div>
-      <div class="hstat-val">{{ commits_today | length }}</div>
-      <div class="hstat-label">today</div>
+    <div class="stat-card c-blue">
+      <div class="stat-icon">⚡</div>
+      <div class="stat-value">{{ commits_today | length }}</div>
+      <div class="stat-label">Today</div>
     </div>
   </div>
-</header>
 
-<!-- ── dev log ── -->
-<section>
-  <div class="section-label">// today</div>
-  <div class="devlog">
-    <div class="devlog-date">{{ today }}
-      {% if entry.mood %}
-        &nbsp;&nbsp;<span class="mood-badge mood-{{ entry.mood }}">{{ entry.mood }}</span>
-      {% endif %}
-    </div>
-    {% if entry.devlog and entry.devlog != "No commits today." %}
-      <div class="devlog-text">{{ entry.devlog }}</div>
-    {% else %}
-      <div class="devlog-text no-commits">No commits today.</div>
-    {% endif %}
-  </div>
-</section>
+  <!-- ── two-column body ── -->
+  <div class="content-grid">
 
-<!-- ── commits ── -->
-{% if commits_today %}
-<section>
-  <div class="section-label">// commits</div>
-  {% for repo, repo_commits in repos_today.items() %}
-  <div class="repo-block">
-    <div class="repo-header">
-      <span class="repo-name">{{ repo }}</span>
-      <span class="repo-meta">
-        <span>{{ repo_commits | length }} commit(s)</span>
-        <span class="add">+{{ repo_commits | sum(attribute='added') }}</span>
-        <span class="rem">-{{ repo_commits | sum(attribute='removed') }}</span>
-      </span>
-    </div>
-    {% for c in repo_commits %}
-    <div class="commit-row">
-      <span class="sha">{{ c.sha }}</span>
-      <span class="commit-msg">
-        {% if c.message.startswith('feat') %}
-          <span class="type-feat">feat</span>{{ c.message[4:] | truncate(70, killwords=True) }}
-        {% elif c.message.startswith('fix') %}
-          <span class="type-fix">fix</span>{{ c.message[3:] | truncate(70, killwords=True) }}
-        {% elif c.message.startswith('chore') %}
-          <span class="type-chore">chore</span>{{ c.message[5:] | truncate(70, killwords=True) }}
-        {% elif c.message.startswith('refactor') %}
-          <span class="type-refactor">refactor</span>{{ c.message[8:] | truncate(70, killwords=True) }}
-        {% else %}
-          {{ c.message | truncate(80, killwords=True) }}
-        {% endif %}
-      </span>
-      {% if c.timestamp %}
-      <span class="commit-time">{{ c.timestamp[11:16] }}</span>
-      {% endif %}
-    </div>
-    {% endfor %}
-  </div>
-  {% endfor %}
-</section>
-{% endif %}
+    <!-- ── main column ── -->
+    <div class="main-col">
 
-<!-- ── yoyo vs you ── -->
-<section>
-  <div class="section-label">// yoyo vs you</div>
-  <div class="parallel">
-    <div class="parallel-card">
-      <div class="parallel-label">yoyo-evolve</div>
-      {% if entry.yoyo %}
-        <div class="parallel-day muted">Day {{ entry.yoyo.day or '?' }}</div>
-        <div class="parallel-summary">{{ entry.yoyo.message or 'No commit today' }}</div>
-        {% if entry.yoyo.summary %}
-        <div class="parallel-commits">{{ entry.yoyo.summary | truncate(120) }}</div>
-        {% endif %}
-      {% else %}
-        <div class="parallel-summary no-commits">Not fetched yet</div>
-      {% endif %}
-    </div>
-    <div class="parallel-card">
-      <div class="parallel-label">you</div>
-      <div class="parallel-day accent">Day {{ day_number }}</div>
-      {% if commits_today %}
-        <div class="parallel-summary">{{ commits_today | length }} commit(s) across {{ repos_today | length }} repo(s)</div>
-        <div class="parallel-commits">
-          {% for c in commits_today[:3] %}{{ c.message | truncate(50) }}{% if not loop.last %} · {% endif %}{% endfor %}
+      <!-- today devlog -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon">📝</div>
+            Today's Log
+          </div>
+          <span class="card-badge">{{ today }}</span>
         </div>
-      {% else %}
-        <div class="parallel-summary no-commits">No commits today</div>
+        <div class="card-body">
+          <div class="devlog-date-row">
+            <span class="devlog-date-label">
+              {{ today }}
+            </span>
+            {% if entry.mood %}
+              <span class="mood-badge mood-{{ entry.mood }}">{{ entry.mood }}</span>
+            {% endif %}
+          </div>
+          {% if entry.devlog and entry.devlog != "No commits today." %}
+            <div class="devlog-text">{{ entry.devlog }}</div>
+          {% else %}
+            <div class="devlog-empty">No commits logged today.</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- commits -->
+      {% if commits_today %}
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon">⬡</div>
+            Today's Commits
+          </div>
+          <span class="card-badge">{{ commits_today | length }} commit{{ 's' if commits_today | length != 1 }}</span>
+        </div>
+        <div class="card-body">
+          {% for repo, repo_commits in repos_today.items() %}
+          <div class="repo-block">
+            <div class="repo-header">
+              <span class="repo-name">{{ repo }}</span>
+              <span class="repo-meta">
+                <span>{{ repo_commits | length }}c</span>
+                <span class="add">+{{ repo_commits | sum(attribute='added') }}</span>
+                <span class="rem">-{{ repo_commits | sum(attribute='removed') }}</span>
+              </span>
+            </div>
+            {% for c in repo_commits %}
+            <div class="commit-row">
+              <span class="sha">{{ c.sha }}</span>
+              <span class="commit-msg">
+                {% if c.message.startswith('feat') %}
+                  <span class="type-feat">feat</span>{{ c.message[4:] | truncate(70, killwords=True) }}
+                {% elif c.message.startswith('fix') %}
+                  <span class="type-fix">fix</span>{{ c.message[3:] | truncate(70, killwords=True) }}
+                {% elif c.message.startswith('chore') %}
+                  <span class="type-chore">chore</span>{{ c.message[5:] | truncate(70, killwords=True) }}
+                {% elif c.message.startswith('refactor') %}
+                  <span class="type-refactor">refactor</span>{{ c.message[8:] | truncate(70, killwords=True) }}
+                {% else %}
+                  {{ c.message | truncate(80, killwords=True) }}
+                {% endif %}
+              </span>
+              {% if c.timestamp %}
+              <span class="commit-time">{{ c.timestamp[11:16] }}</span>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
       {% endif %}
-    </div>
-  </div>
-</section>
 
-<!-- ── graphs ── -->
-<section>
-  <div class="section-label">// activity</div>
-  <div class="graph-grid">
-    <div class="graph-block full">{{ svg.commit_heatmap | safe }}</div>
-    <div class="graph-block full">{{ svg.mood_timeline | safe }}</div>
-    <div class="graph-block">{{ svg.hourly_pattern | safe }}</div>
-    <div class="graph-block">{{ svg.repo_activity | safe }}</div>
-    <div class="graph-block full">{{ svg.streak_chart | safe }}</div>
-  </div>
-</section>
+      <!-- yoyo vs you -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon">🤖</div>
+            yoyo vs you
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="parallel">
+            <div class="parallel-card">
+              <div class="parallel-label">yoyo-evolve</div>
+              {% if entry.yoyo %}
+                <div class="parallel-day muted">Day {{ entry.yoyo.day or '?' }}</div>
+                <div class="parallel-summary">{{ entry.yoyo.message or 'No commit today' }}</div>
+                {% if entry.yoyo.summary %}
+                <div class="parallel-commits">{{ entry.yoyo.summary | truncate(120) }}</div>
+                {% endif %}
+              {% else %}
+                <div class="parallel-summary" style="color:var(--dim);font-style:italic">Not fetched yet</div>
+              {% endif %}
+            </div>
+            <div class="parallel-card">
+              <div class="parallel-label">you</div>
+              <div class="parallel-day accent">Day {{ day_number }}</div>
+              {% if commits_today %}
+                <div class="parallel-summary">{{ commits_today | length }} commit(s) across {{ repos_today | length }} repo(s)</div>
+                <div class="parallel-commits">
+                  {% for c in commits_today[:3] %}{{ c.message | truncate(50) }}{% if not loop.last %} · {% endif %}{% endfor %}
+                </div>
+              {% else %}
+                <div class="parallel-summary" style="color:var(--dim);font-style:italic">No commits today</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
 
-<!-- ── targets ── -->
-{% if target_report and target_report.scores %}
-<section>
-  <div class="section-label">// targets</div>
-  <div class="graph-block">{{ svg.targets_scorecard | safe }}</div>
-</section>
-{% endif %}
+      <!-- activity graphs -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon">📊</div>
+            Activity
+          </div>
+        </div>
+        <div class="card-body" style="padding:16px">
+          <div class="graph-grid">
+            <div class="graph-block full">{{ svg.commit_heatmap | safe }}</div>
+            <div class="graph-block full">{{ svg.mood_timeline | safe }}</div>
+            <div class="graph-block">{{ svg.hourly_pattern | safe }}</div>
+            <div class="graph-block">{{ svg.repo_activity | safe }}</div>
+            <div class="graph-block full">{{ svg.streak_chart | safe }}</div>
+          </div>
+        </div>
+      </div>
 
-<!-- ── language drift ── -->
-<section>
-  <div class="section-label">// language drift</div>
-  <div class="graph-block full">{{ svg.language_drift | safe }}</div>
-</section>
+      <!-- language drift -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon">🌊</div>
+            Language Drift
+          </div>
+        </div>
+        <div class="card-body" style="padding:16px">
+          <div class="graph-block full" style="box-shadow:none;border:none;padding:0">
+            {{ svg.language_drift | safe }}
+          </div>
+        </div>
+      </div>
 
-<!-- ── fingerprint ── -->
-<section>
-  <div class="section-label">// fingerprint</div>
-  {% if fingerprint.last_updated %}
-  <div class="fp-grid">
-    {% if fingerprint.style %}
-    <div class="fp-card"><div class="fp-label">style</div><div class="fp-value">{{ fingerprint.style }}</div></div>
-    {% endif %}
-    {% if fingerprint.consistency_score is not none %}
-    <div class="fp-card"><div class="fp-label">consistency</div><div class="fp-value">{{ fingerprint.consistency_score }}/10</div></div>
-    {% endif %}
-    {% if fingerprint.peak_coding_hour is not none %}
-    <div class="fp-card"><div class="fp-label">peak hour</div><div class="fp-value">{{ "%02d"|format(fingerprint.peak_coding_hour) }}:00</div></div>
-    {% endif %}
-    {% if fingerprint.feat_fix_ratio is not none %}
-    <div class="fp-card"><div class="fp-label">feat/fix ratio</div><div class="fp-value">{{ fingerprint.feat_fix_ratio }}x</div></div>
-    {% endif %}
-    {% if fingerprint.most_active_repo %}
-    <div class="fp-card"><div class="fp-label">most active</div><div class="fp-value">{{ fingerprint.most_active_repo }}</div></div>
-    {% endif %}
-    {% if fingerprint.avg_commit_size is not none %}
-    <div class="fp-card"><div class="fp-label">avg commit</div><div class="fp-value">{{ fingerprint.avg_commit_size }} files</div></div>
-    {% endif %}
-  </div>
-  {% else %}
-  <div class="fp-empty">Fingerprint builds after 7+ days of data.</div>
-  {% endif %}
-</section>
-
-<!-- ── weekly question ── -->
-{% if last_question %}
-<section>
-  <div class="section-label">// this week's question</div>
-  <div class="question-block">
-    <div class="question-text">{{ last_question }}</div>
-  </div>
-</section>
-{% endif %}
-
-<!-- ── weekly report ── -->
-{% if last_weekly %}
-<section>
-  <div class="section-label">// weekly report</div>
-  <div class="weekly-block">
-    <div class="weekly-text">{{ last_weekly }}</div>
-  </div>
-</section>
-{% endif %}
-
-<!-- ── graveyard ── -->
-<section>
-  <div class="section-label">// still waiting</div>
-  {% set graveyard_repos = graveyard.repos | default([]) %}
-  {% set open_prs = graveyard.open_prs | default([]) %}
-  {% if graveyard_repos or open_prs %}
-  <div class="graveyard-list">
-    {% for r in graveyard_repos %}
-    <div class="graveyard-item">
-      <span class="graveyard-repo">{{ r.name }}</span>
-      <span class="graveyard-days">{{ r.days_quiet }} days quiet</span>
-    </div>
-    {% endfor %}
-    {% for pr in open_prs %}
-    <div class="graveyard-item">
-      <span class="graveyard-repo">{{ pr.repo }} #{{ pr.number }} — {{ pr.title | truncate(50) }}</span>
-      <span class="graveyard-days">{{ pr.days_open }} days open</span>
-    </div>
-    {% endfor %}
-  </div>
-  {% else %}
-  <div class="all-clear">All clear — nothing abandoned.</div>
-  {% endif %}
-</section>
-
-<!-- ── journal ── -->
-<section>
-  <div class="section-label">// journal</div>
-  {% for day in recent_days %}
-  <div class="journal-entry">
-    <div class="journal-date">
-      {{ day.date }}
-      {% if day.mood %}
-        &nbsp;<span class="mood-badge mood-{{ day.mood }}">{{ day.mood }}</span>
+      <!-- weekly report -->
+      {% if last_weekly %}
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon">📋</div>
+            Weekly Report
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="weekly-text">{{ last_weekly }}</div>
+        </div>
+      </div>
       {% endif %}
-    </div>
-    {% if day.devlog and day.devlog != "No commits today." %}
-    <div class="journal-log">{{ day.devlog }}</div>
-    {% endif %}
-    {% if day.commits %}
-    <div class="journal-stats">{{ day.commits | length }} commit(s) · {{ day.commits | map(attribute='repo') | unique | list | join(', ') }}</div>
-    {% endif %}
-  </div>
-  {% endfor %}
-</section>
 
-<!-- ── footer ── -->
+    </div><!-- /main-col -->
+
+    <!-- ── side column ── -->
+    <div class="side-col">
+
+      <!-- targets -->
+      {% if target_report and target_report.scores %}
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon">🎯</div>
+            Targets
+          </div>
+        </div>
+        <div style="padding:16px">
+          {{ svg.targets_scorecard | safe }}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- fingerprint -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon">🧬</div>
+            Dev Fingerprint
+          </div>
+        </div>
+        <div class="card-body">
+          {% if fingerprint.last_updated %}
+          <div class="fp-grid">
+            {% if fingerprint.style %}
+            <div class="fp-card"><div class="fp-label">style</div><div class="fp-value">{{ fingerprint.style }}</div></div>
+            {% endif %}
+            {% if fingerprint.consistency_score is not none %}
+            <div class="fp-card"><div class="fp-label">consistency</div><div class="fp-value">{{ fingerprint.consistency_score }}/10</div></div>
+            {% endif %}
+            {% if fingerprint.peak_coding_hour is not none %}
+            <div class="fp-card"><div class="fp-label">peak hour</div><div class="fp-value">{{ "%02d"|format(fingerprint.peak_coding_hour) }}:00</div></div>
+            {% endif %}
+            {% if fingerprint.feat_fix_ratio is not none %}
+            <div class="fp-card"><div class="fp-label">feat/fix</div><div class="fp-value">{{ fingerprint.feat_fix_ratio }}x</div></div>
+            {% endif %}
+            {% if fingerprint.most_active_repo %}
+            <div class="fp-card" style="grid-column:1/-1"><div class="fp-label">most active repo</div><div class="fp-value" style="font-size:13px">{{ fingerprint.most_active_repo }}</div></div>
+            {% endif %}
+            {% if fingerprint.avg_commit_size is not none %}
+            <div class="fp-card"><div class="fp-label">avg commit</div><div class="fp-value">{{ fingerprint.avg_commit_size }} files</div></div>
+            {% endif %}
+          </div>
+          {% else %}
+          <div class="fp-empty">Fingerprint builds after 7+ days of data.</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- weekly question -->
+      {% if last_question %}
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon">❓</div>
+            This Week's Question
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="question-text">{{ last_question }}</div>
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- graveyard -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon">🪦</div>
+            Still Waiting
+          </div>
+        </div>
+        <div class="card-body">
+          {% set graveyard_repos = graveyard.repos | default([]) %}
+          {% set open_prs = graveyard.open_prs | default([]) %}
+          {% if graveyard_repos or open_prs %}
+            {% for r in graveyard_repos %}
+            <div class="graveyard-item">
+              <span class="graveyard-repo">{{ r.name }}</span>
+              <span class="graveyard-days">{{ r.days_quiet }}d quiet</span>
+            </div>
+            {% endfor %}
+            {% for pr in open_prs %}
+            <div class="graveyard-item">
+              <span class="graveyard-repo">{{ pr.repo }} #{{ pr.number }} — {{ pr.title | truncate(40) }}</span>
+              <span class="graveyard-days">{{ pr.days_open }}d open</span>
+            </div>
+            {% endfor %}
+          {% else %}
+          <div class="all-clear">✓ All clear — nothing abandoned.</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- journal -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon">📖</div>
+            Journal
+          </div>
+          <span class="card-badge">last 14 days</span>
+        </div>
+        <div class="card-body" style="padding:0 20px">
+          {% for day in recent_days %}
+          <div class="journal-entry">
+            <div class="journal-date-row">
+              <span class="journal-date">{{ day.date }}</span>
+              {% if day.mood %}
+                <span class="mood-badge mood-{{ day.mood }}">{{ day.mood }}</span>
+              {% endif %}
+            </div>
+            {% if day.devlog and day.devlog != "No commits today." %}
+            <div class="journal-log">{{ day.devlog }}</div>
+            {% endif %}
+            {% if day.commits %}
+            <div class="journal-stats">{{ day.commits | length }} commit(s) · {{ day.commits | map(attribute='repo') | unique | list | join(', ') }}</div>
+            {% endif %}
+          </div>
+          {% endfor %}
+          {% if not recent_days %}
+          <div style="padding:16px 0;font-size:12px;color:var(--dim);font-style:italic">No journal entries yet.</div>
+          {% endif %}
+        </div>
+      </div>
+
+    </div><!-- /side-col -->
+
+  </div><!-- /content-grid -->
+
+</div><!-- /page -->
+
 <footer>
-  <span>devpulse · {{ settings.name }}</span>
+  <span class="footer-brand">devpulse · {{ settings.name }}</span>
   <span>generated {{ generated_at }}</span>
 </footer>
 
-</div>
 </body>
 </html>
