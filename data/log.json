@@ -311,6 +311,48 @@
         "removed": 0,
         "extensions": [],
         "url": "https://github.com/khanblair/lms-monorepo/commit/58167cfbf851bf6e3297ed5346d1821e0e315aba"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "1ff90b0",
+        "message": "feat: initialize Expo configuration for the new mobile application.",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T15:41:47Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/1ff90b017bea5ccba9edc5e28e2889846ac83d2b"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "d8deeed",
+        "message": "feat: Add initial Expo application configuration in `app.json` and `lims-logo.jpg` asset.",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T15:39:12Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/d8deeed5a85f4c8264ecce918b7c86409cf00c31"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "7af9f32",
+        "message": "feat: Add Claude permissions configuration and initial mobile app Expo configuration.",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T15:24:02Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/7af9f3202deedcb93c003fa807bebd0d19857d34"
       }
     ],
     "mood": null,
