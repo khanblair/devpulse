@@ -143,6 +143,20 @@
         "removed": 0,
         "extensions": [],
         "url": "https://github.com/khanblair/lms-monorepo/commit/7c4df7b3ed86816acb7c642617ce7a813917739b"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "c0a4f8e",
+        "message": "feat: integrate Clerk auth, Convex backend, and core LMS schema",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-14T08:25:02Z",
+        "files_changed": 0,
+        "added": 0,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/c0a4f8eb84fa2944f7597861dc7463f4de10c031"
       }
     ],
     "mood": null,
