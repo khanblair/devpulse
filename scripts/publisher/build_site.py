@@ -39,7 +39,7 @@ def load_json(path: Path) -> dict:
 def load_svg(name: str) -> str:
     path = ASSETS_DIR / name
     if path.exists():
-        return path.read_text()
+        return path.read_text(encoding="utf-8")
     return f'<div class="no-data">Graph not yet generated</div>'
 
 

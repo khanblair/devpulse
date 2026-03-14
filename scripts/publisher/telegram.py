@@ -69,11 +69,9 @@ def progress_bar(value: int, target: int, width: int = 8) -> str:
     return "█" * filled + "░" * (width - filled)
 
 
-def escape_md(text: str) -> str:
-    """Escape Telegram Markdown v1 special characters in plain text content."""
-    for ch in ("_", "*", "`", "["):
-        text = text.replace(ch, f"\\{ch}")
-    return text
+def esc(text: str) -> str:
+    """Escape HTML special characters for Telegram HTML parse mode."""
+    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
 def send_message(text: str) -> bool:
@@ -87,7 +85,7 @@ def send_message(text: str) -> bool:
             json={
                 "chat_id": CHAT_ID,
                 "text": text,
-                "parse_mode": "Markdown",
+                "parse_mode": "HTML",
                 "disable_web_page_preview": True,
             },
             timeout=15,
@@ -115,10 +113,10 @@ def format_daily(log: dict, today: str, settings: dict) -> str:
     day_name = dt.strftime("%A %b %d")
 
     lines = []
-    lines.append(f"📅 *{day_name}* — Day {day_n}  🔥 {streak}-day streak\n")
+    lines.append(f"📅 <b>{esc(day_name)}</b> — Day {day_n}  🔥 {streak}-day streak\n")
 
     if not commits:
-        lines.append("_No commits today._")
+        lines.append("<i>No commits today.</i>")
     else:
         # group by repo
         repos: dict[str, list] = {}
@@ -126,11 +124,11 @@ def format_daily(log: dict, today: str, settings: dict) -> str:
             repos.setdefault(c["repo"], []).append(c)
 
         for repo, repo_commits in repos.items():
-            lines.append(f"`{repo}` · {len(repo_commits)} commit(s)")
+            lines.append(f"<code>{esc(repo)}</code> · {len(repo_commits)} commit(s)")
             for c in repo_commits[:5]:
-                lines.append(f"  {c['sha']} {escape_md(c['message'][:60])}")
+                lines.append(f"  {c['sha']} {esc(c['message'][:60])}")
             if len(repo_commits) > 5:
-                lines.append(f"  _...and {len(repo_commits) - 5} more_")
+                lines.append(f"  <i>...and {len(repo_commits) - 5} more</i>")
 
         total_files = sum(c.get("files_changed", 0) for c in commits)
         total_added = sum(c.get("added", 0) for c in commits)
@@ -140,25 +138,25 @@ def format_daily(log: dict, today: str, settings: dict) -> str:
             f"+{total_added} / -{total_removed} lines"
         )
         if mood:
-            lines.append(f"mood: _{escape_md(mood)}_")
+            lines.append(f"mood: <i>{esc(mood)}</i>")
 
     if devlog and devlog != "No commits today.":
-        lines.append(f"\n_{escape_md(devlog)}_")
+        lines.append(f"\n<i>{esc(devlog)}</i>")
 
     if yoyo.get("message"):
         day_label = f"Day {yoyo['day']}" if yoyo.get("day") else ""
-        lines.append(f"\n🤖 *yoyo-evolve* {day_label}")
-        lines.append(f"`{yoyo['message'][:80]}`")  # backtick context — safe
+        lines.append(f"\n🤖 <b>yoyo-evolve</b> {esc(day_label)}")
+        lines.append(f"<code>{esc(yoyo['message'][:80])}</code>")
 
     # daily target check
     if target_report and target_report.get("scores"):
         scores = target_report["scores"]
         missed = [k for k, v in scores.items() if v.get("status") == "missed"]
         if missed:
-            lines.append(f"\n⚠️ Behind on: {', '.join(missed)}")
+            lines.append(f"\n⚠️ Behind on: {esc(', '.join(missed))}")
 
     if site_url:
-        lines.append(f"\n📋 [Full report]({site_url})")
+        lines.append(f"\n📋 <a href=\"{esc(site_url)}\">Full report</a>")
 
     return "\n".join(lines)
 
@@ -187,14 +185,14 @@ def format_weekly(log: dict, today: str, settings: dict) -> str:
     days_active = sum(1 for d in week_dates if log.get(d, {}).get("commits"))
 
     lines = []
-    lines.append(f"📊 *Week {week_num} — deep report*\n")
+    lines.append(f"📊 <b>Week {week_num} — deep report</b>\n")
     lines.append(
         f"{len(all_commits)} commits · {len(repos)} repos · "
         f"{days_active} active days\n"
     )
 
     if weekly_report:
-        lines.append(escape_md(weekly_report))
+        lines.append(esc(weekly_report))
         lines.append("")
 
     # targets scorecard
@@ -203,7 +201,7 @@ def format_weekly(log: dict, today: str, settings: dict) -> str:
         repo_scores = target_report.get("repo_scores", {})
         summary = target_report.get("summary", {})
 
-        lines.append(f"🎯 *Targets — {summary.get('hit', 0)}/{summary.get('total', 0)} hit*\n")
+        lines.append(f"🎯 <b>Targets — {summary.get('hit', 0)}/{summary.get('total', 0)} hit</b>\n")
 
         for key, score in scores.items():
             bar = progress_bar(score["actual"], score["target"])
@@ -211,7 +209,7 @@ def format_weekly(log: dict, today: str, settings: dict) -> str:
             icon = "✅" if score["status"] == "hit" else "🔶" if score["status"] == "close" else "❌"
             label = key.replace("_", " ")
             lines.append(
-                f"`{label:<16}` {score['actual']:>3}/{score['target']:<3} "
+                f"<code>{esc(label):<16}</code> {score['actual']:>3}/{score['target']:<3} "
                 f"{bar} {pct}% {icon}"
             )
 
@@ -221,22 +219,22 @@ def format_weekly(log: dict, today: str, settings: dict) -> str:
                 bar = progress_bar(score["actual"], score["target"])
                 icon = "✅" if score["status"] == "hit" else "🔶" if score["status"] == "close" else "❌"
                 lines.append(
-                    f"`{repo[:16]:<16}` {score['actual']:>3}/{score['target']:<3} "
+                    f"<code>{esc(repo[:16]):<16}</code> {score['actual']:>3}/{score['target']:<3} "
                     f"{bar} {score['pct']}% {icon}"
                 )
 
     if question:
-        lines.append(f"\n❓ _{escape_md(question)}_")
+        lines.append(f"\n❓ <i>{esc(question)}</i>")
 
     if yoyo.get("message"):
         day_label = f"Day {yoyo['day']}" if yoyo.get("day") else ""
-        lines.append(f"\n🤖 *yoyo this week* {day_label}")
-        lines.append(f"`{yoyo['message'][:80]}`")
+        lines.append(f"\n🤖 <b>yoyo this week</b> {esc(day_label)}")
+        lines.append(f"<code>{esc(yoyo['message'][:80])}</code>")
         if yoyo.get("summary"):
-            lines.append(f"_{escape_md(yoyo['summary'][:120])}_")
+            lines.append(f"<i>{esc(yoyo['summary'][:120])}</i>")
 
     if site_url:
-        lines.append(f"\n📋 [Full report + graphs]({site_url})")
+        lines.append(f"\n📋 <a href=\"{esc(site_url)}\">Full report + graphs</a>")
 
     return "\n".join(lines)
 

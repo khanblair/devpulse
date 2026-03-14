@@ -22,30 +22,31 @@ TARGETS_FILE = ROOT / "config" / "targets.json"
 
 ASSETS_DIR.mkdir(parents=True, exist_ok=True)
 
-# colour palette
-BG = "#0e0e0f"
-BG2 = "#141416"
-BG3 = "#1a1a1d"
-BORDER = "rgba(255,255,255,0.08)"
-TEXT = "#e8e6df"
-MUTED = "#7a7870"
-DIM = "#3a3835"
-ACCENT = "#c8f060"
-ACCENT2 = "#f0a040"
-ACCENT3 = "#60c8f0"
-RED = "#f06060"
+# colour palette — light theme
+BG = "#ffffff"
+BG2 = "#f8f9fc"
+BG3 = "#f3f4f6"
+BORDER = "#e4e8f0"
+TEXT = "#1a1d2e"
+MUTED = "#6b7280"
+DIM = "#d1d5db"
+ACCENT = "#6c63ff"
+ACCENT2 = "#f59e0b"
+ACCENT3 = "#3b82f6"
+RED = "#ef4444"
+GREEN = "#22c55e"
 
 MOOD_COLORS = {
-    "focused": "#c8f060",
-    "grinding": "#f0a040",
-    "scattered": "#60c8f0",
-    "frustrated": "#f06060",
-    "exploratory": "#a060f0",
-    "cleanup": "#60d0a0",
-    "relieved": "#f0d060",
-    "no commits": "#2a2a2a",
-    "unknown": "#3a3835",
-    None: "#2a2a2a",
+    "focused": "#6c63ff",
+    "grinding": "#f59e0b",
+    "scattered": "#3b82f6",
+    "frustrated": "#ef4444",
+    "exploratory": "#8b5cf6",
+    "cleanup": "#10b981",
+    "relieved": "#22c55e",
+    "no commits": "#e5e7eb",
+    "unknown": "#d1d5db",
+    None: "#e5e7eb",
 }
 
 
@@ -61,7 +62,7 @@ def svg_wrap(content: str, width: int, height: int) -> str:
         f'<svg xmlns="http://www.w3.org/2000/svg" '
         f'width="{width}" height="{height}" '
         f'viewBox="0 0 {width} {height}">'
-        f'<rect width="{width}" height="{height}" fill="{BG}"/>'
+        f'<rect width="{width}" height="{height}" fill="{BG}" rx="8"/>'
         f'{content}'
         f'</svg>'
     )
@@ -179,12 +180,12 @@ def graph_commit_heatmap(log: dict) -> None:
             else:
                 intensity = min(count / max_commits, 1.0)
                 if intensity < 0.33:
-                    color = "#2d5a0e"
+                    color = "#c7d2fe"
                 elif intensity < 0.66:
-                    color = "#5a9e1a"
+                    color = "#818cf8"
                 else:
                     color = ACCENT
-                opacity = "0.9"
+                opacity = "0.95"
 
             x = pad_x + week * (cell + gap)
             y = pad_y + day * (cell + gap)
@@ -324,11 +325,11 @@ def graph_hourly_pattern(log: dict) -> None:
         elif 18 <= hour < 22:
             color = ACCENT2
         else:
-            color = "#a060f0"
+            color = "#8b5cf6"
 
         parts.append(
             f'<rect x="{x}" y="{y}" width="{bar_w}" height="{max(bar_h, 2)}" '
-            f'fill="{color if count > 0 else DIM}" opacity="{"0.85" if count > 0 else "0.4"}" rx="2">'
+            f'fill="{color if count > 0 else BG3}" opacity="{"0.85" if count > 0 else "1"}" rx="2">'
             f'<title>{hour:02d}:00 — {count} commit(s)</title></rect>'
         )
 
@@ -386,9 +387,9 @@ def graph_repo_activity(log: dict) -> None:
     for i, (repo, count) in enumerate(repos):
         y = pad_y + i * (bar_h + gap)
         is_graveyard = repo in graveyard_repos
-        bar_color = DIM if is_graveyard else ACCENT
+        bar_color = "#d1d5db" if is_graveyard else ACCENT
         bar_width = int((count / max_count) * chart_w)
-        opacity = "0.4" if is_graveyard else "0.85"
+        opacity = "1" if is_graveyard else "0.85"
 
         # repo name
         parts.append(
@@ -463,11 +464,11 @@ def graph_streak_chart(log: dict) -> None:
         f'fill="{MUTED}" letter-spacing="2">STREAK HISTORY — 60 DAYS</text>'
     )
     parts.append(
-        f'<path d="{fill_d}" fill="{ACCENT}" opacity="0.08"/>'
+        f'<path d="{fill_d}" fill="{ACCENT}" opacity="0.1"/>'
     )
     parts.append(
         f'<path d="{path_d}" fill="none" stroke="{ACCENT}" '
-        f'stroke-width="1.5" stroke-linejoin="round"/>'
+        f'stroke-width="2" stroke-linejoin="round"/>'
     )
 
     # current streak label
@@ -566,7 +567,7 @@ def graph_targets_scorecard(log: dict) -> None:
         parts.append(
             f'<rect x="{pad_x + label_w}" y="{y}" '
             f'width="{bar_max_w}" height="{bar_h}" '
-            f'fill="{DIM}" opacity="0.5" rx="3"/>'
+            f'fill="{BG3}" opacity="1" rx="3"/>'
         )
 
         # fill bar
