@@ -13,19 +13,27 @@ jobs:
 
     steps:
       - name: send push event to devpulse
+        env:
+          REPO_NAME: ${{ github.event.repository.name }}
+          GIT_REF: ${{ github.ref }}
+          COMMITS_JSON: ${{ toJson(github.event.commits) }}
+          DEVPULSE_TOKEN: ${{ secrets.DEVPULSE_TOKEN }}
         run: |
+          PAYLOAD=$(jq -n \
+            --arg repo_name "$REPO_NAME" \
+            --arg ref "$GIT_REF" \
+            --argjson commits "$COMMITS_JSON" \
+            '{
+              event_type: "push_event",
+              client_payload: {
+                repository: { name: $repo_name },
+                ref: $ref,
+                commits: $commits
+              }
+            }')
           curl -s -X POST \
-            -H "Authorization: token ${{ secrets.DEVPULSE_TOKEN }}" \
+            -H "Authorization: token $DEVPULSE_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Content-Type: application/json" \
             https://api.github.com/repos/khanblair/devpulse/dispatches \
-            -d '{
-              "event_type": "push_event",
-              "client_payload": {
-                "repository": {
-                  "name": "${{ github.event.repository.name }}"
-                },
-                "ref": "${{ github.ref }}",
-                "commits": ${{ toJson(github.event.commits) }}
-              }
-            }'
+            -d "$PAYLOAD"
