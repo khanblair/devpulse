@@ -509,11 +509,58 @@
         "url": "https://github.com/khanblair/lms-monorepo/commit/f148cdcbe65770dd293f25f6a982122e2ae37bc9"
       }
     ],
-    "mood": null,
-    "devlog": null,
+    "mood": "exploratory",
+    "devlog": "I set up the unihostel monorepo, fixing app folder tracking after removing nested git repos, and merged apps/web into the lms monorepo while initializing it with Bun, Next.js, Expo, and Convex. I added Clerk auth, Convex backend, core LMS schema, fixed remaining TypeScript errors, and added a Tailwind CSS config with heroui and custom theme colors.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 14,
+      "message": "Day 14 (16:26): session wrap-up",
+      "sha": "e76cc9b",
+      "summary": null,
+      "date": "2026-03-14"
+    },
+    "target_report": {
+      "week_ending": "2026-03-14",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 32,
+          "pct": 213,
+          "status": "hit"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 4,
+          "pct": 200,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 20,
+          "pct": 667,
+          "status": "hit"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 2,
+          "pct": 40,
+          "status": "missed"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 3,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
