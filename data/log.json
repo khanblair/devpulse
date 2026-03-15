@@ -1066,6 +1066,23 @@
           "py"
         ],
         "url": "https://github.com/khanblair/mql5-sage/commit/44ed182e59d363902959bfe507168ba69b1f79d5"
+      },
+      {
+        "repo": "aria-agent",
+        "branch": "main",
+        "sha": "b446714",
+        "message": "\ud83d\udd04 Refactor: Switch to Groq API with dynamic doc fetching",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-15T14:43:10Z",
+        "files_changed": 1216,
+        "added": 428,
+        "modified": 0,
+        "removed": 788,
+        "extensions": [
+          "md",
+          "js"
+        ],
+        "url": "https://github.com/khanblair/aria-agent/commit/b44671474cc16dd2c486912f991292ada1ba274b"
       }
     ],
     "mood": null,
