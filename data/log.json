@@ -1223,6 +1223,77 @@
           "yml"
         ],
         "url": "https://github.com/khanblair/aria-agent/commit/54a47f13194abfc0e61bcdb600d29fa7b01f2fa6"
+      },
+      {
+        "repo": "aria-agent",
+        "branch": "main",
+        "sha": "2a7604e",
+        "message": "\ud83d\udd27 Remove Vercel deployment - use auto-deploy from main",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-15T16:39:36Z",
+        "files_changed": 60,
+        "added": 6,
+        "modified": 0,
+        "removed": 54,
+        "extensions": [
+          "yml",
+          "yml"
+        ],
+        "url": "https://github.com/khanblair/aria-agent/commit/2a7604efa567e1bbb63201ba6b9c190c1663c963"
+      },
+      {
+        "repo": "aria-agent",
+        "branch": "main",
+        "sha": "601da27",
+        "message": "\ud83d\udd27 Fix gitignore and add missing project files",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-15T16:27:40Z",
+        "files_changed": 2361,
+        "added": 1724,
+        "modified": 0,
+        "removed": 637,
+        "extensions": [
+          "json",
+          "css",
+          "json",
+          "json",
+          "js",
+          "md",
+          "tsx",
+          "ts",
+          "css",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "ts",
+          "ts",
+          "ts",
+          "js",
+          "json",
+          "ts",
+          "json"
+        ],
+        "url": "https://github.com/khanblair/aria-agent/commit/601da27bb5ae6a1db8bc2b63eaf9ac82826cb666"
+      },
+      {
+        "repo": "aria-agent",
+        "branch": "main",
+        "sha": "39fec4b",
+        "message": "- fix crash",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-15T16:14:12Z",
+        "files_changed": 4,
+        "added": 3,
+        "modified": 0,
+        "removed": 1,
+        "extensions": [
+          "json"
+        ],
+        "url": "https://github.com/khanblair/aria-agent/commit/39fec4b12394a6f2145f41b22b799f549d5422df"
       }
     ],
     "mood": null,
