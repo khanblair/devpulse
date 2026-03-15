@@ -1427,6 +1427,32 @@
           "json"
         ],
         "url": "https://github.com/khanblair/aria-agent/commit/a1e0823e9c5cac86fe52a9fd1b36c7a21fcd96dd"
+      },
+      {
+        "repo": "aria-agent",
+        "branch": "main",
+        "sha": "bf81cbf",
+        "message": "feat: Implement a multi-language documentation system with API fetchers, Convex caching, and a dedicated viewer.",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-15T17:48:29Z",
+        "files_changed": 596,
+        "added": 497,
+        "modified": 0,
+        "removed": 99,
+        "extensions": [
+          "tsx",
+          "ts",
+          "tsx",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "json"
+        ],
+        "url": "https://github.com/khanblair/aria-agent/commit/bf81cbf086be2fc417dc4c85b5be4de51caf1e5a"
       }
     ],
     "mood": "exploratory",
