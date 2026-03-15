@@ -39,7 +39,9 @@ jobs:
         run: |
           git config user.name "devpulse-bot"
           git config user.email "devpulse-bot@users.noreply.github.com"
+          git stash --include-untracked
           git pull origin main --rebase
+          git stash pop || true
           git add config/targets.json data/
           git diff --staged --quiet || git commit -m "bot: targets updated via telegram [skip ci]"
           git push
