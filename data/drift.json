@@ -1,4 +1,13 @@
 {
-  "last_updated": "2026-03-14",
-  "monthly": {}
+  "last_updated": "2026-03-15",
+  "monthly": {
+    "2026-03": {
+      "TypeScript": 70,
+      "JSON": 11,
+      "YAML": 6,
+      "JavaScript": 4,
+      "Markdown": 2,
+      "PNG": 2
+    }
+  }
 }

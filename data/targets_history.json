@@ -1,3 +1,46 @@
 {
-  "weeks": []
+  "weeks": [
+    {
+      "week_ending": "2026-03-15",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 67,
+          "pct": 447,
+          "status": "hit"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 5,
+          "pct": 250,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 37,
+          "pct": 1233,
+          "status": "hit"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 3,
+          "pct": 60,
+          "status": "missed"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 3,
+        "total": 4,
+        "all_hit": false
+      }
+    }
+  ]
 }

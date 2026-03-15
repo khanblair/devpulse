@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-03-14",
+  "last_updated": "2026-03-15",
   "peak_coding_hour": 15,
-  "style": "high volume",
-  "feat_fix_ratio": 10.0,
+  "style": "burst shipper",
+  "feat_fix_ratio": 12.33,
   "most_active_repo": "lms-monorepo",
-  "most_avoided_repo": "aria-agent",
-  "avg_commit_size": 0.0,
-  "consistency_score": 0.7,
-  "total_days_tracked": 2,
-  "active_days_last_30": 2,
-  "burst_days_last_30": 1
+  "most_avoided_repo": "devpulse",
+  "avg_commit_size": 3848.0,
+  "consistency_score": 1.0,
+  "total_days_tracked": 3,
+  "active_days_last_30": 3,
+  "burst_days_last_30": 2
 }
