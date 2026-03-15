@@ -1363,6 +1363,70 @@
           "yml"
         ],
         "url": "https://github.com/khanblair/aria-agent/commit/4c69c717e75f66348a254514ecc44ef941135179"
+      },
+      {
+        "repo": "aria-agent",
+        "branch": "main",
+        "sha": "f846978",
+        "message": "feat: set up initial project structure, core UI components, and Python API documentation display.",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-15T17:25:57Z",
+        "files_changed": 1060,
+        "added": 1033,
+        "modified": 0,
+        "removed": 27,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "json",
+          "json",
+          "json",
+          "tsbuildinfo"
+        ],
+        "url": "https://github.com/khanblair/aria-agent/commit/f846978eaa5fc198232754805025ae931746b1e6"
+      },
+      {
+        "repo": "aria-agent",
+        "branch": "main",
+        "sha": "27415f9",
+        "message": "feat: Add root package.json and Vercel configuration for monorepo setup.",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-15T17:15:03Z",
+        "files_changed": 16,
+        "added": 16,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [
+          "json",
+          "json"
+        ],
+        "url": "https://github.com/khanblair/aria-agent/commit/27415f94949a36f577197fa344f18886329e504a"
+      },
+      {
+        "repo": "aria-agent",
+        "branch": "main",
+        "sha": "a1e0823",
+        "message": "\ud83d\udd27 Add vercel.json for Next.js build config",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-15T17:12:11Z",
+        "files_changed": 6,
+        "added": 6,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [
+          "json"
+        ],
+        "url": "https://github.com/khanblair/aria-agent/commit/a1e0823e9c5cac86fe52a9fd1b36c7a21fcd96dd"
       }
     ],
     "mood": null,
