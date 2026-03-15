@@ -1121,6 +1121,92 @@
           "yml"
         ],
         "url": "https://github.com/khanblair/aria-agent/commit/68cf6924af294bd27a3479cd5ac4e5850af27725"
+      },
+      {
+        "repo": "aria-agent",
+        "branch": "main",
+        "sha": "5aaf9a2",
+        "message": "\ud83d\udd27 Fix 03-deploy - add state bootstrap",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-15T15:42:08Z",
+        "files_changed": 13,
+        "added": 13,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [
+          "yml"
+        ],
+        "url": "https://github.com/khanblair/aria-agent/commit/5aaf9a2e1573c5564139ba97ab30468e82ac82d7"
+      },
+      {
+        "repo": "aria-agent",
+        "branch": "main",
+        "sha": "8f127bc",
+        "message": "\ud83d\udd27 Fix validate - check if project exists",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-15T15:38:04Z",
+        "files_changed": 13,
+        "added": 9,
+        "modified": 0,
+        "removed": 4,
+        "extensions": [
+          "yml"
+        ],
+        "url": "https://github.com/khanblair/aria-agent/commit/8f127bc834206c531e727e1bf85d33d902500a92"
+      },
+      {
+        "repo": "aria-agent",
+        "branch": "main",
+        "sha": "0c4ed44",
+        "message": "\ud83d\udd27 Fix max_tokens to 8000 (model limit)",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-15T15:33:06Z",
+        "files_changed": 14,
+        "added": 7,
+        "modified": 0,
+        "removed": 7,
+        "extensions": [
+          "js"
+        ],
+        "url": "https://github.com/khanblair/aria-agent/commit/0c4ed44203e6bdb4f8b93ced14a98883b71b7a06"
+      },
+      {
+        "repo": "aria-agent",
+        "branch": "main",
+        "sha": "000e3f1",
+        "message": "- fix errors",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-15T15:25:09Z",
+        "files_changed": 201,
+        "added": 199,
+        "modified": 0,
+        "removed": 2,
+        "extensions": [
+          "json",
+          "md",
+          "js",
+          "md"
+        ],
+        "url": "https://github.com/khanblair/aria-agent/commit/000e3f11a7090564bbc0a96d0e13eeda49ba406b"
+      },
+      {
+        "repo": "aria-agent",
+        "branch": "main",
+        "sha": "619895a",
+        "message": "\ud83d\udd27 Fix workflows - add state bootstrap",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-15T15:14:11Z",
+        "files_changed": 79,
+        "added": 79,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [
+          "yml",
+          "yml",
+          "yml",
+          "yml"
+        ],
+        "url": "https://github.com/khanblair/aria-agent/commit/619895ab73b322e86453296cc279e295bad5a41c"
       }
     ],
     "mood": null,
