@@ -1530,11 +1530,58 @@
   "2026-03-16": {
     "date": "2026-03-16",
     "commits": [],
-    "mood": null,
-    "devlog": null,
+    "mood": "no commits",
+    "devlog": "No commits today.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 16,
+      "message": "Day 16 (16:58): session wrap-up",
+      "sha": "dee4271",
+      "summary": null,
+      "date": "2026-03-16"
+    },
+    "target_report": {
+      "week_ending": "2026-03-16",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 3,
+          "pct": 60,
+          "status": "missed"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 0,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
