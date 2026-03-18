@@ -1749,11 +1749,58 @@
         "url": "https://github.com/khanblair/unihostel-monorepo/commit/69d66a1ab776f42e311e18bd1aebbd1815b04d7c"
       }
     ],
-    "mood": null,
-    "devlog": null,
+    "mood": "cleanup",
+    "devlog": "I updated the EAS project ID and added project documentation in unihostel-monorepo, which touched a huge number of files. I integrated mobile and web with the Convex backend. It was mostly maintenance work, just a massive file update.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 18,
+      "message": "Day 18 (16:56): journal entry",
+      "sha": "754df90",
+      "summary": null,
+      "date": "2026-03-18"
+    },
+    "target_report": {
+      "week_ending": "2026-03-18",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 2,
+          "pct": 13,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 1,
+          "pct": 50,
+          "status": "missed"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 1,
+          "pct": 33,
+          "status": "missed"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 4,
+          "pct": 80,
+          "status": "close"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 0,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
