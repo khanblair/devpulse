@@ -202,41 +202,14 @@ body {
   width: 22px; height: 22px;
 }
 
-/* Mobile menu toggle */
-.menu-toggle {
-  display: none;
-  position: fixed;
-  top: 16px; left: 16px;
-  z-index: 101;
-  width: 40px; height: 40px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-}
-
 /* Responsive */
 @media (max-width: 767px) {
-  .sidebar {
-    transform: translateX(-100%);
-    z-index: 200;
-  }
-  .sidebar.open { transform: translateX(0); }
-  .sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    z-index: 150;
-  }
-  .sidebar-overlay.open { display: block; }
+  /* Hide sidebar completely on mobile */
+  .sidebar { display: none; }
   .main-content { margin-left: 0; }
   .page { padding: 60px 16px 100px; }
+  /* Show bottom nav only */
   .bottom-nav { display: block; }
-  .menu-toggle { display: flex; }
 }
 
 /* Tablet */
@@ -564,16 +537,6 @@ body {
 </head>
 <body>
 <div class="app-layout">
-  <!-- Mobile menu toggle -->
-  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle menu">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M3 12h18M3 6h18M3 18h18"/>
-    </svg>
-  </button>
-
-  <!-- Mobile overlay -->
-  <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
-
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
@@ -720,12 +683,6 @@ body {
   </nav>
 </div>
 
-<script>
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-  document.querySelector('.sidebar-overlay').classList.toggle('open');
-}
-</script>
 
 </body>
 </html>
