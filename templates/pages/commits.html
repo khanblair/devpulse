@@ -11,8 +11,14 @@
   <!-- Filters -->
   <div class="card">
     <div class="card-body" style="padding: 16px 20px;">
-      <div class="flex items-center gap-2" style="flex-wrap: wrap;">
-        <select id="repoFilter" class="btn btn-secondary" onchange="filterCommits()">
+      <div class="filter-bar">
+        <select id="orgFilter" class="filter-select" onchange="filterCommits()">
+          <option value="">All Organizations</option>
+          <option value="khanblair">khanblair</option>
+          <option value="Innovation-Consortium">Innovation-Consortium</option>
+          <option value="Kolaborate-Platforms">Kolaborate-Platforms</option>
+        </select>
+        <select id="repoFilter" class="filter-select" onchange="filterCommits()">
           <option value="">All Repos</option>
           {% set repos = [] %}
           {% for day in recent_days %}
@@ -26,10 +32,11 @@
           <option value="{{ repo }}">{{ repo }}</option>
           {% endfor %}
         </select>
-        <select id="dateFilter" class="btn btn-secondary" onchange="filterCommits()">
-          <option value="30">Last 30 days</option>
+        <select id="dateFilter" class="filter-select" onchange="filterCommits()">
+          <option value="0">Today</option>
           <option value="7">Last 7 days</option>
           <option value="14">Last 14 days</option>
+          <option value="30">Last 30 days</option>
         </select>
       </div>
     </div>
@@ -74,18 +81,23 @@
 
 <script>
 function filterCommits() {
+  const org = document.getElementById('orgFilter').value;
   const repo = document.getElementById('repoFilter').value;
   const days = parseInt(document.getElementById('dateFilter').value);
   const cutoff = new Date();
+  cutoff.setHours(0, 0, 0, 0);
   cutoff.setDate(cutoff.getDate() - days);
 
   const items = document.querySelectorAll('#commitsContainer .commit-item');
   items.forEach(item => {
     const itemRepo = item.dataset.repo;
     const itemDate = new Date(item.dataset.date);
+    const itemOrg = itemRepo.split('/')[0];
+
+    const orgMatch = !org || itemOrg === org;
     const repoMatch = !repo || itemRepo === repo;
-    const dateMatch = itemDate >= cutoff;
-    item.style.display = repoMatch && dateMatch ? 'flex' : 'none';
+    const dateMatch = days === 0 ? itemDate >= cutoff : itemDate >= cutoff;
+    item.style.display = orgMatch && repoMatch && dateMatch ? 'flex' : 'none';
   });
 }
 </script>

@@ -325,47 +325,108 @@ body {
 .commit-item {
   display: flex;
   gap: 14px;
-  padding: 14px;
-  background: var(--surface2);
-  border-radius: var(--radius-sm);
+  padding: 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
   border: 1px solid var(--border);
+  box-shadow: var(--shadow);
   transition: all 0.15s ease;
+  min-height: 72px;
 }
 .commit-item:hover {
   border-color: var(--accent);
-  background: var(--accent-bg);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 .commit-sha {
   font-family: monospace;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--accent);
   background: var(--accent-bg);
-  padding: 2px 8px;
+  padding: 4px 8px;
   border-radius: 4px;
   align-self: flex-start;
+  font-weight: 600;
 }
 .commit-content { flex: 1; min-width: 0; }
 .commit-message {
   font-weight: 500;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text);
-  margin-bottom: 4px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  word-break: break-word;
 }
 .commit-meta {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 .commit-repo {
   background: var(--blue-bg);
   color: var(--blue);
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+/* Mobile commit card */
+@media (max-width: 767px) {
+  .commit-item {
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    min-height: auto;
+  }
+  .commit-sha {
+    order: 2;
+    align-self: flex-start;
+  }
+  .commit-content { order: 1; }
+  .commit-message {
+    font-size: 14px;
+  }
+}
+
+/* Filter styling */
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.filter-select {
+  flex: 1;
+  min-width: 140px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-family: var(--sans);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+.filter-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+@media (max-width: 767px) {
+  .filter-bar {
+    flex-direction: column;
+  }
+  .filter-select {
+    width: 100%;
+    min-width: unset;
+  }
 }
 
 /* ── empty state ── */
