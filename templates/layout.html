@@ -549,7 +549,7 @@ body {
       </div>
     </div>
     <nav class="sidebar-nav">
-      <a href="{{ '' if page == 'home' else '/' }}" class="nav-item {% if page == 'home' %}active{% endif %}">
+      <a href="{{ '' if page == 'home' else 'index.html' }}" class="nav-item {% if page == 'home' %}active{% endif %}">
         <span class="nav-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
@@ -558,7 +558,7 @@ body {
         </span>
         <span>Home</span>
       </a>
-      <a href="/commits" class="nav-item {% if page == 'commits' %}active{% endif %}">
+      <a href="commits.html" class="nav-item {% if page == 'commits' %}active{% endif %}">
         <span class="nav-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/>
@@ -566,7 +566,7 @@ body {
         </span>
         <span>Commits</span>
       </a>
-      <a href="/analytics" class="nav-item {% if page == 'analytics' %}active{% endif %}">
+      <a href="analytics.html" class="nav-item {% if page == 'analytics' %}active{% endif %}">
         <span class="nav-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
@@ -574,7 +574,7 @@ body {
         </span>
         <span>Analytics</span>
       </a>
-      <a href="/profile" class="nav-item {% if page == 'profile' %}active{% endif %}">
+      <a href="profile.html" class="nav-item {% if page == 'profile' %}active{% endif %}">
         <span class="nav-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
@@ -599,26 +599,26 @@ body {
   <!-- Mobile bottom nav -->
   <nav class="bottom-nav">
     <div class="bottom-nav-inner">
-      <a href="{{ '' if page == 'home' else '/' }}" class="bottom-nav-item {% if page == 'home' %}active{% endif %}">
+      <a href="{{ '' if page == 'home' else 'index.html' }}" class="bottom-nav-item {% if page == 'home' %}active{% endif %}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
           <polyline points="9,22 9,12 15,12 15,22"/>
         </svg>
         <span>Home</span>
       </a>
-      <a href="/commits" class="bottom-nav-item {% if page == 'commits' %}active{% endif %}">
+      <a href="commits.html" class="bottom-nav-item {% if page == 'commits' %}active{% endif %}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/>
         </svg>
         <span>Commits</span>
       </a>
-      <a href="/analytics" class="bottom-nav-item {% if page == 'analytics' %}active{% endif %}">
+      <a href="analytics.html" class="bottom-nav-item {% if page == 'analytics' %}active{% endif %}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
         </svg>
         <span>Analytics</span>
       </a>
-      <a href="/profile" class="bottom-nav-item {% if page == 'profile' %}active{% endif %}">
+      <a href="profile.html" class="bottom-nav-item {% if page == 'profile' %}active{% endif %}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
         </svg>
