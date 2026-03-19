@@ -63,8 +63,8 @@ def ensure_day_entry(log: dict, today: str) -> dict:
     return log
 
 
-def fetch_all_repos(username: str) -> list[str]:
-    """Fetch all repo names for the authenticated user."""
+def fetch_user_repos(username: str) -> list[tuple[str, str]]:
+    """Fetch all repo names for the authenticated user. Returns (owner, repo) tuples."""
     repos = []
     page = 1
     headers = get_headers()
@@ -89,26 +89,112 @@ def fetch_all_repos(username: str) -> list[str]:
             for repo in data:
                 # skip the devpulse repo itself
                 if repo["name"] != "devpulse":
-                    repos.append(repo["name"])
+                    repos.append((username, repo["name"]))
             if len(data) < 100:
                 break
             page += 1
         except Exception as e:
-            print(f"failed to fetch repos page {page}: {e}")
+            print(f"failed to fetch user repos page {page}: {e}")
             break
 
     return repos
 
 
-def fetch_commits_since(username: str, repo: str, since: str) -> list[dict]:
+def fetch_user_orgs() -> list[str]:
+    """Fetch all organizations the authenticated user belongs to."""
+    orgs = []
+    headers = get_headers()
+
+    try:
+        resp = httpx.get(
+            f"{GH_API}/user/orgs",
+            headers=headers,
+            timeout=15,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        for org in data:
+            orgs.append(org["login"])
+    except Exception as e:
+        print(f"failed to fetch orgs: {e}")
+
+    return orgs
+
+
+def fetch_org_repos(org: str) -> list[tuple[str, str]]:
+    """Fetch all repos for an organization. Returns (owner, repo) tuples."""
+    repos = []
+    page = 1
+    headers = get_headers()
+
+    while True:
+        try:
+            resp = httpx.get(
+                f"{GH_API}/orgs/{org}/repos",
+                headers=headers,
+                params={
+                    "per_page": 100,
+                    "page": page,
+                    "sort": "pushed",
+                },
+                timeout=15,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            if not data:
+                break
+            for repo in data:
+                repos.append((org, repo["name"]))
+            if len(data) < 100:
+                break
+            page += 1
+        except Exception as e:
+            print(f"failed to fetch org {org} repos page {page}: {e}")
+            break
+
+    return repos
+
+
+def fetch_all_repos(username: str) -> list[tuple[str, str]]:
+    """Fetch all repos from user and their organizations. Returns (owner, repo) tuples."""
+    repos = []
+
+    # Fetch user's own repos
+    print(f"fetching repos for user {username}...")
+    user_repos = fetch_user_repos(username)
+    repos.extend(user_repos)
+    print(f"  found {len(user_repos)} user repos")
+
+    # Fetch org repos
+    print(f"fetching organizations...")
+    orgs = fetch_user_orgs()
+    print(f"  found {len(orgs)} orgs: {orgs}")
+
+    for org in orgs:
+        org_repos = fetch_org_repos(org)
+        repos.extend(org_repos)
+        print(f"  found {len(org_repos)} repos for {org}")
+
+    # Deduplicate by (owner, repo)
+    seen = set()
+    unique_repos = []
+    for owner, repo in repos:
+        key = (owner, repo)
+        if key not in seen:
+            seen.add(key)
+            unique_repos.append(key)
+
+    return unique_repos
+
+
+def fetch_commits_since(owner: str, repo: str, since: str) -> list[dict]:
     """Fetch commits from a single repo since a given ISO datetime."""
     headers = get_headers()
     try:
         resp = httpx.get(
-            f"{GH_API}/repos/{username}/{repo}/commits",
+            f"{GH_API}/repos/{owner}/{repo}/commits",
             headers=headers,
             params={
-                "author": username,
                 "since": since,
                 "per_page": 50,
             },
@@ -203,22 +289,22 @@ def poll() -> None:
     existing_shas = {c["sha"] for c in log[today]["commits"]}
     total_added = 0
 
-    for repo in repos:
-        raw_commits = fetch_commits_since(username, repo, since)
+    for owner, repo in repos:
+        raw_commits = fetch_commits_since(owner, repo, since)
         for raw in raw_commits:
             sha = raw.get("sha", "")[:7]
             if sha in existing_shas:
                 continue
             # Fetch full detail to get files and stats (list endpoint omits these)
             full_sha = raw.get("sha", "")
-            detail = fetch_commit_detail(username, repo, full_sha)
+            detail = fetch_commit_detail(owner, repo, full_sha)
             if detail:
                 raw = detail
             commit = parse_commit(repo, raw)
             log[today]["commits"].append(commit)
             existing_shas.add(sha)
             total_added += 1
-            print(f"  [{repo}] {sha} {commit['message'][:60]}")
+            print(f"  [{owner}/{repo}] {sha} {commit['message'][:60]}")
 
     save_json(LOG_FILE, log)
     print(f"done — {total_added} new commit(s) logged for {today}")
