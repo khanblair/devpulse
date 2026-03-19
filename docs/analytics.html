@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics — Blair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #f0f2f7;
+  --surface:  #ffffff;
+  --surface2: #f8f9fc;
+  --border:   #e4e8f0;
+  --text:     #1a1d2e;
+  --muted:    #6b7280;
+  --dim:      #9ca3af;
+  --accent:   #6c63ff;
+  --accent-bg:#ede9ff;
+  --green:    #22c55e;
+  --green-bg: #dcfce7;
+  --orange:   #f59e0b;
+  --orange-bg:#fef3c7;
+  --red:      #ef4444;
+  --red-bg:   #fee2e2;
+  --blue:     #3b82f6;
+  --blue-bg:  #dbeafe;
+  --shadow:   0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --radius:   12px;
+  --radius-sm:8px;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --serif: 'Fraunces', Georgia, serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── layout ── */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar - desktop/tablet */
+.sidebar {
+  width: 220px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  position: fixed;
+  top: 0; left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-logo {
+  width: 36px; height: 36px;
+  background: var(--accent);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+.brand-text { display: flex; flex-direction: column; }
+.brand-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.2;
+}
+.brand-sub {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.sidebar-nav {
+  padding: 16px 12px;
+  flex: 1;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.15s ease;
+  margin-bottom: 4px;
+}
+.nav-item:hover {
+  background: var(--surface2);
+  color: var(--text);
+}
+.nav-item.active {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+.nav-icon {
+  width: 22px; height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 12px;
+}
+.live-dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* Main content */
+.main-content {
+  flex: 1;
+  margin-left: 220px;
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px 24px 100px;
+}
+
+/* Mobile bottom nav */
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 8px 16px;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+  z-index: 100;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+.bottom-nav-inner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+.bottom-nav-item.active {
+  color: var(--accent);
+}
+.bottom-nav-item svg {
+  width: 22px; height: 22px;
+}
+
+/* Mobile menu toggle */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 101;
+  width: 40px; height: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .sidebar {
+    transform: translateX(-100%);
+    z-index: 200;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 150;
+  }
+  .sidebar-overlay.open { display: block; }
+  .main-content { margin-left: 0; }
+  .page { padding: 60px 16px 100px; }
+  .bottom-nav { display: block; }
+  .menu-toggle { display: flex; }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sidebar { width: 180px; }
+  .main-content { margin-left: 180px; }
+}
+
+/* ── card ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+}
+.card-body {
+  padding: 20px;
+}
+
+/* ── stat cards ── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.stat-card.c-purple::before { background: var(--accent); }
+.stat-card.c-green::before  { background: var(--green); }
+.stat-card.c-orange::before { background: var(--orange); }
+.stat-card.c-blue::before   { background: var(--blue); }
+.stat-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.c-purple .stat-icon { background: var(--accent-bg); }
+.c-green  .stat-icon { background: var(--green-bg); }
+.c-orange .stat-icon { background: var(--orange-bg); }
+.c-blue   .stat-icon { background: var(--blue-bg); }
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive stat grid */
+@media (max-width: 767px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .stat-card { padding: 16px; }
+  .stat-value { font-size: 24px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── two-column layout ── */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 767px) {
+  .content-grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .content-grid { grid-template-columns: 1fr 280px; }
+}
+
+/* ── commits list ── */
+.commit-list { display: flex; flex-direction: column; gap: 12px; }
+.commit-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  background: var(--surface2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  transition: all 0.15s ease;
+}
+.commit-item:hover {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+.commit-sha {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 2px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+.commit-content { flex: 1; min-width: 0; }
+.commit-message {
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.commit-meta {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  gap: 10px;
+}
+.commit-repo {
+  background: var(--blue-bg);
+  color: var(--blue);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* ── empty state ── */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+}
+.empty-state-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+
+/* ── page title ── */
+.page-header {
+  margin-bottom: 24px;
+}
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.page-subtitle {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ── lists ── */
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.list-item:last-child { border-bottom: none; }
+.list-item-label { font-weight: 500; }
+.list-item-value { color: var(--muted); font-size: 13px; }
+
+/* ── graph containers ── */
+.graph-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.graph-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.graph-inner {
+  width: 100%;
+  overflow-x: auto;
+}
+.graph-inner svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── grid layouts ── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+@media (max-width: 767px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ── profile ── */
+.profile-header {
+  text-align: center;
+  padding: 30px 20px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.profile-avatar {
+  width: 80px; height: 80px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+}
+.profile-name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.profile-stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.profile-stat { text-align: center; }
+.profile-stat-value { font-size: 20px; font-weight: 700; }
+.profile-stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; }
+
+/* ── buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #5a52e0;
+}
+.btn-secondary {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+  background: var(--border);
+}
+
+/* ── tags ── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.tag-green { background: var(--green-bg); color: #166534; }
+.tag-orange { background: var(--orange-bg); color: #92400e; }
+.tag-red { background: var(--red-bg); color: #991b1b; }
+.tag-blue { background: var(--blue-bg); color: #1e40af; }
+
+/* ── util ── */
+.text-center { text-align: center; }
+.text-muted { color: var(--muted); }
+.mt-4 { margin-top: 16px; }
+.mb-4 { margin-bottom: 16px; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+</style>
+
+</head>
+<body>
+<div class="app-layout">
+  <!-- Mobile menu toggle -->
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 12h18M3 6h18M3 18h18"/>
+    </svg>
+  </button>
+
+  <!-- Mobile overlay -->
+  <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="brand">
+        <div class="brand-logo">D</div>
+        <div class="brand-text">
+          <span class="brand-name">devpulse</span>
+          <span class="brand-sub">Blair</span>
+        </div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="/" class="nav-item ">
+        <span class="nav-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+          </svg>
+        </span>
+        <span>Home</span>
+      </a>
+      <a href="/commits" class="nav-item ">
+        <span class="nav-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/>
+          </svg>
+        </span>
+        <span>Commits</span>
+      </a>
+      <a href="/analytics" class="nav-item active">
+        <span class="nav-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </span>
+        <span>Analytics</span>
+      </a>
+      <a href="/profile" class="nav-item ">
+        <span class="nav-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+        </span>
+        <span>Profile</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="live-badge">
+        <span class="live-dot"></span>
+        <span>Live</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+    
+<div class="page">
+  <div class="page-header">
+    <h1 class="page-title">Analytics</h1>
+    <p class="page-subtitle">Your development patterns and trends</p>
+  </div>
+
+  <!-- Commit Heatmap -->
+  <div class="graph-container">
+    <h3 class="graph-title">Commit Activity</h3>
+    <div class="graph-inner">
+      <svg xmlns="http://www.w3.org/2000/svg" width="260" height="167" viewBox="0 0 260 167"><rect width="260" height="167" fill="#ffffff" rx="8"/><text x="36" y="16" font-family="monospace" font-size="10" fill="#6b7280" letter-spacing="2">COMMIT ACTIVITY — 12 WEEKS</text><text x="14" y="39" font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">M</text><text x="14" y="56" font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">T</text><text x="14" y="73" font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">W</text><text x="14" y="90" font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">T</text><text x="14" y="107" font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">F</text><text x="14" y="124" font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">S</text><text x="14" y="141" font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">S</text><rect x="36" y="28" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2025-12-28: 0 commit(s)</title></rect><rect x="36" y="45" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2025-12-29: 0 commit(s)</title></rect><rect x="36" y="62" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2025-12-30: 0 commit(s)</title></rect><rect x="36" y="79" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2025-12-31: 0 commit(s)</title></rect><rect x="36" y="96" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-01: 0 commit(s)</title></rect><rect x="36" y="113" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-02: 0 commit(s)</title></rect><rect x="36" y="130" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-03: 0 commit(s)</title></rect><rect x="53" y="28" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-04: 0 commit(s)</title></rect><rect x="53" y="45" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-05: 0 commit(s)</title></rect><rect x="53" y="62" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-06: 0 commit(s)</title></rect><rect x="53" y="79" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-07: 0 commit(s)</title></rect><rect x="53" y="96" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-08: 0 commit(s)</title></rect><rect x="53" y="113" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-09: 0 commit(s)</title></rect><rect x="53" y="130" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-10: 0 commit(s)</title></rect><rect x="70" y="28" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-11: 0 commit(s)</title></rect><rect x="70" y="45" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-12: 0 commit(s)</title></rect><rect x="70" y="62" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-13: 0 commit(s)</title></rect><rect x="70" y="79" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-14: 0 commit(s)</title></rect><rect x="70" y="96" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-15: 0 commit(s)</title></rect><rect x="70" y="113" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-16: 0 commit(s)</title></rect><rect x="70" y="130" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-17: 0 commit(s)</title></rect><rect x="87" y="28" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-18: 0 commit(s)</title></rect><rect x="87" y="45" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-19: 0 commit(s)</title></rect><rect x="87" y="62" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-20: 0 commit(s)</title></rect><rect x="87" y="79" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-21: 0 commit(s)</title></rect><rect x="87" y="96" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-22: 0 commit(s)</title></rect><rect x="87" y="113" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-23: 0 commit(s)</title></rect><rect x="87" y="130" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-24: 0 commit(s)</title></rect><rect x="104" y="28" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-25: 0 commit(s)</title></rect><rect x="104" y="45" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-26: 0 commit(s)</title></rect><rect x="104" y="62" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-27: 0 commit(s)</title></rect><rect x="104" y="79" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-28: 0 commit(s)</title></rect><rect x="104" y="96" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-29: 0 commit(s)</title></rect><rect x="104" y="113" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-30: 0 commit(s)</title></rect><rect x="104" y="130" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-01-31: 0 commit(s)</title></rect><rect x="121" y="28" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-01: 0 commit(s)</title></rect><rect x="121" y="45" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-02: 0 commit(s)</title></rect><rect x="121" y="62" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-03: 0 commit(s)</title></rect><rect x="121" y="79" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-04: 0 commit(s)</title></rect><rect x="121" y="96" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-05: 0 commit(s)</title></rect><rect x="121" y="113" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-06: 0 commit(s)</title></rect><rect x="121" y="130" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-07: 0 commit(s)</title></rect><rect x="138" y="28" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-08: 0 commit(s)</title></rect><rect x="138" y="45" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-09: 0 commit(s)</title></rect><rect x="138" y="62" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-10: 0 commit(s)</title></rect><rect x="138" y="79" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-11: 0 commit(s)</title></rect><rect x="138" y="96" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-12: 0 commit(s)</title></rect><rect x="138" y="113" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-13: 0 commit(s)</title></rect><rect x="138" y="130" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-14: 0 commit(s)</title></rect><rect x="155" y="28" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-15: 0 commit(s)</title></rect><rect x="155" y="45" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-16: 0 commit(s)</title></rect><rect x="155" y="62" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-17: 0 commit(s)</title></rect><rect x="155" y="79" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-18: 0 commit(s)</title></rect><rect x="155" y="96" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-19: 0 commit(s)</title></rect><rect x="155" y="113" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-20: 0 commit(s)</title></rect><rect x="155" y="130" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-21: 0 commit(s)</title></rect><rect x="172" y="28" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-22: 0 commit(s)</title></rect><rect x="172" y="45" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-23: 0 commit(s)</title></rect><rect x="172" y="62" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-24: 0 commit(s)</title></rect><rect x="172" y="79" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-25: 0 commit(s)</title></rect><rect x="172" y="96" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-26: 0 commit(s)</title></rect><rect x="172" y="113" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-27: 0 commit(s)</title></rect><rect x="172" y="130" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-02-28: 0 commit(s)</title></rect><rect x="189" y="28" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-01: 0 commit(s)</title></rect><rect x="189" y="45" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-02: 0 commit(s)</title></rect><rect x="189" y="62" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-03: 0 commit(s)</title></rect><rect x="189" y="79" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-04: 0 commit(s)</title></rect><rect x="189" y="96" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-05: 0 commit(s)</title></rect><rect x="189" y="113" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-06: 0 commit(s)</title></rect><rect x="189" y="130" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-07: 0 commit(s)</title></rect><rect x="206" y="28" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-08: 0 commit(s)</title></rect><rect x="206" y="45" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-09: 0 commit(s)</title></rect><rect x="206" y="62" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-10: 0 commit(s)</title></rect><rect x="206" y="79" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-11: 0 commit(s)</title></rect><rect x="206" y="96" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-12: 0 commit(s)</title></rect><rect x="206" y="113" width="14" height="14" rx="2" fill="#c7d2fe" opacity="0.95"><title>2026-03-13: 2 commit(s)</title></rect><rect x="206" y="130" width="14" height="14" rx="2" fill="#6c63ff" opacity="0.95"><title>2026-03-14: 30 commit(s)</title></rect><rect x="223" y="28" width="14" height="14" rx="2" fill="#6c63ff" opacity="0.95"><title>2026-03-15: 37 commit(s)</title></rect><rect x="223" y="45" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-16: 0 commit(s)</title></rect><rect x="223" y="62" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-17: 0 commit(s)</title></rect><rect x="223" y="79" width="14" height="14" rx="2" fill="#c7d2fe" opacity="0.95"><title>2026-03-18: 2 commit(s)</title></rect><rect x="223" y="96" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-19: 0 commit(s)</title></rect><rect x="223" y="113" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-20: 0 commit(s)</title></rect><rect x="223" y="130" width="14" height="14" rx="2" fill="#f3f4f6" opacity="1"><title>2026-03-21: 0 commit(s)</title></rect></svg>
+    </div>
+  </div>
+
+  <!-- Mood Timeline -->
+  <div class="graph-container">
+    <h3 class="graph-title">Mood Over Time</h3>
+    <div class="graph-inner">
+      <svg xmlns="http://www.w3.org/2000/svg" width="520" height="80" viewBox="0 0 520 80"><rect width="520" height="80" fill="#ffffff" rx="8"/><text x="20" y="16" font-family="monospace" font-size="10" fill="#6b7280" letter-spacing="2">MOOD — LAST 30 DAYS</text><circle cx="27" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-02-17: no data</title></circle><circle cx="43" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-02-18: no data</title></circle><circle cx="59" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-02-19: no data</title></circle><circle cx="75" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-02-20: no data</title></circle><circle cx="91" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-02-21: no data</title></circle><circle cx="107" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-02-22: no data</title></circle><circle cx="123" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-02-23: no data</title></circle><circle cx="139" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-02-24: no data</title></circle><circle cx="155" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-02-25: no data</title></circle><circle cx="171" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-02-26: no data</title></circle><circle cx="187" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-02-27: no data</title></circle><circle cx="203" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-02-28: no data</title></circle><circle cx="219" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-01: no data</title></circle><circle cx="235" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-02: no data</title></circle><circle cx="251" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-03: no data</title></circle><circle cx="267" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-04: no data</title></circle><circle cx="283" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-05: no data</title></circle><circle cx="299" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-06: no data</title></circle><circle cx="315" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-07: no data</title></circle><circle cx="331" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-08: no data</title></circle><circle cx="347" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-09: no data</title></circle><circle cx="363" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-10: no data</title></circle><circle cx="379" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-11: no data</title></circle><circle cx="395" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-12: no data</title></circle><circle cx="411" cy="50" r="7" fill="#6c63ff" opacity="0.9"><title>2026-03-13: focused</title></circle><circle cx="427" cy="50" r="7" fill="#8b5cf6" opacity="0.9"><title>2026-03-14: exploratory</title></circle><circle cx="443" cy="50" r="7" fill="#8b5cf6" opacity="0.9"><title>2026-03-15: exploratory</title></circle><circle cx="459" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-16: no commits</title></circle><circle cx="475" cy="50" r="7" fill="#e5e7eb" opacity="0.2"><title>2026-03-17: no commits</title></circle><circle cx="491" cy="50" r="7" fill="#10b981" opacity="0.9"><title>2026-03-18: cleanup</title></circle><circle cx="25" cy="68" r="4" fill="#c8f060"/><text x="33" y="72" font-family="monospace" font-size="9" fill="#6b7280">focused</text><circle cx="105" cy="68" r="4" fill="#f0a040"/><text x="113" y="72" font-family="monospace" font-size="9" fill="#6b7280">grinding</text><circle cx="185" cy="68" r="4" fill="#a060f0"/><text x="193" y="72" font-family="monospace" font-size="9" fill="#6b7280">exploratory</text><circle cx="265" cy="68" r="4" fill="#60d0a0"/><text x="273" y="72" font-family="monospace" font-size="9" fill="#6b7280">cleanup</text></svg>
+    </div>
+  </div>
+
+  <!-- Two column: Language Drift + Hourly Pattern -->
+  <div class="grid-2">
+    <div class="graph-container">
+      <h3 class="graph-title">Language Usage</h3>
+      <div class="graph-inner">
+        <svg xmlns="http://www.w3.org/2000/svg" width="78" height="210" viewBox="0 0 78 210"><rect width="78" height="210" fill="#ffffff" rx="8"/><text x="20" y="18" font-family="monospace" font-size="10" fill="#6b7280" letter-spacing="2">LANGUAGE DRIFT</text><rect x="20" y="62" width="32" height="88" fill="#6c63ff" opacity="0.85" rx="1"><title>2026-03 TypeScript: 74%</title></rect><rect x="20" y="50" width="32" height="12" fill="#f59e0b" opacity="0.85" rx="1"><title>2026-03 JSON: 10%</title></rect><rect x="20" y="44" width="32" height="6" fill="#3b82f6" opacity="0.85" rx="1"><title>2026-03 YAML: 5%</title></rect><rect x="20" y="40" width="32" height="4" fill="#a060f0" opacity="0.85" rx="1"><title>2026-03 JavaScript: 4%</title></rect><rect x="20" y="37" width="32" height="3" fill="#60d0a0" opacity="0.85" rx="1"><title>2026-03 Markdown: 3%</title></rect><text x="36" y="166" font-family="monospace" font-size="8" fill="#6b7280" text-anchor="middle">03</text><rect x="20" y="190" width="8" height="8" fill="#6c63ff" rx="1"/><text x="31" y="198" font-family="monospace" font-size="9" fill="#6b7280">TypeScript</text><rect x="110" y="190" width="8" height="8" fill="#f59e0b" rx="1"/><text x="121" y="198" font-family="monospace" font-size="9" fill="#6b7280">JSON</text><rect x="158" y="190" width="8" height="8" fill="#3b82f6" rx="1"/><text x="169" y="198" font-family="monospace" font-size="9" fill="#6b7280">YAML</text><rect x="206" y="190" width="8" height="8" fill="#a060f0" rx="1"/><text x="217" y="198" font-family="monospace" font-size="9" fill="#6b7280">JavaScript</text><rect x="296" y="190" width="8" height="8" fill="#60d0a0" rx="1"/><text x="307" y="198" font-family="monospace" font-size="9" fill="#6b7280">Markdown</text><rect x="372" y="190" width="8" height="8" fill="#f06060" rx="1"/><text x="383" y="198" font-family="monospace" font-size="9" fill="#6b7280">PNG</text></svg>
+      </div>
+    </div>
+    <div class="graph-container">
+      <h3 class="graph-title">Hourly Activity</h3>
+      <div class="graph-inner">
+        <svg xmlns="http://www.w3.org/2000/svg" width="520" height="132" viewBox="0 0 520 132"><rect width="520" height="132" fill="#ffffff" rx="8"/><text x="20" y="16" font-family="monospace" font-size="10" fill="#6b7280" letter-spacing="2">CODING HOURS</text><rect x="20" y="108" width="18" height="2" fill="#f3f4f6" opacity="1" rx="2"><title>00:00 — 0 commit(s)</title></rect><text x="29" y="122" font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">00h</text><rect x="40" y="108" width="18" height="2" fill="#f3f4f6" opacity="1" rx="2"><title>01:00 — 0 commit(s)</title></rect><rect x="60" y="108" width="18" height="2" fill="#f3f4f6" opacity="1" rx="2"><title>02:00 — 0 commit(s)</title></rect><rect x="80" y="108" width="18" height="2" fill="#f3f4f6" opacity="1" rx="2"><title>03:00 — 0 commit(s)</title></rect><rect x="100" y="108" width="18" height="2" fill="#f3f4f6" opacity="1" rx="2"><title>04:00 — 0 commit(s)</title></rect><rect x="120" y="85" width="18" height="23" fill="#8b5cf6" opacity="0.85" rx="2"><title>05:00 — 5 commit(s)</title></rect><rect x="140" y="85" width="18" height="23" fill="#3b82f6" opacity="0.85" rx="2"><title>06:00 — 5 commit(s)</title></rect><text x="149" y="122" font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">06h</text><rect x="160" y="104" width="18" height="4" fill="#3b82f6" opacity="0.85" rx="2"><title>07:00 — 1 commit(s)</title></rect><rect x="180" y="90" width="18" height="18" fill="#3b82f6" opacity="0.85" rx="2"><title>08:00 — 4 commit(s)</title></rect><rect x="200" y="104" width="18" height="4" fill="#3b82f6" opacity="0.85" rx="2"><title>09:00 — 1 commit(s)</title></rect><rect x="220" y="76" width="18" height="32" fill="#3b82f6" opacity="0.85" rx="2"><title>10:00 — 7 commit(s)</title></rect><rect x="240" y="104" width="18" height="4" fill="#3b82f6" opacity="0.85" rx="2"><title>11:00 — 1 commit(s)</title></rect><rect x="260" y="104" width="18" height="4" fill="#6c63ff" opacity="0.85" rx="2"><title>12:00 — 1 commit(s)</title></rect><text x="269" y="122" font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">12h</text><rect x="280" y="85" width="18" height="23" fill="#6c63ff" opacity="0.85" rx="2"><title>13:00 — 5 commit(s)</title></rect><rect x="300" y="85" width="18" height="23" fill="#6c63ff" opacity="0.85" rx="2"><title>14:00 — 5 commit(s)</title></rect><rect x="320" y="28" width="18" height="80" fill="#6c63ff" opacity="0.85" rx="2"><title>15:00 — 17 commit(s)</title></rect><rect x="340" y="52" width="18" height="56" fill="#6c63ff" opacity="0.85" rx="2"><title>16:00 — 12 commit(s)</title></rect><rect x="360" y="80" width="18" height="28" fill="#6c63ff" opacity="0.85" rx="2"><title>17:00 — 6 commit(s)</title></rect><rect x="380" y="108" width="18" height="2" fill="#f3f4f6" opacity="1" rx="2"><title>18:00 — 0 commit(s)</title></rect><text x="389" y="122" font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">18h</text><rect x="400" y="104" width="18" height="4" fill="#f59e0b" opacity="0.85" rx="2"><title>19:00 — 1 commit(s)</title></rect><rect x="420" y="108" width="18" height="2" fill="#f3f4f6" opacity="1" rx="2"><title>20:00 — 0 commit(s)</title></rect><rect x="440" y="108" width="18" height="2" fill="#f3f4f6" opacity="1" rx="2"><title>21:00 — 0 commit(s)</title></rect><rect x="460" y="108" width="18" height="2" fill="#f3f4f6" opacity="1" rx="2"><title>22:00 — 0 commit(s)</title></rect><rect x="480" y="108" width="18" height="2" fill="#f3f4f6" opacity="1" rx="2"><title>23:00 — 0 commit(s)</title></rect></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Repo Activity -->
+  <div class="graph-container">
+    <h3 class="graph-title">Repository Activity</h3>
+    <div class="graph-inner">
+      <svg xmlns="http://www.w3.org/2000/svg" width="440" height="206" viewBox="0 0 440 206"><rect width="440" height="206" fill="#ffffff" rx="8"/><text x="20" y="18" font-family="monospace" font-size="10" fill="#6b7280" letter-spacing="2">REPO ACTIVITY — 30 DAYS</text><text x="136" y="44" font-family="monospace" font-size="10" fill="#1a1d2e" text-anchor="end">lms-monorepo</text><rect x="140" y="30" width="240" height="20" fill="#6c63ff" opacity="0.85" rx="2"><title>lms-monorepo: 28 commits</title></rect><text x="386" y="44" font-family="monospace" font-size="9" fill="#6b7280">28</text><text x="136" y="70" font-family="monospace" font-size="10" fill="#1a1d2e" text-anchor="end">aria-agent</text><rect x="140" y="56" width="180" height="20" fill="#6c63ff" opacity="0.85" rx="2"><title>aria-agent: 21 commits</title></rect><text x="326" y="70" font-family="monospace" font-size="9" fill="#6b7280">21</text><text x="136" y="96" font-family="monospace" font-size="10" fill="#1a1d2e" text-anchor="end">unihostel-monore</text><rect x="140" y="82" width="137" height="20" fill="#6c63ff" opacity="0.85" rx="2"><title>unihostel-monorepo: 16 commits</title></rect><text x="283" y="96" font-family="monospace" font-size="9" fill="#6b7280">16</text><text x="136" y="122" font-family="monospace" font-size="10" fill="#1a1d2e" text-anchor="end">mql5-sage</text><rect x="140" y="108" width="34" height="20" fill="#6c63ff" opacity="0.85" rx="2"><title>mql5-sage: 4 commits</title></rect><text x="180" y="122" font-family="monospace" font-size="9" fill="#6b7280">4</text><text x="136" y="148" font-family="monospace" font-size="10" fill="#1a1d2e" text-anchor="end">devpulse</text><rect x="140" y="134" width="8" height="20" fill="#6c63ff" opacity="0.85" rx="2"><title>devpulse: 1 commits</title></rect><text x="154" y="148" font-family="monospace" font-size="9" fill="#6b7280">1</text><text x="136" y="174" font-family="monospace" font-size="10" fill="#1a1d2e" text-anchor="end">new-portfolio</text><rect x="140" y="160" width="8" height="20" fill="#6c63ff" opacity="0.85" rx="2"><title>new-portfolio: 1 commits</title></rect><text x="154" y="174" font-family="monospace" font-size="9" fill="#6b7280">1</text></svg>
+    </div>
+  </div>
+
+  <!-- Streak Chart -->
+  <div class="graph-container">
+    <h3 class="graph-title">Streak History</h3>
+    <div class="graph-inner">
+      <svg xmlns="http://www.w3.org/2000/svg" width="540" height="128" viewBox="0 0 540 128"><rect width="540" height="128" fill="#ffffff" rx="8"/><text x="20" y="16" font-family="monospace" font-size="10" fill="#6b7280" letter-spacing="2">STREAK HISTORY — 60 DAYS</text><path d="M20.0 108.0 L28.5 108.0 L36.9 108.0 L45.4 108.0 L53.9 108.0 L62.4 108.0 L70.8 108.0 L79.3 108.0 L87.8 108.0 L96.3 108.0 L104.7 108.0 L113.2 108.0 L121.7 108.0 L130.2 108.0 L138.6 108.0 L147.1 108.0 L155.6 108.0 L164.1 108.0 L172.5 108.0 L181.0 108.0 L189.5 108.0 L198.0 108.0 L206.4 108.0 L214.9 108.0 L223.4 108.0 L231.9 108.0 L240.3 108.0 L248.8 108.0 L257.3 108.0 L265.8 108.0 L274.2 108.0 L282.7 108.0 L291.2 108.0 L299.7 108.0 L308.1 108.0 L316.6 108.0 L325.1 108.0 L333.6 108.0 L342.0 108.0 L350.5 108.0 L359.0 108.0 L367.5 108.0 L375.9 108.0 L384.4 108.0 L392.9 108.0 L401.4 108.0 L409.8 108.0 L418.3 108.0 L426.8 108.0 L435.3 108.0 L443.7 108.0 L452.2 108.0 L460.7 108.0 L469.2 108.0 L477.6 81.3 L486.1 54.7 L494.6 28.0 L503.1 108.0 L511.5 108.0 L520.0 81.3 L520.0 108 L20.0 108 Z" fill="#6c63ff" opacity="0.1"/><path d="M20.0 108.0 L28.5 108.0 L36.9 108.0 L45.4 108.0 L53.9 108.0 L62.4 108.0 L70.8 108.0 L79.3 108.0 L87.8 108.0 L96.3 108.0 L104.7 108.0 L113.2 108.0 L121.7 108.0 L130.2 108.0 L138.6 108.0 L147.1 108.0 L155.6 108.0 L164.1 108.0 L172.5 108.0 L181.0 108.0 L189.5 108.0 L198.0 108.0 L206.4 108.0 L214.9 108.0 L223.4 108.0 L231.9 108.0 L240.3 108.0 L248.8 108.0 L257.3 108.0 L265.8 108.0 L274.2 108.0 L282.7 108.0 L291.2 108.0 L299.7 108.0 L308.1 108.0 L316.6 108.0 L325.1 108.0 L333.6 108.0 L342.0 108.0 L350.5 108.0 L359.0 108.0 L367.5 108.0 L375.9 108.0 L384.4 108.0 L392.9 108.0 L401.4 108.0 L409.8 108.0 L418.3 108.0 L426.8 108.0 L435.3 108.0 L443.7 108.0 L452.2 108.0 L460.7 108.0 L469.2 108.0 L477.6 81.3 L486.1 54.7 L494.6 28.0 L503.1 108.0 L511.5 108.0 L520.0 81.3" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linejoin="round"/><circle cx="520.0" cy="81.3" r="4" fill="#6c63ff"/><text x="516.0" y="71.33333333333334" font-family="monospace" font-size="10" fill="#6c63ff" text-anchor="end">🔥 1</text><line x1="20" y1="108" x2="520" y2="108" stroke="#d1d5db" stroke-width="0.5"/></svg>
+    </div>
+  </div>
+</div>
+
+  </main>
+
+  <!-- Mobile bottom nav -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav-inner">
+      <a href="/" class="bottom-nav-item ">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9,22 9,12 15,12 15,22"/>
+        </svg>
+        <span>Home</span>
+      </a>
+      <a href="/commits" class="bottom-nav-item ">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/>
+        </svg>
+        <span>Commits</span>
+      </a>
+      <a href="/analytics" class="bottom-nav-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+        <span>Analytics</span>
+      </a>
+      <a href="/profile" class="bottom-nav-item ">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span>Profile</span>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<script>
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.querySelector('.sidebar-overlay').classList.toggle('open');
+}
+</script>
+
+</body>
+</html>

@@ -185,12 +185,14 @@ def build_context(log: dict, settings: dict) -> dict:
     }
 
 
-def render_site(context: dict) -> str:
+def render_page(template_name: str, context: dict) -> str:
+    # Loader searches both pages/ and templates/ directories
+    templates_dir = TEMPLATES_DIR / "pages"
     env = Environment(
-        loader=FileSystemLoader(str(TEMPLATES_DIR)),
+        loader=FileSystemLoader([str(templates_dir), str(TEMPLATES_DIR)]),
         autoescape=True,
     )
-    template = env.get_template("site.html")
+    template = env.get_template(f"{template_name}.html")
     return template.render(**context)
 
 
@@ -201,12 +203,23 @@ def main() -> None:
     print("building context...")
     context = build_context(log, settings)
 
-    print("rendering site...")
-    html = render_site(context)
+    # Build all pages
+    pages = [
+        ("index", "home"),
+        ("commits", "commits"),
+        ("analytics", "analytics"),
+        ("profile", "profile"),
+    ]
 
-    output = DOCS_DIR / "index.html"
-    output.write_text(html, encoding="utf-8")
-    print(f"site written to {output}")
+    for template_name, page_name in pages:
+        print(f"rendering {template_name}.html...")
+        context["page"] = page_name
+        html = render_page(template_name, context)
+        output = DOCS_DIR / f"{template_name}.html"
+        output.write_text(html, encoding="utf-8")
+        print(f"  written to {output}")
+
+    print("all pages built successfully")
 
 
 if __name__ == "__main__":

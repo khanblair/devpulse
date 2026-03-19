@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block title %}Analytics{% endblock %}
+
+{% block content %}
+<div class="page">
+  <div class="page-header">
+    <h1 class="page-title">Analytics</h1>
+    <p class="page-subtitle">Your development patterns and trends</p>
+  </div>
+
+  <!-- Commit Heatmap -->
+  <div class="graph-container">
+    <h3 class="graph-title">Commit Activity</h3>
+    <div class="graph-inner">
+      {{ svg.commit_heatmap|safe }}
+    </div>
+  </div>
+
+  <!-- Mood Timeline -->
+  <div class="graph-container">
+    <h3 class="graph-title">Mood Over Time</h3>
+    <div class="graph-inner">
+      {{ svg.mood_timeline|safe }}
+    </div>
+  </div>
+
+  <!-- Two column: Language Drift + Hourly Pattern -->
+  <div class="grid-2">
+    <div class="graph-container">
+      <h3 class="graph-title">Language Usage</h3>
+      <div class="graph-inner">
+        {{ svg.language_drift|safe }}
+      </div>
+    </div>
+    <div class="graph-container">
+      <h3 class="graph-title">Hourly Activity</h3>
+      <div class="graph-inner">
+        {{ svg.hourly_pattern|safe }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Repo Activity -->
+  <div class="graph-container">
+    <h3 class="graph-title">Repository Activity</h3>
+    <div class="graph-inner">
+      {{ svg.repo_activity|safe }}
+    </div>
+  </div>
+
+  <!-- Streak Chart -->
+  <div class="graph-container">
+    <h3 class="graph-title">Streak History</h3>
+    <div class="graph-inner">
+      {{ svg.streak_chart|safe }}
+    </div>
+  </div>
+</div>
+{% endblock %}

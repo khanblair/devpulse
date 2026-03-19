@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="page">
+  <div class="page-header">
+    <h1 class="page-title">Profile</h1>
+    <p class="page-subtitle">Your dev persona and settings</p>
+  </div>
+
+  <!-- Profile header -->
+  <div class="profile-header">
+    <div class="profile-avatar">{{ settings.name[0] }}</div>
+    <h2 class="profile-name">{{ settings.name }}</h2>
+    <p class="text-muted">{{ settings.timezone }} (UTC+{{ settings.utc_offset }})</p>
+    <div class="profile-stats">
+      <div class="profile-stat">
+        <div class="profile-stat-value">{{ total_commits }}</div>
+        <div class="profile-stat-label">Total Commits</div>
+      </div>
+      <div class="profile-stat">
+        <div class="profile-stat-value">{{ total_days }}</div>
+        <div class="profile-stat-label">Days Active</div>
+      </div>
+      <div class="profile-stat">
+        <div class="profile-stat-value">{{ streak }}</div>
+        <div class="profile-stat-label">Current Streak</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dev Fingerprint -->
+  {% if fingerprint %}
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Dev Fingerprint</h2>
+    </div>
+    <div class="card-body">
+      <p class="text-muted mb-4">{{ fingerprint.summary }}</p>
+      <div class="flex gap-2" style="flex-wrap: wrap;">
+        {% for trait in fingerprint.traits %}
+        <span class="tag tag-blue">{{ trait }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Targets -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Weekly Targets</h2>
+    </div>
+    <div class="card-body">
+      {% if target_report and target_report.weekly_commits %}
+      <div class="list-item">
+        <span class="list-item-label">Weekly Commits</span>
+        <span class="list-item-value">{{ target_report.weekly_commits.progress }} / {{ target_report.weekly_commits.target }}</span>
+      </div>
+      {% endif %}
+      {% if target_report and target_report.daily_commits %}
+      <div class="list-item">
+        <span class="list-item-label">Daily Commits</span>
+        <span class="list-item-value">{{ target_report.daily_commits.progress }} / {{ target_report.daily_commits.target }}</span>
+      </div>
+      {% endif %}
+      {% if target_report and target_report.repos %}
+      <div class="list-item">
+        <span class="list-item-label">Active Repos</span>
+        <span class="list-item-value">{{ target_report.repos.progress }} / {{ target_report.repos.target }}</span>
+      </div>
+      {% endif %}
+      {% if not target_report or (not target_report.weekly_commits and not target_report.daily_commits and not target_report.repos) %}
+      <p class="text-muted">No targets set</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Graveyard -->
+  {% if graveyard and graveyard.repos %}
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Graveyard</h2>
+      <span class="tag tag-orange">Abandoned</span>
+    </div>
+    <div class="card-body">
+      {% for repo in graveyard.repos[:5] %}
+      <div class="list-item">
+        <span class="list-item-label">{{ repo.name }}</span>
+        <span class="list-item-value">{{ repo.last_commit[:10] }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Bot Commands -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Bot Commands</h2>
+    </div>
+    <div class="card-body">
+      <p class="text-muted mb-4">Use these commands in your Telegram bot:</p>
+      <div class="list-item">
+        <span class="list-item-label">/report</span>
+        <span class="list-item-value">Today's full report</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item-label">/weekly</span>
+        <span class="list-item-value">This week's report</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item-label">/commits</span>
+        <span class="list-item-value">Today's commits</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item-label">/mood</span>
+        <span class="list-item-value">Today's mood</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item-label">/streak</span>
+        <span class="list-item-value">Current streak</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item-label">/targets</span>
+        <span class="list-item-value">Show targets</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item-label">/progress</span>
+        <span class="list-item-value">Progress vs targets</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item-label">/fingerprint</span>
+        <span class="list-item-value">Dev personality</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item-label">/drift</span>
+        <span class="list-item-value">Language shift</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item-label">/graveyard</span>
+        <span class="list-item-value">Abandoned repos</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item-label">/settarget</span>
+        <span class="list-item-value">Update a target</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

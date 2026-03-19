@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commits — Blair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #f0f2f7;
+  --surface:  #ffffff;
+  --surface2: #f8f9fc;
+  --border:   #e4e8f0;
+  --text:     #1a1d2e;
+  --muted:    #6b7280;
+  --dim:      #9ca3af;
+  --accent:   #6c63ff;
+  --accent-bg:#ede9ff;
+  --green:    #22c55e;
+  --green-bg: #dcfce7;
+  --orange:   #f59e0b;
+  --orange-bg:#fef3c7;
+  --red:      #ef4444;
+  --red-bg:   #fee2e2;
+  --blue:     #3b82f6;
+  --blue-bg:  #dbeafe;
+  --shadow:   0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --radius:   12px;
+  --radius-sm:8px;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --serif: 'Fraunces', Georgia, serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── layout ── */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar - desktop/tablet */
+.sidebar {
+  width: 220px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  position: fixed;
+  top: 0; left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-logo {
+  width: 36px; height: 36px;
+  background: var(--accent);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+.brand-text { display: flex; flex-direction: column; }
+.brand-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.2;
+}
+.brand-sub {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.sidebar-nav {
+  padding: 16px 12px;
+  flex: 1;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.15s ease;
+  margin-bottom: 4px;
+}
+.nav-item:hover {
+  background: var(--surface2);
+  color: var(--text);
+}
+.nav-item.active {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+.nav-icon {
+  width: 22px; height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 12px;
+}
+.live-dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* Main content */
+.main-content {
+  flex: 1;
+  margin-left: 220px;
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px 24px 100px;
+}
+
+/* Mobile bottom nav */
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 8px 16px;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+  z-index: 100;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+.bottom-nav-inner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+.bottom-nav-item.active {
+  color: var(--accent);
+}
+.bottom-nav-item svg {
+  width: 22px; height: 22px;
+}
+
+/* Mobile menu toggle */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 101;
+  width: 40px; height: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .sidebar {
+    transform: translateX(-100%);
+    z-index: 200;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 150;
+  }
+  .sidebar-overlay.open { display: block; }
+  .main-content { margin-left: 0; }
+  .page { padding: 60px 16px 100px; }
+  .bottom-nav { display: block; }
+  .menu-toggle { display: flex; }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sidebar { width: 180px; }
+  .main-content { margin-left: 180px; }
+}
+
+/* ── card ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+}
+.card-body {
+  padding: 20px;
+}
+
+/* ── stat cards ── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.stat-card.c-purple::before { background: var(--accent); }
+.stat-card.c-green::before  { background: var(--green); }
+.stat-card.c-orange::before { background: var(--orange); }
+.stat-card.c-blue::before   { background: var(--blue); }
+.stat-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.c-purple .stat-icon { background: var(--accent-bg); }
+.c-green  .stat-icon { background: var(--green-bg); }
+.c-orange .stat-icon { background: var(--orange-bg); }
+.c-blue   .stat-icon { background: var(--blue-bg); }
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive stat grid */
+@media (max-width: 767px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .stat-card { padding: 16px; }
+  .stat-value { font-size: 24px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── two-column layout ── */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 767px) {
+  .content-grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .content-grid { grid-template-columns: 1fr 280px; }
+}
+
+/* ── commits list ── */
+.commit-list { display: flex; flex-direction: column; gap: 12px; }
+.commit-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  background: var(--surface2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  transition: all 0.15s ease;
+}
+.commit-item:hover {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+.commit-sha {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 2px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+.commit-content { flex: 1; min-width: 0; }
+.commit-message {
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.commit-meta {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  gap: 10px;
+}
+.commit-repo {
+  background: var(--blue-bg);
+  color: var(--blue);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* ── empty state ── */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+}
+.empty-state-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+
+/* ── page title ── */
+.page-header {
+  margin-bottom: 24px;
+}
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.page-subtitle {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ── lists ── */
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.list-item:last-child { border-bottom: none; }
+.list-item-label { font-weight: 500; }
+.list-item-value { color: var(--muted); font-size: 13px; }
+
+/* ── graph containers ── */
+.graph-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.graph-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.graph-inner {
+  width: 100%;
+  overflow-x: auto;
+}
+.graph-inner svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── grid layouts ── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+@media (max-width: 767px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ── profile ── */
+.profile-header {
+  text-align: center;
+  padding: 30px 20px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.profile-avatar {
+  width: 80px; height: 80px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+}
+.profile-name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.profile-stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.profile-stat { text-align: center; }
+.profile-stat-value { font-size: 20px; font-weight: 700; }
+.profile-stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; }
+
+/* ── buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #5a52e0;
+}
+.btn-secondary {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+  background: var(--border);
+}
+
+/* ── tags ── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.tag-green { background: var(--green-bg); color: #166534; }
+.tag-orange { background: var(--orange-bg); color: #92400e; }
+.tag-red { background: var(--red-bg); color: #991b1b; }
+.tag-blue { background: var(--blue-bg); color: #1e40af; }
+
+/* ── util ── */
+.text-center { text-align: center; }
+.text-muted { color: var(--muted); }
+.mt-4 { margin-top: 16px; }
+.mb-4 { margin-bottom: 16px; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+</style>
+
+</head>
+<body>
+<div class="app-layout">
+  <!-- Mobile menu toggle -->
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 12h18M3 6h18M3 18h18"/>
+    </svg>
+  </button>
+
+  <!-- Mobile overlay -->
+  <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="brand">
+        <div class="brand-logo">D</div>
+        <div class="brand-text">
+          <span class="brand-name">devpulse</span>
+          <span class="brand-sub">Blair</span>
+        </div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="/" class="nav-item ">
+        <span class="nav-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+          </svg>
+        </span>
+        <span>Home</span>
+      </a>
+      <a href="/commits" class="nav-item active">
+        <span class="nav-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/>
+          </svg>
+        </span>
+        <span>Commits</span>
+      </a>
+      <a href="/analytics" class="nav-item ">
+        <span class="nav-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </span>
+        <span>Analytics</span>
+      </a>
+      <a href="/profile" class="nav-item ">
+        <span class="nav-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+        </span>
+        <span>Profile</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="live-badge">
+        <span class="live-dot"></span>
+        <span>Live</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+    
+<div class="page">
+  <div class="page-header">
+    <h1 class="page-title">Commits</h1>
+    <p class="page-subtitle">All commits from the last 30 days</p>
+  </div>
+
+  <!-- Filters -->
+  <div class="card">
+    <div class="card-body" style="padding: 16px 20px;">
+      <div class="flex items-center gap-2" style="flex-wrap: wrap;">
+        <select id="repoFilter" class="btn btn-secondary" onchange="filterCommits()">
+          <option value="">All Repos</option>
+          
+          
+            
+              
+                
+              
+            
+              
+            
+              
+                
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+            
+              
+                
+              
+            
+              
+                
+              
+            
+          
+          
+          <option value="aria-agent">aria-agent</option>
+          
+          <option value="devpulse">devpulse</option>
+          
+          <option value="lms-monorepo">lms-monorepo</option>
+          
+          <option value="unihostel-monorepo">unihostel-monorepo</option>
+          
+        </select>
+        <select id="dateFilter" class="btn btn-secondary" onchange="filterCommits()">
+          <option value="30">Last 30 days</option>
+          <option value="7">Last 7 days</option>
+          <option value="14">Last 14 days</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Commits list -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Commits (2 days)</h2>
+    </div>
+    <div class="card-body">
+      <div id="commitsContainer" class="commit-list">
+        
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+          
+            
+          
+            
+          
+        
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">0537faf</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: Add new `mobile` application with its `package.json` and update `bun.lock` to include its dependencies.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">f148cdc</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: Add new mobile application with Expo configuration and update bun lockfile dependencies.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">fdf9bdd</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: Configure initial mobile application with Expo and add development environment settings for Bun and Claude AI.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">d3b216c</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: Add mobile application with Expo and EAS build configurations, updating monorepo pre-install script.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">24e4932</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: Introduce new mobile application with Expo/EAS configuration and set Bun as the monorepo&#39;s package manager.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">2c9eee9</span>
+          <div class="commit-content">
+            <div class="commit-message">- fix crash</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">4836419</span>
+          <div class="commit-content">
+            <div class="commit-message">- fix crash</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">d8ea004</span>
+          <div class="commit-content">
+            <div class="commit-message">chore: Add bun.lock to `.easignore` and update the `bun.lock` file.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">6ac0d6f</span>
+          <div class="commit-content">
+            <div class="commit-message">chore: Update Bun lockfile name in `.gitignore` from `bun.lockb` to `bun.lock`.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">eadaf6f</span>
+          <div class="commit-content">
+            <div class="commit-message">chore: Update various dependencies including `baseline-browser-mapping`, `metro` packages, and `semver`, and remove unus</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">7eb6f09</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: add initial Expo configuration for the mobile application.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">1ff90b0</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: initialize Expo configuration for the new mobile application.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">d8deeed</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: Add initial Expo application configuration in `app.json` and `lims-logo.jpg` asset.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">7af9f32</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: Add Claude permissions configuration and initial mobile app Expo configuration.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">c3043d5</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: initialize Expo mobile application configuration with `app.json`</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">3ddb925</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: Add initial EAS ignore file and Expo configuration for the mobile application.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">58167cf</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: Configure EAS builds and move Expo app configuration to the mobile app directory.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">90666cc</span>
+          <div class="commit-content">
+            <div class="commit-message">feat(mobile): add sign-out confirmation and integrate guest drawer</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">37f7c17</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: Set up new Expo mobile application within the monorepo, including Metro configuration and updated dependencies.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">2edaf2b</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: Initialize a new mobile application with its dedicated configuration files and update monorepo dependencies.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">3238112</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: Initialize new Expo mobile application and configure Convex authentication.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">f6443c6</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: add SidebarContext for managing sidebar state and mobile open status</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">b84b363</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: Introduce Tailwind CSS configuration for the web application, integrating heroui and defining custom theme colors.</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">eabba26</span>
+          <div class="commit-content">
+            <div class="commit-message">feat(web): refine sidebar functionality and enhance dashboard responsiveness</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">9487a6c</span>
+          <div class="commit-content">
+            <div class="commit-message">Fix all remaining TypeScript errors in web and mobile apps</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">c0a4f8e</span>
+          <div class="commit-content">
+            <div class="commit-message">feat: integrate Clerk auth, Convex backend, and core LMS schema</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">52fad84</span>
+          <div class="commit-content">
+            <div class="commit-message">Ensure apps/web is fully merged into monorepo</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="lms-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">7c4df7b</span>
+          <div class="commit-content">
+            <div class="commit-message">Initialize LMS Monorepo with Bun, Next.js, Expo, and Convex</div>
+            <div class="commit-meta">
+              <span class="commit-repo">lms-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="unihostel-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">e9c5252</span>
+          <div class="commit-content">
+            <div class="commit-message">fix: correctly track app folders after removing nested git repositories</div>
+            <div class="commit-meta">
+              <span class="commit-repo">unihostel-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="unihostel-monorepo" data-date="2026-03-14">
+          <span class="commit-sha">7fc4aa1</span>
+          <div class="commit-content">
+            <div class="commit-message">initial monorepo setup</div>
+            <div class="commit-meta">
+              <span class="commit-repo">unihostel-monorepo</span>
+              <span>2026-03-14T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="devpulse" data-date="2026-03-13">
+          <span class="commit-sha">f1f7220</span>
+          <div class="commit-content">
+            <div class="commit-message">add notify trigger</div>
+            <div class="commit-meta">
+              <span class="commit-repo">devpulse</span>
+              <span>2026-03-13T</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="commit-item" data-repo="aria-agent" data-date="2026-03-13">
+          <span class="commit-sha">6d6dbfd</span>
+          <div class="commit-content">
+            <div class="commit-message">fix connection errors</div>
+            <div class="commit-meta">
+              <span class="commit-repo">aria-agent</span>
+              <span>2026-03-13T</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function filterCommits() {
+  const repo = document.getElementById('repoFilter').value;
+  const days = parseInt(document.getElementById('dateFilter').value);
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - days);
+
+  const items = document.querySelectorAll('#commitsContainer .commit-item');
+  items.forEach(item => {
+    const itemRepo = item.dataset.repo;
+    const itemDate = new Date(item.dataset.date);
+    const repoMatch = !repo || itemRepo === repo;
+    const dateMatch = itemDate >= cutoff;
+    item.style.display = repoMatch && dateMatch ? 'flex' : 'none';
+  });
+}
+</script>
+
+  </main>
+
+  <!-- Mobile bottom nav -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav-inner">
+      <a href="/" class="bottom-nav-item ">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9,22 9,12 15,12 15,22"/>
+        </svg>
+        <span>Home</span>
+      </a>
+      <a href="/commits" class="bottom-nav-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/>
+        </svg>
+        <span>Commits</span>
+      </a>
+      <a href="/analytics" class="bottom-nav-item ">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+        <span>Analytics</span>
+      </a>
+      <a href="/profile" class="bottom-nav-item ">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span>Profile</span>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<script>
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.querySelector('.sidebar-overlay').classList.toggle('open');
+}
+</script>
+
+</body>
+</html>

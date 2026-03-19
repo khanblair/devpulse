@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block title %}Commits{% endblock %}
+
+{% block content %}
+<div class="page">
+  <div class="page-header">
+    <h1 class="page-title">Commits</h1>
+    <p class="page-subtitle">All commits from the last 30 days</p>
+  </div>
+
+  <!-- Filters -->
+  <div class="card">
+    <div class="card-body" style="padding: 16px 20px;">
+      <div class="flex items-center gap-2" style="flex-wrap: wrap;">
+        <select id="repoFilter" class="btn btn-secondary" onchange="filterCommits()">
+          <option value="">All Repos</option>
+          {% set repos = [] %}
+          {% for day in recent_days %}
+            {% for commit in day.commits %}
+              {% if commit.repo not in repos %}
+                {% set _ = repos.append(commit.repo) %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+          {% for repo in repos|sort %}
+          <option value="{{ repo }}">{{ repo }}</option>
+          {% endfor %}
+        </select>
+        <select id="dateFilter" class="btn btn-secondary" onchange="filterCommits()">
+          <option value="30">Last 30 days</option>
+          <option value="7">Last 7 days</option>
+          <option value="14">Last 14 days</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Commits list -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Commits ({{ recent_days|length }} days)</h2>
+    </div>
+    <div class="card-body">
+      <div id="commitsContainer" class="commit-list">
+        {% set all_commits = [] %}
+        {% for day in recent_days %}
+          {% for commit in day.commits %}
+            {% set _ = all_commits.append({
+              'sha': commit.sha,
+              'message': commit.message,
+              'repo': commit.repo,
+              'timestamp': commit.timestamp,
+              'date': day.date,
+              'author': commit.author
+            }) %}
+          {% endfor %}
+        {% endfor %}
+        {% for commit in all_commits|sort(attribute='timestamp', reverse=True) %}
+        <div class="commit-item" data-repo="{{ commit.repo }}" data-date="{{ commit.date }}">
+          <span class="commit-sha">{{ commit.sha }}</span>
+          <div class="commit-content">
+            <div class="commit-message">{{ commit.message }}</div>
+            <div class="commit-meta">
+              <span class="commit-repo">{{ commit.repo }}</span>
+              <span>{{ commit.timestamp[:11] }}</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function filterCommits() {
+  const repo = document.getElementById('repoFilter').value;
+  const days = parseInt(document.getElementById('dateFilter').value);
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - days);
+
+  const items = document.querySelectorAll('#commitsContainer .commit-item');
+  items.forEach(item => {
+    const itemRepo = item.dataset.repo;
+    const itemDate = new Date(item.dataset.date);
+    const repoMatch = !repo || itemRepo === repo;
+    const dateMatch = itemDate >= cutoff;
+    item.style.display = repoMatch && dateMatch ? 'flex' : 'none';
+  });
+}
+</script>
+{% endblock %}

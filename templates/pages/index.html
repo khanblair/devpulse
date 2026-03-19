@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="page">
+  <div class="page-header">
+    <h1 class="page-title">Today</h1>
+    <p class="page-subtitle">{{ today }}</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stat-grid">
+    <div class="stat-card c-purple">
+      <div class="stat-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2">
+          <circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/>
+        </svg>
+      </div>
+      <div class="stat-value">{{ commits_today|length }}</div>
+      <div class="stat-label">Commits</div>
+    </div>
+    <div class="stat-card c-green">
+      <div class="stat-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+      </div>
+      <div class="stat-value">{{ streak }}</div>
+      <div class="stat-label">Day Streak</div>
+    </div>
+    <div class="stat-card c-orange">
+      <div class="stat-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+      </div>
+      <div class="stat-value">{{ day_number }}</div>
+      <div class="stat-label">Days Active</div>
+    </div>
+    <div class="stat-card c-blue">
+      <div class="stat-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+          <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>
+        </svg>
+      </div>
+      <div class="stat-value">{{ repos_today|length }}</div>
+      <div class="stat-label">Repos</div>
+    </div>
+  </div>
+
+  <!-- Today's commits -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Commits Today</h2>
+    </div>
+    <div class="card-body">
+      {% if commits_today %}
+      <div class="commit-list">
+        {% for commit in commits_today %}
+        <div class="commit-item">
+          <span class="commit-sha">{{ commit.sha }}</span>
+          <div class="commit-content">
+            <div class="commit-message">{{ commit.message }}</div>
+            <div class="commit-meta">
+              <span class="commit-repo">{{ commit.repo }}</span>
+              <span>{{ commit.timestamp[:11] }}</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="empty-state">
+        <div class="empty-state-icon">📭</div>
+        <p>No commits yet today</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Target progress -->
+  {% if target_report %}
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Target Progress</h2>
+    </div>
+    <div class="card-body">
+      <div class="stat-grid" style="margin-bottom:0">
+        {% if target_report.weekly_commits %}
+        <div class="stat-card c-purple">
+          <div class="stat-value">{{ target_report.weekly_commits.progress }}/{{ target_report.weekly_commits.target }}</div>
+          <div class="stat-label">Commits</div>
+        </div>
+        {% endif %}
+        {% if target_report.daily_commits %}
+        <div class="stat-card c-green">
+          <div class="stat-value">{{ target_report.daily_commits.progress }}/{{ target_report.daily_commits.target }}</div>
+          <div class="stat-label">Daily</div>
+        </div>
+        {% endif %}
+        {% if target_report.repos %}
+        <div class="stat-card c-blue">
+          <div class="stat-value">{{ target_report.repos.progress }}/{{ target_report.repos.target }}</div>
+          <div class="stat-label">Repos</div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
