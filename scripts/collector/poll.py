@@ -187,14 +187,15 @@ def fetch_all_repos(username: str) -> list[tuple[str, str]]:
     return unique_repos
 
 
-def fetch_commits_since(owner: str, repo: str, since: str) -> list[dict]:
-    """Fetch commits from a single repo since a given ISO datetime."""
+def fetch_commits_since(owner: str, repo: str, since: str, author: str) -> list[dict]:
+    """Fetch commits from a single repo since a given ISO datetime, by specific author."""
     headers = get_headers()
     try:
         resp = httpx.get(
             f"{GH_API}/repos/{owner}/{repo}/commits",
             headers=headers,
             params={
+                "author": author,
                 "since": since,
                 "per_page": 50,
             },
@@ -290,7 +291,7 @@ def poll() -> None:
     total_added = 0
 
     for owner, repo in repos:
-        raw_commits = fetch_commits_since(owner, repo, since)
+        raw_commits = fetch_commits_since(owner, repo, since, username)
         for raw in raw_commits:
             sha = raw.get("sha", "")[:7]
             if sha in existing_shas:
