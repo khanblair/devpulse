@@ -113,6 +113,27 @@ def pct_label(value: int, target: int) -> str:
 
 # ── command handlers ──────────────────────────────────────────────────────────
 
+def cmd_start() -> str:
+    return (
+        "👋 *Hi! I'm devpulse*\n\n"
+        "I'm your personal dev analytics companion. I track your commits, "
+        "analyze your coding patterns, and send you daily digests.\n\n"
+        "*What I can do:*\n"
+        "• Track commits across all your repos\n"
+        "• Send daily & weekly reports\n"
+        "• Analyze your dev mood & personality\n"
+        "• Monitor your progress vs targets\n"
+        "• Track abandoned repos & stale PRs\n\n"
+        "*Quick start commands:*\n"
+        "/report — Today's full report\n"
+        "/commits — See today's commits\n"
+        "/streak — Your current streak\n"
+        "/progress — Week vs targets\n"
+        "/help — All commands\n\n"
+        "💡 Tip: Use `/settarget weekly_commits 20` to set goals!"
+    )
+
+
 def cmd_help() -> str:
     return (
         "*devpulse commands*\n\n"
@@ -515,6 +536,7 @@ def route(text: str) -> str:
     args = parts[1:]
 
     routes = {
+        "/start": lambda: cmd_start(),
         "/help": lambda: cmd_help(),
         "/report": lambda: cmd_report(),
         "/commits": lambda: cmd_commits(int(args[0]) if args and args[0].isdigit() else 0),
