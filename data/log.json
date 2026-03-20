@@ -309,6 +309,38 @@
           "py"
         ],
         "url": "https://github.com/khanblair/mql5-sage/commit/ec63170a5e7edbc5f4bf4f308bef9b339f928afa"
+      },
+      {
+        "repo": "mql5-sage",
+        "branch": "main",
+        "sha": "73517f2",
+        "message": "restore: working ask.py from before modifications",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-20T09:35:54Z",
+        "files_changed": 296,
+        "added": 158,
+        "modified": 0,
+        "removed": 138,
+        "extensions": [
+          "py"
+        ],
+        "url": "https://github.com/khanblair/mql5-sage/commit/73517f25328945e59fce010dde22bae045588d7e"
+      },
+      {
+        "repo": "mql5-sage",
+        "branch": "main",
+        "sha": "d35de82",
+        "message": "fix: syntax error - extra colon",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-20T09:25:21Z",
+        "files_changed": 2,
+        "added": 1,
+        "modified": 0,
+        "removed": 1,
+        "extensions": [
+          "py"
+        ],
+        "url": "https://github.com/khanblair/mql5-sage/commit/d35de82573d1661e797fff877dca820577562ffb"
       }
     ],
     "mood": null,
