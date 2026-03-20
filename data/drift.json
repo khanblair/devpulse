@@ -1,4 +1,10 @@
 {
-  "last_updated": "2026-03-19",
-  "monthly": {}
+  "last_updated": "2026-03-20",
+  "monthly": {
+    "2026-03": {
+      "Python": 59,
+      "JSON": 27,
+      "Markdown": 14
+    }
+  }
 }
