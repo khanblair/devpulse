@@ -206,6 +206,77 @@
           "py"
         ],
         "url": "https://github.com/khanblair/mql5-sage/commit/e4fab85363e6a956bada6374f857520f31d81b5f"
+      },
+      {
+        "repo": "mql5-sage",
+        "branch": "main",
+        "sha": "d887fe7",
+        "message": "Merge branch 'main' of https://github.com/khanblair/mql5-sage",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-20T08:48:25Z",
+        "files_changed": 144,
+        "added": 111,
+        "modified": 0,
+        "removed": 33,
+        "extensions": [
+          "md",
+          "md",
+          "json",
+          "json",
+          "json"
+        ],
+        "url": "https://github.com/khanblair/mql5-sage/commit/d887fe706a1c64f8c0405b73690a7a2e45ce1e93"
+      },
+      {
+        "repo": "mql5-sage",
+        "branch": "main",
+        "sha": "766e403",
+        "message": "fix: optimize semantic search to reduce request size",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-20T08:43:13Z",
+        "files_changed": 35,
+        "added": 18,
+        "modified": 0,
+        "removed": 17,
+        "extensions": [
+          "py"
+        ],
+        "url": "https://github.com/khanblair/mql5-sage/commit/766e40315bc199668670a5ba751b529ca1ce6337"
+      },
+      {
+        "repo": "mql5-sage",
+        "branch": "main",
+        "sha": "67b2699",
+        "message": "Merge branch 'main' of https://github.com/khanblair/mql5-sage",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-20T08:33:42Z",
+        "files_changed": 70,
+        "added": 52,
+        "modified": 0,
+        "removed": 18,
+        "extensions": [
+          "md",
+          "json",
+          "json",
+          "json"
+        ],
+        "url": "https://github.com/khanblair/mql5-sage/commit/67b269984d4d36b07939d335dfae6b233660e2d7"
+      },
+      {
+        "repo": "mql5-sage",
+        "branch": "main",
+        "sha": "0527ff0",
+        "message": "fix: improve search with semantic retrieval using Groq",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-20T08:31:33Z",
+        "files_changed": 86,
+        "added": 79,
+        "modified": 0,
+        "removed": 7,
+        "extensions": [
+          "py"
+        ],
+        "url": "https://github.com/khanblair/mql5-sage/commit/0527ff04a180046d28bd8d4c7c8c0caa90471e4e"
       }
     ],
     "mood": null,
