@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-03-20",
+  "last_updated": "2026-03-21",
   "peak_coding_hour": 8,
-  "style": "burst shipper",
-  "feat_fix_ratio": 0.11,
+  "style": "high volume",
+  "feat_fix_ratio": 0.22,
   "most_active_repo": "mql5-sage",
-  "most_avoided_repo": null,
-  "avg_commit_size": 83.9,
-  "consistency_score": 0.3,
-  "total_days_tracked": 1,
-  "active_days_last_30": 1,
+  "most_avoided_repo": "lms-monorepo",
+  "avg_commit_size": 200.7,
+  "consistency_score": 0.7,
+  "total_days_tracked": 2,
+  "active_days_last_30": 2,
   "burst_days_last_30": 1
 }

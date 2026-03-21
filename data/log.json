@@ -494,11 +494,58 @@
         "url": "https://github.com/khanblair/lms-monorepo/commit/6e662afa5435f1c6b870996afba118b8514806b1"
       }
     ],
-    "mood": null,
-    "devlog": null,
+    "mood": "focused",
+    "devlog": "I integrated the web and mobile apps with Convex backend in the lms-monorepo. This involved 1,719 file changes as part of a feature to connect the apps. I still need to run testing and validation.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 21,
+      "message": "Day 21 (16:24): session wrap-up",
+      "sha": "78b9fc9",
+      "summary": null,
+      "date": "2026-03-21"
+    },
+    "target_report": {
+      "week_ending": "2026-03-21",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 14,
+          "pct": 93,
+          "status": "close"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 2,
+          "pct": 100,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 2,
+          "pct": 67,
+          "status": "missed"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 2,
+          "pct": 40,
+          "status": "missed"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 1,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
