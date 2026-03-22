@@ -698,11 +698,58 @@
         "url": "https://github.com/khanblair/lms-monorepo/commit/556bcf52770e3eced3a1b33c9a510b659c83ff3c"
       }
     ],
-    "mood": null,
-    "devlog": null,
-    "question": null,
-    "yoyo": null,
-    "target_report": null,
-    "weekly_report": null
+    "mood": "exploratory",
+    "devlog": "Integrated guest AI chat with Convex, fixed video typing, resolved book detail navigation and auth redirect conflict, added a model selection switcher to AI chat screens, switched to useLocalSearchParams, and built borrowing detail screens with a day picker for loans and OpenRouter AI. The changes touched 3943 files.",
+    "question": "Blair had 12 fix commits out of 20 total \u2014 what prompted so many fixes this week?\n\n**Answer:**  \nThe data shows a week dominated by bug\u2011related work: 12 of 20 commits were fixes, while only 5 introduced new features and none were chores. Several factors likely contributed:\n\n1. **Concentrated effort on a few active days** \u2013 With only 3 out of 7 days active, the work that did happen was intense (\u201cgrinding,\u201d \u201cfocused\u201d). When you compress a lot of work into limited time, you tend to address the most pressing pain points first, which often are bugs.\n\n2. **Exploratory mood** \u2013 One of the recorded moods was \u201cexploratory,\u201d suggesting you were probing existing code to understand failures or edge cases. That investigative phase can surface hidden defects, leading to a cascade of fix commits.\n\n3. **Missed streak target** \u2013 Falling short of the 3\u2011day streak (3/5) may indicate interruptions or context\u2011switching that broke momentum on larger feature work, forcing you to pick up smaller, more immediate fix tasks instead.\n\n4. **Repo context** \u2013 Working across two large repos (lms\u2011monorepo, mql5\u2011sage) can amplify the impact of a single bug; a fix in one area may ripple into multiple files, inflating the fix count.\n\n5. **No chore work** \u2013 The absence of chore commits suggests routine maintenance (e.g., refactoring, dependency updates) was deprioritized, possibly because urgent bugs demanded immediate attention.\n\nOverall, the high proportion of fixes likely reflects a week where urgent stability concerns outweighed new feature development, compounded by limited active days and a focus\u2011intensive, exploratory mindset. This pattern can be a signal to allocate dedicated \u201cbug\u2011squash\u201d windows separate from feature cycles, or to investigate underlying causes (e.g., testing gaps) that generate the backlog of fixes.?",
+    "yoyo": {
+      "day": 22,
+      "message": "Day 22 (17:02): session wrap-up",
+      "sha": "0f022e0",
+      "summary": null,
+      "date": "2026-03-22"
+    },
+    "target_report": {
+      "week_ending": "2026-03-22",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 20,
+          "pct": 133,
+          "status": "hit"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 2,
+          "pct": 100,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 5,
+          "pct": 167,
+          "status": "hit"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 3,
+          "pct": 60,
+          "status": "missed"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 3,
+        "total": 4,
+        "all_hit": false
+      }
+    },
+    "weekly_report": "I logged 20 commits across two repos in three active days. Five were new features, twelve were bug fixes, and there were no chores. Most of the work landed in\u202fmql5\u2011sage, and I didn\u2019t have any quiet repos. My moods swung between grinding, focused, exploratory, and a day with no commits.\n\nI met three of my four targets, but I kept missing the\u202fstreak_days\u202fgoal, which shows my activity is bunched into a few days. The mix of moods matches that pattern, and the lack of quiet repos means I wasn\u2019t spreading effort across projects.\n\nNext week I\u2019ll schedule at least one commit each day to break the streak and smooth out the workload.\n\nFor comparison, yoyo\u2011evolve shipped four commits this week, all session wrap\u2011ups, while I produced twenty functional changes."
   }
 }
