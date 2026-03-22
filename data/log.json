@@ -567,6 +567,33 @@
           "tsx"
         ],
         "url": "https://github.com/khanblair/lms-monorepo/commit/d121983e49d793f209a60053b158443d73a4346e"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "6e35813",
+        "message": "fix: resolve book detail navigation and auth redirect conflict",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-22T15:13:19Z",
+        "files_changed": 562,
+        "added": 470,
+        "modified": 0,
+        "removed": 92,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/6e358135c2bc6c2556a806d68a96acf0d8de35bb"
       }
     ],
     "mood": null,
