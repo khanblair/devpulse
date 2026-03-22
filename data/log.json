@@ -594,6 +594,70 @@
           "ts"
         ],
         "url": "https://github.com/khanblair/lms-monorepo/commit/6e358135c2bc6c2556a806d68a96acf0d8de35bb"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "5010eca",
+        "message": "feat: add model selection switcher to AI chat screens",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-22T15:53:10Z",
+        "files_changed": 153,
+        "added": 140,
+        "modified": 0,
+        "removed": 13,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx",
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/5010eca6e240a5bedad220f7a53ffaea43b9679b"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "47782a0",
+        "message": "fix: useLocalSearchParams instead of useSearchParams",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-22T15:45:00Z",
+        "files_changed": 30,
+        "added": 15,
+        "modified": 0,
+        "removed": 15,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx"
+        ],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/47782a041f2ddf302b5996289eec54fd83a6f18e"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "6bba67b",
+        "message": "feat: borrowing detail screens, day picker for loans, OpenRouter AI",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-22T15:43:15Z",
+        "files_changed": 689,
+        "added": 593,
+        "modified": 0,
+        "removed": 96,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "ts",
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/6bba67bd41a8f2706a0996a3bebb2e6d7123f2d9"
       }
     ],
     "mood": null,
