@@ -1190,6 +1190,22 @@
           "ts"
         ],
         "url": "https://github.com/khanblair/asas-monorepo/commit/7073f22b46056b1d308c4a46192e77285bb1ba41"
+      },
+      {
+        "repo": "asas-monorepo",
+        "branch": "main",
+        "sha": "77d6fa3",
+        "message": "fix(mobile): remove AsyncStorage dependency for guest chat history",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-27T19:19:01Z",
+        "files_changed": 45,
+        "added": 8,
+        "modified": 0,
+        "removed": 37,
+        "extensions": [
+          "tsx"
+        ],
+        "url": "https://github.com/khanblair/asas-monorepo/commit/77d6fa3cd27cbc3d4a882b571c2886fe01ff17be"
       }
     ],
     "mood": "exploratory",
