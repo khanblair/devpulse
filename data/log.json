@@ -1071,7 +1071,62 @@
   },
   "2026-03-27": {
     "date": "2026-03-27",
-    "commits": [],
+    "commits": [
+      {
+        "repo": "asas-monorepo",
+        "branch": "main",
+        "sha": "fe78dda",
+        "message": "feat(mobile): implement Explore screen with search/filter and announcement detail",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-27T17:45:30Z",
+        "files_changed": 4120,
+        "added": 3915,
+        "modified": 0,
+        "removed": 205,
+        "extensions": [
+          "md",
+          "md",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "json",
+          "lock",
+          "ts",
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/asas-monorepo/commit/fe78dda99815d477afaf7f912a43271154b7159a"
+      },
+      {
+        "repo": "asas-monorepo",
+        "branch": "main",
+        "sha": "b2ac7ff",
+        "message": "docs: add explore screen design spec",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-27T17:25:41Z",
+        "files_changed": 179,
+        "added": 179,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [
+          "md"
+        ],
+        "url": "https://github.com/khanblair/asas-monorepo/commit/b2ac7ff5181a73a5134873fa21617a0354e08ef1"
+      }
+    ],
     "mood": null,
     "devlog": null,
     "question": null,
