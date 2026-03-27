@@ -1125,6 +1125,54 @@
           "md"
         ],
         "url": "https://github.com/khanblair/asas-monorepo/commit/b2ac7ff5181a73a5134873fa21617a0354e08ef1"
+      },
+      {
+        "repo": "asas-monorepo",
+        "branch": "main",
+        "sha": "9e8daaf",
+        "message": "fix(mobile): remove broken AI models and fix model IDs",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-27T18:17:17Z",
+        "files_changed": 8,
+        "added": 1,
+        "modified": 0,
+        "removed": 7,
+        "extensions": [
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/asas-monorepo/commit/9e8daafa7a5af08f44bbfb08b3761e105f56f627"
+      },
+      {
+        "repo": "asas-monorepo",
+        "branch": "main",
+        "sha": "4c6a777",
+        "message": "fix(mobile): remove :free suffix from minimax model ID",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-27T18:14:25Z",
+        "files_changed": 6,
+        "added": 6,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/asas-monorepo/commit/4c6a77729e83d9d363ff4334e37b8c41326864ae"
+      },
+      {
+        "repo": "asas-monorepo",
+        "branch": "main",
+        "sha": "8327ca2",
+        "message": "fix(mobile): revert to expo-secure-store for theme persistence",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-27T17:49:58Z",
+        "files_changed": 8,
+        "added": 4,
+        "modified": 0,
+        "removed": 4,
+        "extensions": [
+          "tsx"
+        ],
+        "url": "https://github.com/khanblair/asas-monorepo/commit/8327ca2bc1370d38ac48ece321ea453d1550d291"
       }
     ],
     "mood": "exploratory",
