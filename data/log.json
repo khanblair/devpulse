@@ -1127,11 +1127,58 @@
         "url": "https://github.com/khanblair/asas-monorepo/commit/b2ac7ff5181a73a5134873fa21617a0354e08ef1"
       }
     ],
-    "mood": null,
-    "devlog": null,
+    "mood": "exploratory",
+    "devlog": "Implemented the Explore screen with search/filter and announcement detail on mobile, and added the design spec. The change touched 4,299 files across the monorepo. Updated the documentation to reflect the new feature.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 26,
+      "message": "Day 27 (14:44): social learnings",
+      "sha": "3860fbe",
+      "summary": null,
+      "date": "2026-03-27"
+    },
+    "target_report": {
+      "week_ending": "2026-03-27",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 4,
+          "pct": 27,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 2,
+          "pct": 100,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 2,
+          "pct": 67,
+          "status": "missed"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 5,
+          "pct": 100,
+          "status": "hit"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 2,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
