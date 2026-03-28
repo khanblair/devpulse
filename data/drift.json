@@ -1,11 +1,13 @@
 {
-  "last_updated": "2026-03-27",
+  "last_updated": "2026-03-28",
   "monthly": {
     "2026-03": {
-      "TypeScript": 86,
-      "Python": 7,
-      "Markdown": 4,
-      "JSON": 4
+      "TypeScript": 76,
+      "CSV": 9,
+      "Python": 6,
+      "JSON": 4,
+      "Markdown": 3,
+      "PYC": 1
     }
   }
 }

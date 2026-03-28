@@ -1357,11 +1357,58 @@
         "url": "https://github.com/khanblair/asas-monorepo/commit/88b61eab9a4b2a37156dd7b191f442c77a8eea6b"
       }
     ],
-    "mood": null,
-    "devlog": null,
+    "mood": "frustrated",
+    "devlog": "I fixed TypeScript errors and cleaned up the auth screens UI in the asas\u2011monorepo, touching 3,568 files. It was mostly routine maintenance to get the codebase back in shape. No new features were added.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 27,
+      "message": "Day 28 (13:41): session wrap-up",
+      "sha": "67fb006",
+      "summary": null,
+      "date": "2026-03-28"
+    },
+    "target_report": {
+      "week_ending": "2026-03-28",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 11,
+          "pct": 73,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 2,
+          "pct": 100,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 2,
+          "pct": 67,
+          "status": "missed"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 5,
+          "pct": 100,
+          "status": "hit"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 2,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
