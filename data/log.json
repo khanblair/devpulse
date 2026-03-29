@@ -1564,11 +1564,58 @@
         "url": "https://github.com/khanblair/unihostel-monorepo/commit/ce09293a03954fdd3914eef9097daf980709e562"
       }
     ],
-    "mood": null,
-    "devlog": null,
-    "question": null,
-    "yoyo": null,
-    "target_report": null,
-    "weekly_report": null
+    "mood": "focused",
+    "devlog": "Enhanced hostel management in the monorepo by adding map integration, support for multiple images, AI features, a status filter on the map page, room images, edit functionality, and hostel type support. The changes touched 8,029 files, so most of the day was spent on a broad code update.",
+    "question": "You exceeded your feature commit target \u2014 what impact did this have on priorities?\n\n**Answer:**  \nHitting four feature commits (one more than the three\u2011commit target) shifted the week\u2019s focus toward building new functionality, even as you logged eight fixes and no chores. The extra feature work likely stretched your attention across three repositories (asas\u2011monorepo, unihostel\u2011monorepo, prismx\u2011monorepo), exceeding the active\u2011repo target and leaving less bandwidth for routine cleanup or broader refactoring. Your mood log\u2014two \u201cfocused\u201d days, a \u201ccleanup\u201d day, an \u201cexploratory\u201d day, but also two \u201cno\u2011commit\u201d days and a \u201cfrustrated\u201d day\u2014suggests the push for features brought both momentum and strain: the momentum showed in the focused and exploratory moments, while the frustration and idle days hint at trade\u2011offs, perhaps from juggling feature work with a high volume of fixes. In short, exceeding the feature target amplified new\u2011feature priority at the cost of smoother, less stressful progress on fixes and chores.?",
+    "yoyo": {
+      "day": 29,
+      "message": "Day 29 (16:20): session wrap-up",
+      "sha": "c7316e9",
+      "summary": null,
+      "date": "2026-03-29"
+    },
+    "target_report": {
+      "week_ending": "2026-03-29",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 13,
+          "pct": 87,
+          "status": "close"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 3,
+          "pct": 150,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 4,
+          "pct": 133,
+          "status": "hit"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 5,
+          "pct": 100,
+          "status": "hit"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 3,
+        "total": 4,
+        "all_hit": false
+      }
+    },
+    "weekly_report": "I logged 13 commits across three repos over five active days, with four feature additions and eight bug fixes. Most of the work landed in the asas\u2011monorepo; prismx\u2011monorepo stayed quiet, and I had two days with no commits.\n\nMy moods swung from focused and cleanup\u2011oriented to exploratory and, on one day, frustrated. I hit three of four targets, which feels decent, but the uneven mood and the idle days line up with the quiet repo.\n\nNext week I\u2019ll allocate at least one dedicated session to prismx\u2011monorepo to keep it from stagnating and to balance my energy across projects.\n\nFor comparison, yoyo\u2011evolve shipped seven commits\u2014mostly session wrap\u2011ups and a journal entry\u2014while I produced 13, but the AI\u2019s output was more consistent day\u2011to\u2011day."
   }
 }
