@@ -1767,6 +1767,28 @@
           "ts"
         ],
         "url": "https://github.com/khanblair/trophy-games/commit/3cc113d434a9518c3b20b599032be7596b495a89"
+      },
+      {
+        "repo": "trophy-games",
+        "branch": "main",
+        "sha": "4bb7370",
+        "message": "feat: add AI model selector with automatic failover",
+        "author": "Blair Khan",
+        "timestamp": "2026-03-31T05:22:46Z",
+        "files_changed": 742,
+        "added": 603,
+        "modified": 0,
+        "removed": 139,
+        "extensions": [
+          "ts",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/trophy-games/commit/4bb7370b7a20ff5ff2cfaf6c79d8f2e75f803251"
       }
     ],
     "mood": null,
