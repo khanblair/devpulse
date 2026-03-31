@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-03-30",
-  "peak_coding_hour": 17,
+  "last_updated": "2026-03-31",
+  "peak_coding_hour": 8,
   "style": "high volume",
-  "feat_fix_ratio": 0.45,
+  "feat_fix_ratio": 0.52,
   "most_active_repo": "mql5-sage",
   "most_avoided_repo": "prismx-monorepo",
-  "avg_commit_size": 967.6,
-  "consistency_score": 2.7,
-  "total_days_tracked": 8,
-  "active_days_last_30": 8,
-  "burst_days_last_30": 3
+  "avg_commit_size": 3516.9,
+  "consistency_score": 3.0,
+  "total_days_tracked": 9,
+  "active_days_last_30": 9,
+  "burst_days_last_30": 4
 }
