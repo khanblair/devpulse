@@ -2107,11 +2107,58 @@
         "url": "https://github.com/khanblair/asas-monorepo/commit/91bb45efdd2bf6538f1b905d0f5c2e4bd7375f7a"
       }
     ],
-    "mood": null,
-    "devlog": null,
+    "mood": "focused",
+    "devlog": "Pushed 1 commit(s) across asas-monorepo.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 35,
+      "message": "Day 35 (16:52): update learnings",
+      "sha": "706c2d4",
+      "summary": null,
+      "date": "2026-04-04"
+    },
+    "target_report": {
+      "week_ending": "2026-04-04",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 6,
+          "pct": 40,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 3,
+          "pct": 150,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 2,
+          "pct": 67,
+          "status": "missed"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 3,
+          "pct": 60,
+          "status": "missed"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 1,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
