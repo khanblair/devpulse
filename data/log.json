@@ -2221,11 +2221,58 @@
         "url": "https://github.com/khanblair/lms-monorepo/commit/72288a9cd8c675a41f452e9a1a63ac925bede232"
       }
     ],
-    "mood": null,
-    "devlog": null,
-    "question": null,
-    "yoyo": null,
-    "target_report": null,
-    "weekly_report": null
+    "mood": "exploratory",
+    "devlog": "Pushed 1 commit(s) across lms-monorepo.",
+    "question": "What would you do differently if you ran this week again?",
+    "yoyo": {
+      "day": 36,
+      "message": "synthesize: regenerate active memory context",
+      "sha": "13ce145",
+      "summary": null,
+      "date": "2026-04-05"
+    },
+    "target_report": {
+      "week_ending": "2026-04-05",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 7,
+          "pct": 47,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 4,
+          "pct": 200,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 3,
+          "pct": 100,
+          "status": "hit"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 3,
+          "pct": 60,
+          "status": "missed"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 2,
+        "total": 4,
+        "all_hit": false
+      }
+    },
+    "weekly_report": "Week of 2026-04-05: 7 commits across 4 repos over 3 days. Most active in trophy-games."
   }
 }

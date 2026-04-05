@@ -125,6 +125,48 @@
         "total": 4,
         "all_hit": false
       }
+    },
+    {
+      "week_ending": "2026-04-05",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 7,
+          "pct": 47,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 4,
+          "pct": 200,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 3,
+          "pct": 100,
+          "status": "hit"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 3,
+          "pct": 60,
+          "status": "missed"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 2,
+        "total": 4,
+        "all_hit": false
+      }
     }
   ]
 }
