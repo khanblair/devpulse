@@ -3069,6 +3069,38 @@
           "jsx"
         ],
         "url": "https://github.com/khanblair/AgentPress/commit/d1359f44d8e4aab71badcc4f18f2a94a8d65d1aa"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "0409b7c",
+        "message": "README: move GitHub Pages link to top",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T08:47:34Z",
+        "files_changed": 2,
+        "added": 2,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [
+          "md"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/0409b7c5abbf40454c878d59d1a3233ffdf47770"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "bcda66b",
+        "message": "README: add GitHub Pages link and audit trail section details",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T08:42:04Z",
+        "files_changed": 9,
+        "added": 9,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [
+          "md"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/bcda66b2fff36caa9d256d405816c3857bef05f3"
       }
     ],
     "mood": null,
