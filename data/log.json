@@ -2859,6 +2859,89 @@
           "jsx"
         ],
         "url": "https://github.com/khanblair/AgentPress/commit/3875f43946b8245177fa6bbc433a18de3ccf374a"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "a72bf0f",
+        "message": "Fix chat persistence: lift state to parent, no remount on edit, localStorage per file",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T07:25:59Z",
+        "files_changed": 408,
+        "added": 196,
+        "modified": 0,
+        "removed": 212,
+        "extensions": [
+          "jsx"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/a72bf0f3e3f80f270450fb000ead8eff84b897d4"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "03e2338",
+        "message": "Add document editing: POST /outputs/edit, Apply Edit button in chat, preview refresh",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T07:08:56Z",
+        "files_changed": 261,
+        "added": 250,
+        "modified": 0,
+        "removed": 11,
+        "extensions": [
+          "py",
+          "js",
+          "jsx"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/03e2338e8648dc7db55131509b9445f7816b6002"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "c2c2853",
+        "message": "Fix: run pipeline in thread executor (unblocks SSE), fix re scoping bug in PDF preview",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T07:01:10Z",
+        "files_changed": 26,
+        "added": 10,
+        "modified": 0,
+        "removed": 16,
+        "extensions": [
+          "py"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/c2c2853f9652e2219e86e8122d1126d090fb325e"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "17a3293",
+        "message": "Fix PDF preview: install pdfplumber, fix heading heuristic, skip cover page artifacts",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T06:56:01Z",
+        "files_changed": 29,
+        "added": 24,
+        "modified": 0,
+        "removed": 5,
+        "extensions": [
+          "py"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/17a32931a9ae3f4f6d8d67a3ded5c2ad5fe8b9fc"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "8dc0b71",
+        "message": "Real-time pipeline: SSE job stream endpoint + EventSource in UI",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T06:51:07Z",
+        "files_changed": 203,
+        "added": 122,
+        "modified": 0,
+        "removed": 81,
+        "extensions": [
+          "py",
+          "jsx"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/8dc0b717e93e1766050668abb9825982cb7085ce"
       }
     ],
     "mood": null,
