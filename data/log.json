@@ -2786,7 +2786,81 @@
   },
   "2026-04-10": {
     "date": "2026-04-10",
-    "commits": [],
+    "commits": [
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "2a8eb0f",
+        "message": "Add proper PDF generation: branded builder, cover page, preview, templates",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T06:36:31Z",
+        "files_changed": 490,
+        "added": 442,
+        "modified": 0,
+        "removed": 48,
+        "extensions": [
+          "py",
+          "py",
+          "py",
+          "py",
+          "txt",
+          "jsx",
+          "jsx"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/2a8eb0f9d87216627c4fffee4f00f8e88893f116"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "d8e8b31",
+        "message": "Pipeline: show live agent messages inline under each step",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T06:30:25Z",
+        "files_changed": 170,
+        "added": 147,
+        "modified": 0,
+        "removed": 23,
+        "extensions": [
+          "jsx"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/d8e8b316fdad9af6c15a04ffe6b96b454a656c27"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "7db096d",
+        "message": "Fix XLSX: proper multi-sheet builder, pipe-table synthesizer output, remove inline builder",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T06:26:36Z",
+        "files_changed": 471,
+        "added": 279,
+        "modified": 0,
+        "removed": 192,
+        "extensions": [
+          "py",
+          "py",
+          "py"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/7db096da5aa86477b3755d0a0bb880632297d46c"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "3875f43",
+        "message": "Fix XLSX rendering: structured multi-column builder + improved preview UI",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T06:23:18Z",
+        "files_changed": 304,
+        "added": 248,
+        "modified": 0,
+        "removed": 56,
+        "extensions": [
+          "py",
+          "jsx"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/3875f43946b8245177fa6bbc433a18de3ccf374a"
+      }
+    ],
     "mood": null,
     "devlog": null,
     "question": null,
