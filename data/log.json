@@ -3103,11 +3103,58 @@
         "url": "https://github.com/khanblair/AgentPress/commit/bcda66b2fff36caa9d256d405816c3857bef05f3"
       }
     ],
-    "mood": null,
-    "devlog": null,
+    "mood": "unknown",
+    "devlog": "Added proper PDF generation to AgentPress with branded builder, cover page, preview and templates, and updated the pipeline to show live agent messages inline. Fixed XLSX multi\u2011sheet builder, pipe\u2011table synthesizer output, removed the inline builder, and improved multi\u2011column rendering and preview UI. Also lifted chat persistence state to the parent, avoided remount on edit, and added per\u2011file localStorage.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 41,
+      "message": "sync: llm-wiki growth session (2026-04-10)",
+      "sha": "3c4febf",
+      "summary": null,
+      "date": "2026-04-10"
+    },
+    "target_report": {
+      "week_ending": "2026-04-10",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 23,
+          "pct": 153,
+          "status": "hit"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 1,
+          "pct": 50,
+          "status": "missed"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 1,
+          "pct": 33,
+          "status": "missed"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 5,
+          "pct": 100,
+          "status": "hit"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 2,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
