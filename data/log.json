@@ -2942,6 +2942,133 @@
           "jsx"
         ],
         "url": "https://github.com/khanblair/AgentPress/commit/8dc0b717e93e1766050668abb9825982cb7085ce"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "b1d1f2d",
+        "message": "Docs: brand colors, real content, architecture + agents pages, CSS overrides",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T08:36:54Z",
+        "files_changed": 467,
+        "added": 442,
+        "modified": 0,
+        "removed": 25,
+        "extensions": [
+          "md",
+          "md",
+          "md",
+          "md",
+          "md",
+          "css",
+          "yml"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/b1d1f2db5dcdc333ef5fb17be30c55f6ebc84b62"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "4703e6e",
+        "message": "Fix MkDocs strict build: add missing index files, fix nav paths, remove awesome-pages",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T08:20:09Z",
+        "files_changed": 29,
+        "added": 23,
+        "modified": 0,
+        "removed": 6,
+        "extensions": [
+          "yml",
+          "md",
+          "md",
+          "md",
+          "yml"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/4703e6e96030214de866a59563002b5628b14034"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "9920a9f",
+        "message": "Add evolution artifacts: brand fix skill, evolution log, regression test",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T07:58:56Z",
+        "files_changed": 99,
+        "added": 99,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [
+          "py",
+          "json",
+          "md",
+          "py"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/9920a9f02b0128667afe123ac8b7262ee26f45d1"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "9279315",
+        "message": "Fix: restore missing def run_orchestrator declaration",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T07:57:54Z",
+        "files_changed": 3,
+        "added": 3,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [
+          "py"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/92793152e61b8e79407c1921c6740d52926c0825"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "2a4ff05",
+        "message": "Use meaningful document filenames derived from prompt/spec instead of raw UUIDs",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T07:45:50Z",
+        "files_changed": 47,
+        "added": 42,
+        "modified": 0,
+        "removed": 5,
+        "extensions": [
+          "py",
+          "py",
+          "py"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/2a4ff0552546069c030969cba0ec0dc25dfa1954"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "458f3ae",
+        "message": "Fix edit not reflecting: removeQueries before invalidate, fix instruction source",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T07:43:30Z",
+        "files_changed": 8,
+        "added": 6,
+        "modified": 0,
+        "removed": 2,
+        "extensions": [
+          "jsx"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/458f3ae14c473ed03e1fdf68ac90b39ad8ceb057"
+      },
+      {
+        "repo": "AgentPress",
+        "branch": "main",
+        "sha": "d1359f4",
+        "message": "Add resizable chat panel with drag handle, persists width to localStorage",
+        "author": "khanblair",
+        "timestamp": "2026-04-10T07:41:31Z",
+        "files_changed": 88,
+        "added": 73,
+        "modified": 0,
+        "removed": 15,
+        "extensions": [
+          "jsx"
+        ],
+        "url": "https://github.com/khanblair/AgentPress/commit/d1359f44d8e4aab71badcc4f18f2a94a8d65d1aa"
       }
     ],
     "mood": null,
