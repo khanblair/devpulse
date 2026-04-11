@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-04-10",
+  "last_updated": "2026-04-11",
   "peak_coding_hour": 8,
   "style": "high volume",
-  "feat_fix_ratio": 0.62,
+  "feat_fix_ratio": 0.67,
   "most_active_repo": "AgentPress",
   "most_avoided_repo": "prismx-monorepo",
-  "avg_commit_size": 2753.1,
-  "consistency_score": 4.7,
-  "total_days_tracked": 14,
-  "active_days_last_30": 14,
+  "avg_commit_size": 2736.9,
+  "consistency_score": 5.0,
+  "total_days_tracked": 15,
+  "active_days_last_30": 15,
   "burst_days_last_30": 5
 }

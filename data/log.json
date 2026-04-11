@@ -3194,11 +3194,58 @@
         "url": "https://github.com/khanblair/unihostel-monorepo/commit/65070a0bfe00b933473ce2025ffcb4acf747d0ad"
       }
     ],
-    "mood": null,
-    "devlog": null,
+    "mood": "exploratory",
+    "devlog": "Pushed 1 commit(s) across unihostel-monorepo.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 41,
+      "message": "sync: llm-wiki growth session (2026-04-11)",
+      "sha": "1e80386",
+      "summary": null,
+      "date": "2026-04-11"
+    },
+    "target_report": {
+      "week_ending": "2026-04-11",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 24,
+          "pct": 160,
+          "status": "hit"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 2,
+          "pct": 100,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 2,
+          "pct": 67,
+          "status": "missed"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 5,
+          "pct": 100,
+          "status": "hit"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 3,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
