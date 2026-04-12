@@ -3298,6 +3298,41 @@
           "json"
         ],
         "url": "https://github.com/khanblair/lms-monorepo/commit/1a7c3c2dcd298234ff4a360f3a8bb118c8547ae6"
+      },
+      {
+        "repo": "lms-monorepo",
+        "branch": "main",
+        "sha": "52b48aa",
+        "message": "feat: integrate Pesapal Legacy OAuth 1.0 and sync unified payments dashboard",
+        "author": "khanblair",
+        "timestamp": "2026-04-12T10:42:44Z",
+        "files_changed": 1380,
+        "added": 1230,
+        "modified": 0,
+        "removed": 150,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "json",
+          "json",
+          "tsx",
+          "tsx",
+          "tsx",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/lms-monorepo/commit/52b48aa5341453bf9ac3c6d1ec817920edacbbe8"
       }
     ],
     "mood": null,
