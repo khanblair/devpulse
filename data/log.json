@@ -3912,11 +3912,58 @@
         "url": "https://github.com/khanblair/krc-tv-monorepo/commit/36faecaa85a08daf2c7328f5e3b9c818f625943b"
       }
     ],
-    "mood": null,
-    "devlog": null,
+    "mood": "focused",
+    "devlog": "Pushed 3 commit(s) across krc-tv-monorepo.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 49,
+      "message": "Day 49 (16:24): session wrap-up",
+      "sha": "6a53ed5",
+      "summary": null,
+      "date": "2026-04-18"
+    },
+    "target_report": {
+      "week_ending": "2026-04-18",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 3,
+          "pct": 20,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 1,
+          "pct": 50,
+          "status": "missed"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 2,
+          "pct": 67,
+          "status": "missed"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 2,
+          "pct": 40,
+          "status": "missed"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 0,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
