@@ -4407,6 +4407,23 @@
           "tsx"
         ],
         "url": "https://github.com/khanblair/blue-sky-web/commit/89d8a1340775cdc0188020f0df6d9885fa24a17a"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "9937759",
+        "message": "fix: Get Started opens auth modal instead of redirecting to Clerk; fix install popup clipping",
+        "author": "khanblair",
+        "timestamp": "2026-04-19T19:48:22Z",
+        "files_changed": 148,
+        "added": 89,
+        "modified": 0,
+        "removed": 59,
+        "extensions": [
+          "tsx",
+          "tsx"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/993775938f238c9d8ad9f97ccbbd224f67b1e86f"
       }
     ],
     "mood": "exploratory",
