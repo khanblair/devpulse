@@ -4236,6 +4236,81 @@
           "json"
         ],
         "url": "https://github.com/khanblair/blue-sky-web/commit/af10267c94ade536122d1d4e98c0ca77a214f80c"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "b8eddf6",
+        "message": "fix: rename middleware.ts to proxy.ts for Next.js 16 compatibility",
+        "author": "khanblair",
+        "timestamp": "2026-04-19T17:16:41Z",
+        "files_changed": 2,
+        "added": 1,
+        "modified": 0,
+        "removed": 1,
+        "extensions": [
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/b8eddf69c0069768c0398472e155f6c32083d675"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "fcfcf76",
+        "message": "fix: prevent ConvexReactClient SSR instantiation via dynamic ssr:false wrapper",
+        "author": "khanblair",
+        "timestamp": "2026-04-19T17:10:37Z",
+        "files_changed": 32,
+        "added": 23,
+        "modified": 0,
+        "removed": 9,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/fcfcf76cb7b27570d926e841276fbd83a2be0b9d"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "8f87e27",
+        "message": "fix: move ConvexReactClient init inside component to fix Vercel prerender",
+        "author": "khanblair",
+        "timestamp": "2026-04-19T17:06:18Z",
+        "files_changed": 11,
+        "added": 7,
+        "modified": 0,
+        "removed": 4,
+        "extensions": [
+          "tsx"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/8f87e2776bfd15cb24342af28beb7eaa424b9ea3"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "47753e6",
+        "message": "feat: interval-based scheduling, post dialog, pending queue, Bluesky fix",
+        "author": "khanblair",
+        "timestamp": "2026-04-19T17:03:20Z",
+        "files_changed": 1844,
+        "added": 1471,
+        "modified": 0,
+        "removed": 373,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/47753e6762bcb30a7302b58dccb90b7b3ffdb15d"
       }
     ],
     "mood": null,
