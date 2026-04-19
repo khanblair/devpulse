@@ -4206,6 +4206,36 @@
           "json"
         ],
         "url": "https://github.com/khanblair/blue-sky-web/commit/638ce9bd568c7903c774d3cf5bcec5ca6f5e593e"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "af10267",
+        "message": "feat: implement AI configuration dashboard for managing posting frequency, tone, topics, and system status",
+        "author": "khanblair",
+        "timestamp": "2026-04-19T15:09:48Z",
+        "files_changed": 1360,
+        "added": 1079,
+        "modified": 0,
+        "removed": 281,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "lock",
+          "tsx",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "json"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/af10267c94ade536122d1d4e98c0ca77a214f80c"
       }
     ],
     "mood": null,
