@@ -4424,6 +4424,28 @@
           "tsx"
         ],
         "url": "https://github.com/khanblair/blue-sky-web/commit/993775938f238c9d8ad9f97ccbbd224f67b1e86f"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "973cabc",
+        "message": "fix: bump SW cache to v2 to bust stale Header import; rewrite Navbar without HeroUI Header; mobile left-side drawer via ",
+        "author": "khanblair",
+        "timestamp": "2026-04-19T20:41:24Z",
+        "files_changed": 617,
+        "added": 379,
+        "modified": 0,
+        "removed": 238,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "js"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/973cabc47632b119874947df9d36bd778bb49c9c"
       }
     ],
     "mood": "exploratory",
