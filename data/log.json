@@ -4311,6 +4311,66 @@
           "ts"
         ],
         "url": "https://github.com/khanblair/blue-sky-web/commit/47753e6762bcb30a7302b58dccb90b7b3ffdb15d"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "d59d466",
+        "message": "feat: PWA support with install prompt, service worker, and PNG icons",
+        "author": "khanblair",
+        "timestamp": "2026-04-19T17:45:52Z",
+        "files_changed": 93,
+        "added": 82,
+        "modified": 0,
+        "removed": 11,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx",
+          "png",
+          "png",
+          "png",
+          "json"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/d59d466cdfc7607b0790dbde686117eab7717a20"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "4f5872d",
+        "message": "feat: implement PWA support with service worker, manifest, and app icons",
+        "author": "khanblair",
+        "timestamp": "2026-04-19T17:36:28Z",
+        "files_changed": 202,
+        "added": 201,
+        "modified": 0,
+        "removed": 1,
+        "extensions": [
+          "json",
+          "tsx",
+          "tsx",
+          "svg",
+          "svg",
+          "json",
+          "js"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/4f5872dba5ce5b21634acf135a0d244edebc042a"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "71f6591",
+        "message": "fix: use export default for clerkMiddleware in proxy.ts",
+        "author": "khanblair",
+        "timestamp": "2026-04-19T17:22:30Z",
+        "files_changed": 2,
+        "added": 1,
+        "modified": 0,
+        "removed": 1,
+        "extensions": [
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/71f6591c8a79f6eb2284196b2e65bfb05c3b13c3"
       }
     ],
     "mood": null,
