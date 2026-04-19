@@ -4371,6 +4371,24 @@
           "ts"
         ],
         "url": "https://github.com/khanblair/blue-sky-web/commit/71f6591c8a79f6eb2284196b2e65bfb05c3b13c3"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "476e6b9",
+        "message": "fix: PWA install prompt not showing on Vercel",
+        "author": "khanblair",
+        "timestamp": "2026-04-19T17:51:47Z",
+        "files_changed": 50,
+        "added": 40,
+        "modified": 0,
+        "removed": 10,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "js"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/476e6b99728622fa50b3cdfdd483ea13cdafa08e"
       }
     ],
     "mood": "exploratory",
