@@ -4373,11 +4373,58 @@
         "url": "https://github.com/khanblair/blue-sky-web/commit/71f6591c8a79f6eb2284196b2e65bfb05c3b13c3"
       }
     ],
-    "mood": null,
-    "devlog": null,
-    "question": null,
-    "yoyo": null,
-    "target_report": null,
-    "weekly_report": null
+    "mood": "exploratory",
+    "devlog": "Pushed 11 commit(s) across blue-sky-mobile, blue-sky-web.",
+    "question": "What would you do differently if you ran this week again?",
+    "yoyo": {
+      "day": 50,
+      "message": "Day 50 (13:51): session wrap-up",
+      "sha": "be883a8",
+      "summary": null,
+      "date": "2026-04-19"
+    },
+    "target_report": {
+      "week_ending": "2026-04-19",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 14,
+          "pct": 93,
+          "status": "close"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 3,
+          "pct": 150,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 9,
+          "pct": 300,
+          "status": "hit"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 2,
+          "pct": 40,
+          "status": "missed"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 2,
+        "total": 4,
+        "all_hit": false
+      }
+    },
+    "weekly_report": "Week of 2026-04-19: 14 commits across 3 repos over 2 days. Most active in blue-sky-web."
   }
 }
