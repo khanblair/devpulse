@@ -4389,6 +4389,24 @@
           "js"
         ],
         "url": "https://github.com/khanblair/blue-sky-web/commit/476e6b99728622fa50b3cdfdd483ea13cdafa08e"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "89d8a13",
+        "message": "feat: custom PWA install popup in bottom-right corner",
+        "author": "khanblair",
+        "timestamp": "2026-04-19T19:29:23Z",
+        "files_changed": 185,
+        "added": 182,
+        "modified": 0,
+        "removed": 3,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/89d8a1340775cdc0188020f0df6d9885fa24a17a"
       }
     ],
     "mood": "exploratory",
