@@ -4524,6 +4524,32 @@
           "ts"
         ],
         "url": "https://github.com/khanblair/blue-sky-web/commit/090928f36a20069a52477ff5c2faaa904d64bdbb"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "ed2e8d5",
+        "message": "feat: add ai post tags, refine dashboard ui/ux, and fix schedule loop",
+        "author": "khanblair",
+        "timestamp": "2026-04-20T05:57:32Z",
+        "files_changed": 173,
+        "added": 113,
+        "modified": 0,
+        "removed": 60,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/ed2e8d57e7d68fa07ed2b8d2ff5e3b9ab64aa020"
       }
     ],
     "mood": null,
