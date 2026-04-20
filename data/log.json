@@ -4550,6 +4550,34 @@
           "ts"
         ],
         "url": "https://github.com/khanblair/blue-sky-web/commit/ed2e8d57e7d68fa07ed2b8d2ff5e3b9ab64aa020"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "a746944",
+        "message": "feat: add notification integrations UI, fix schedule loop, mobile navbar profile, and update README",
+        "author": "khanblair",
+        "timestamp": "2026-04-20T07:10:33Z",
+        "files_changed": 575,
+        "added": 538,
+        "modified": 0,
+        "removed": 37,
+        "extensions": [
+          "md",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/a746944a4b50b7c869162c8dcf2d394549595393"
       }
     ],
     "mood": null,
