@@ -4869,11 +4869,58 @@
         "url": "https://github.com/khanblair/kolamatch-intelligence/commit/9bf53d2a5a5628b4cf55324fc9644da32497905e"
       }
     ],
-    "mood": null,
-    "devlog": null,
+    "mood": "exploratory",
+    "devlog": "Pushed 4 commit(s) across kolamatch-intelligence.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 53,
+      "message": "sync: llm-wiki growth session (2026-04-22)",
+      "sha": "61ee3f2",
+      "summary": null,
+      "date": "2026-04-22"
+    },
+    "target_report": {
+      "week_ending": "2026-04-22",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 8,
+          "pct": 53,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 2,
+          "pct": 100,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 6,
+          "pct": 200,
+          "status": "hit"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 4,
+          "pct": 80,
+          "status": "close"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 2,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
