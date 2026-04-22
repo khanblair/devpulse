@@ -4800,6 +4800,33 @@
           "ts"
         ],
         "url": "https://github.com/khanblair/kolamatch-intelligence/commit/501148da9bf1de203ecc621ded37520c7c0e15f5"
+      },
+      {
+        "repo": "kolamatch-intelligence",
+        "branch": "main",
+        "sha": "0ff7931",
+        "message": "refactor: restructure app directory by removing route groups and standardizing freelancer and client dashboard, settings",
+        "author": "khanblair",
+        "timestamp": "2026-04-22T12:55:24Z",
+        "files_changed": 632,
+        "added": 394,
+        "modified": 0,
+        "removed": 238,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx"
+        ],
+        "url": "https://github.com/khanblair/kolamatch-intelligence/commit/0ff793117377f5fffef75e1350f6b5c9014a1ccf"
       }
     ],
     "mood": null,
