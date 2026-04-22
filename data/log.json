@@ -4867,6 +4867,38 @@
           "ts"
         ],
         "url": "https://github.com/khanblair/kolamatch-intelligence/commit/9bf53d2a5a5628b4cf55324fc9644da32497905e"
+      },
+      {
+        "repo": "kolamatch-intelligence",
+        "branch": "main",
+        "sha": "60bbeb3",
+        "message": "feat: implement responsive mobile sidebar and add job detail pages for freelancers and clients",
+        "author": "khanblair",
+        "timestamp": "2026-04-22T19:12:13Z",
+        "files_changed": 923,
+        "added": 699,
+        "modified": 0,
+        "removed": 224,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/kolamatch-intelligence/commit/60bbeb30b8070b12f7273c492c3bedc12b187d24"
       }
     ],
     "mood": "exploratory",
