@@ -5084,11 +5084,58 @@
   "2026-04-24": {
     "date": "2026-04-24",
     "commits": [],
-    "mood": null,
-    "devlog": null,
+    "mood": "no commits",
+    "devlog": "No commits today.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 55,
+      "message": "Day 55 (15:01): social learnings",
+      "sha": "e48e995",
+      "summary": null,
+      "date": "2026-04-24"
+    },
+    "target_report": {
+      "week_ending": "2026-04-24",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 11,
+          "pct": 73,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 2,
+          "pct": 100,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 8,
+          "pct": 267,
+          "status": "hit"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 5,
+          "pct": 100,
+          "status": "hit"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 3,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
