@@ -5350,11 +5350,58 @@
         "url": "https://github.com/khanblair/asas-monorepo/commit/5e7eee1ccac69c04b2f7bc77109d6862921d801a"
       }
     ],
-    "mood": null,
-    "devlog": null,
-    "question": null,
-    "yoyo": null,
-    "target_report": null,
-    "weekly_report": null
+    "mood": "exploratory",
+    "devlog": "Pushed 3 commit(s) across asas-monorepo.",
+    "question": "You made 13 feature commits across just three repos\u2014what does that concentration say about your focus or possible blind spots this week?\n\n**Answer**\n\nThis week you pushed a lot of new functionality (13 feature commits) but only in\u202fkolamatch\u2011intelligence,\u202fasas\u2011monorepo, and\u202fblue\u2011sky\u2011web.\u202fExceeding your feature\u2011commit target by ten while staying within a small set of repositories suggests a deep dive into specific areas rather than a broader spread of work.\n\n- **Depth vs. breadth** \u2013 The high volume of features indicates strong momentum on the problems you were tackling, but limiting yourself to three repos may mean you\u2019re not allocating attention to other parts of the codebase that could benefit from incremental improvements or refactoring.\n- **Mood alignment** \u2013 Your moods were \u201cexploratory\u201d on most active days, matching the creative push of feature work. The \u201cscattered\u201d and \u201cno commits\u201d days hint at periods where focus drifted or priorities shifted, possibly because you were waiting on feedback or blocked in those same repos.\n- **Potential blind spots** \u2013 By concentrating effort, you risk missing cross\u2011repo dependencies, overlooking bugs in less\u2011touched areas, or failing to share knowledge with teammates who work elsewhere.\n- **Opportunity for reflection** \u2013 Consider whether the concentration was a strategic choice (e.g., a critical feature deadline) or an unconscious narrowing of scope. Ask yourself if any important work was deferred in other repos and how that might affect the broader project health.\n\nIn short, the data shows a productive, focused sprint on a few codebases, but it also raises the question of whether that focus was intentional and balanced, or if it left other important areas unattended.?",
+    "yoyo": {
+      "day": 57,
+      "message": "trajectory awareness: review fixes (B1+B2+B3+B4)",
+      "sha": "41eaa3a",
+      "summary": null,
+      "date": "2026-04-26"
+    },
+    "target_report": {
+      "week_ending": "2026-04-26",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 17,
+          "pct": 113,
+          "status": "hit"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 3,
+          "pct": 150,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 13,
+          "pct": 433,
+          "status": "hit"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 5,
+          "pct": 100,
+          "status": "hit"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 4,
+        "total": 4,
+        "all_hit": true
+      }
+    },
+    "weekly_report": "Week of 2026-04-26: 17 commits across 3 repos over 5 days. Most active in kolamatch-intelligence."
   }
 }

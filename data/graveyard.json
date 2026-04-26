@@ -1,35 +1,40 @@
 {
-  "last_checked": "2026-04-25",
+  "last_checked": "2026-04-26",
   "repos": [
     {
       "name": "mql5-sage",
       "last_commit_date": "2026-03-20",
-      "days_quiet": 36
+      "days_quiet": 37
     },
     {
       "name": "prismx-monorepo",
       "last_commit_date": "2026-03-23",
-      "days_quiet": 33
+      "days_quiet": 34
     },
     {
       "name": "trophy-games",
       "last_commit_date": "2026-03-31",
-      "days_quiet": 25
+      "days_quiet": 26
     },
     {
       "name": "flex-fm-mobile",
       "last_commit_date": "2026-03-31",
-      "days_quiet": 25
-    },
-    {
-      "name": "asas-monorepo",
-      "last_commit_date": "2026-04-04",
-      "days_quiet": 21
+      "days_quiet": 26
     },
     {
       "name": "AgentPress",
       "last_commit_date": "2026-04-10",
-      "days_quiet": 15
+      "days_quiet": 16
+    },
+    {
+      "name": "lms-monorepo",
+      "last_commit_date": "2026-04-12",
+      "days_quiet": 14
+    },
+    {
+      "name": "unihostel-monorepo",
+      "last_commit_date": "2026-04-12",
+      "days_quiet": 14
     }
   ],
   "open_prs": []
