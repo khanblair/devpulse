@@ -5290,7 +5290,39 @@
   },
   "2026-04-26": {
     "date": "2026-04-26",
-    "commits": [],
+    "commits": [
+      {
+        "repo": "asas-monorepo",
+        "branch": "main",
+        "sha": "f6304a9",
+        "message": "chore: uncomment web app directories in .easignore to ensure lockfile consistency",
+        "author": "khanblair",
+        "timestamp": "2026-04-26T15:04:00Z",
+        "files_changed": 6,
+        "added": 3,
+        "modified": 0,
+        "removed": 3,
+        "extensions": [],
+        "url": "https://github.com/khanblair/asas-monorepo/commit/f6304a967b10472e4cca925e21a21c576298d570"
+      },
+      {
+        "repo": "asas-monorepo",
+        "branch": "main",
+        "sha": "3fc6055",
+        "message": "feat: update bundle identifiers and configure Firebase integration for mobile app",
+        "author": "khanblair",
+        "timestamp": "2026-04-26T14:49:37Z",
+        "files_changed": 41,
+        "added": 37,
+        "modified": 0,
+        "removed": 4,
+        "extensions": [
+          "json",
+          "json"
+        ],
+        "url": "https://github.com/khanblair/asas-monorepo/commit/3fc605505dcdd15506c729e8e50b4dccfe50bd18"
+      }
+    ],
     "mood": null,
     "devlog": null,
     "question": null,
