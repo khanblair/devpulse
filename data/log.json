@@ -5440,11 +5440,58 @@
         "url": "https://github.com/khanblair/kolamatch-intelligence/commit/33e09763928a1daa145143f10553e93bf5108cf2"
       }
     ],
-    "mood": null,
-    "devlog": null,
+    "mood": "focused",
+    "devlog": "Pushed 2 commit(s) across kolamatch-intelligence.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 58,
+      "message": "Day 58: bump skill-evolve counter (4)",
+      "sha": "77d3e7f",
+      "summary": null,
+      "date": "2026-04-27"
+    },
+    "target_report": {
+      "week_ending": "2026-04-27",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 2,
+          "pct": 13,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 1,
+          "pct": 50,
+          "status": "missed"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 1,
+          "pct": 33,
+          "status": "missed"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 5,
+          "pct": 100,
+          "status": "hit"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 1,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
