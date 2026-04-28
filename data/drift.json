@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-27",
+  "last_updated": "2026-04-28",
   "monthly": {
     "2026-03": {
       "TypeScript": 74,
@@ -10,8 +10,8 @@
       "Markdown": 3
     },
     "2026-04": {
-      "TypeScript": 59,
-      "Python": 13,
+      "TypeScript": 60,
+      "Python": 12,
       "Markdown": 7,
       "JSON": 6,
       "JavaScript": 4,
