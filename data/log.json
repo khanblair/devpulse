@@ -5640,11 +5640,58 @@
   "2026-04-29": {
     "date": "2026-04-29",
     "commits": [],
-    "mood": null,
-    "devlog": null,
+    "mood": "no commits",
+    "devlog": "No commits today.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 60,
+      "message": "Day 60: bump skill-evolve counter (9)",
+      "sha": "ce36e63",
+      "summary": null,
+      "date": "2026-04-29"
+    },
+    "target_report": {
+      "week_ending": "2026-04-29",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 4,
+          "pct": 27,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 3,
+          "pct": 150,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 2,
+          "pct": 67,
+          "status": "missed"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 5,
+          "pct": 100,
+          "status": "hit"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 2,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }
