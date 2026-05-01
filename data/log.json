@@ -5814,6 +5814,38 @@
           "js"
         ],
         "url": "https://github.com/khanblair/blue-sky-web/commit/c379fd9183ed5d91b8ea860fc06d56b1ce7d14f0"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "6333eb3",
+        "message": "chore: Resolve all TypeScript and ESLint errors",
+        "author": "khanblair",
+        "timestamp": "2026-05-01T15:52:47Z",
+        "files_changed": 553,
+        "added": 306,
+        "modified": 0,
+        "removed": 247,
+        "extensions": [
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx",
+          "ts",
+          "ts",
+          "ts",
+          "ts",
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/6333eb3cea9ec2a92cea23185061a642a73c6749"
       }
     ],
     "mood": null,
