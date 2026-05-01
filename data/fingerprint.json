@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-04-30",
+  "last_updated": "2026-05-01",
   "peak_coding_hour": 6,
   "style": "high volume",
-  "feat_fix_ratio": 4.43,
+  "feat_fix_ratio": 4.57,
   "most_active_repo": "AgentPress",
   "most_avoided_repo": "blue-sky-mobile",
-  "avg_commit_size": 1770.1,
-  "consistency_score": 5.3,
-  "total_days_tracked": 25,
-  "active_days_last_30": 16,
+  "avg_commit_size": 1800.1,
+  "consistency_score": 5.7,
+  "total_days_tracked": 26,
+  "active_days_last_30": 17,
   "burst_days_last_30": 3
 }

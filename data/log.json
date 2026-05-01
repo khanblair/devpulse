@@ -5848,11 +5848,58 @@
         "url": "https://github.com/khanblair/blue-sky-web/commit/6333eb3cea9ec2a92cea23185061a642a73c6749"
       }
     ],
-    "mood": null,
-    "devlog": null,
+    "mood": "focused",
+    "devlog": "Pushed 2 commit(s) across blue-sky-web.",
     "question": null,
-    "yoyo": null,
-    "target_report": null,
+    "yoyo": {
+      "day": 62,
+      "message": "sync: llm-wiki growth session (2026-05-01)",
+      "sha": "9aad030",
+      "summary": null,
+      "date": "2026-05-01"
+    },
+    "target_report": {
+      "week_ending": "2026-05-01",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 6,
+          "pct": 40,
+          "status": "missed"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 4,
+          "pct": 200,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 3,
+          "pct": 100,
+          "status": "hit"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 5,
+          "pct": 100,
+          "status": "hit"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 3,
+        "total": 4,
+        "all_hit": false
+      }
+    },
     "weekly_report": null
   }
 }

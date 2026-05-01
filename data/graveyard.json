@@ -1,35 +1,35 @@
 {
-  "last_checked": "2026-04-30",
+  "last_checked": "2026-05-01",
   "repos": [
     {
       "name": "mql5-sage",
       "last_commit_date": "2026-03-20",
-      "days_quiet": 41
+      "days_quiet": 42
     },
     {
       "name": "prismx-monorepo",
       "last_commit_date": "2026-03-23",
-      "days_quiet": 38
+      "days_quiet": 39
     },
     {
       "name": "trophy-games",
       "last_commit_date": "2026-03-31",
-      "days_quiet": 30
+      "days_quiet": 31
     },
     {
       "name": "flex-fm-mobile",
       "last_commit_date": "2026-03-31",
-      "days_quiet": 30
+      "days_quiet": 31
     },
     {
       "name": "AgentPress",
       "last_commit_date": "2026-04-10",
-      "days_quiet": 20
+      "days_quiet": 21
     },
     {
       "name": "lms-monorepo",
       "last_commit_date": "2026-04-12",
-      "days_quiet": 18
+      "days_quiet": 19
     }
   ],
   "open_prs": []
