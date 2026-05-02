@@ -6005,6 +6005,45 @@
           "ts"
         ],
         "url": "https://github.com/khanblair/sidekick/commit/19bd9d098930a1d36c0063df8dd1aa0dde21ebe2"
+      },
+      {
+        "repo": "sidekick",
+        "branch": "main",
+        "sha": "b362cb6",
+        "message": "fix: resolve CLI tool sizing layout issues and add Pi/Kimi",
+        "author": "khanblair",
+        "timestamp": "2026-05-02T20:10:43Z",
+        "files_changed": 266,
+        "added": 255,
+        "modified": 0,
+        "removed": 11,
+        "extensions": [
+          "rs",
+          "rs",
+          "css",
+          "tsx",
+          "tsx",
+          "tsx",
+          "ts"
+        ],
+        "url": "https://github.com/khanblair/sidekick/commit/b362cb61af4e6098c61be5cbcff9622eff3f9773"
+      },
+      {
+        "repo": "sidekick",
+        "branch": "main",
+        "sha": "522a4ad",
+        "message": "fix: prevent wrong cwd when user types an absolute path in the project dialog",
+        "author": "khanblair",
+        "timestamp": "2026-05-02T19:56:03Z",
+        "files_changed": 25,
+        "added": 15,
+        "modified": 0,
+        "removed": 10,
+        "extensions": [
+          "rs",
+          "tsx"
+        ],
+        "url": "https://github.com/khanblair/sidekick/commit/522a4ad271d3198976041c704ee4665db4ad8f09"
       }
     ],
     "mood": "exploratory",
