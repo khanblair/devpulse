@@ -6227,6 +6227,62 @@
           "ts"
         ],
         "url": "https://github.com/khanblair/sidekick/commit/f26a3452e8687c342f89997472f95d9804e752b0"
+      },
+      {
+        "repo": "sidekick",
+        "branch": "main",
+        "sha": "3bbf76e",
+        "message": "docs: rewrite README to provide comprehensive project overview, features, and setup instructions",
+        "author": "khanblair",
+        "timestamp": "2026-05-03T09:17:21Z",
+        "files_changed": 295,
+        "added": 291,
+        "modified": 0,
+        "removed": 4,
+        "extensions": [
+          "md"
+        ],
+        "url": "https://github.com/khanblair/sidekick/commit/3bbf76eba52e6a43611dc7ffef41822f4daa4221"
+      },
+      {
+        "repo": "sidekick",
+        "branch": "main",
+        "sha": "1940412",
+        "message": "feat: improve mobile UX with safe-area support, keyboard shortcuts, connection history, and a new settings modal.",
+        "author": "khanblair",
+        "timestamp": "2026-05-03T09:06:42Z",
+        "files_changed": 152,
+        "added": 133,
+        "modified": 0,
+        "removed": 19,
+        "extensions": [
+          "lock",
+          "toml",
+          "css",
+          "tsx",
+          "tsx",
+          "tsx",
+          "tsx"
+        ],
+        "url": "https://github.com/khanblair/sidekick/commit/1940412c0d62faca140f4826df2f6509373f6216"
+      },
+      {
+        "repo": "blue-sky-web",
+        "branch": "main",
+        "sha": "f53192d",
+        "message": "feat: initialize SocratiCode project configuration and documentation",
+        "author": "khanblair",
+        "timestamp": "2026-05-03T09:05:13Z",
+        "files_changed": 817,
+        "added": 817,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [
+          "json",
+          "json",
+          "md"
+        ],
+        "url": "https://github.com/khanblair/blue-sky-web/commit/f53192d487131f429b86034ef2b61d514d8d269b"
       }
     ],
     "mood": null,
