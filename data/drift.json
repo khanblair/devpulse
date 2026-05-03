@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-02",
+  "last_updated": "2026-05-03",
   "monthly": {
     "2026-03": {
       "TypeScript": 74,
@@ -18,10 +18,12 @@
       "SVG": 2
     },
     "2026-05": {
-      "TypeScript": 95,
-      "CSS": 2,
-      "JSON": 2,
-      "JavaScript": 2
+      "TypeScript": 57,
+      "PNG": 16,
+      "Rust": 7,
+      "JSON": 4,
+      "XML": 4,
+      "CSS": 2
     }
   }
 }

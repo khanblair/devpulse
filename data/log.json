@@ -6413,11 +6413,58 @@
         "url": "https://github.com/khanblair/unihostel-monorepo/commit/95f30ace1813f730634d2974c957157d18388126"
       }
     ],
-    "mood": null,
-    "devlog": null,
-    "question": null,
-    "yoyo": null,
-    "target_report": null,
-    "weekly_report": null
+    "mood": "scattered",
+    "devlog": "Pushed 8 commit(s) across sidekick, blue-sky-web, unihostel-monorepo.",
+    "question": "What would you do differently if you ran this week again?",
+    "yoyo": {
+      "day": 64,
+      "message": "sync: llm-wiki growth session (2026-05-03)",
+      "sha": "e8d506c",
+      "summary": null,
+      "date": "2026-05-03"
+    },
+    "target_report": {
+      "week_ending": "2026-05-03",
+      "scores": {
+        "commits": {
+          "target": 15,
+          "actual": 19,
+          "pct": 127,
+          "status": "hit"
+        },
+        "active_repos": {
+          "target": 2,
+          "actual": 5,
+          "pct": 250,
+          "status": "hit"
+        },
+        "feat_commits": {
+          "target": 3,
+          "actual": 11,
+          "pct": 367,
+          "status": "hit"
+        },
+        "streak_days": {
+          "target": 5,
+          "actual": 5,
+          "pct": 100,
+          "status": "hit"
+        }
+      },
+      "repo_scores": {
+        "example-repo": {
+          "target": 4,
+          "actual": 0,
+          "pct": 0,
+          "status": "missed"
+        }
+      },
+      "summary": {
+        "hit": 4,
+        "total": 4,
+        "all_hit": true
+      }
+    },
+    "weekly_report": "Week of 2026-05-03: 19 commits across 5 repos over 5 days. Most active in sidekick."
   }
 }
