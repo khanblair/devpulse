@@ -6733,6 +6733,30 @@
           "md"
         ],
         "url": "https://github.com/khanblair/agent-hq/commit/9b70305cb441936a56590faf648740d8928432ed"
+      },
+      {
+        "repo": "agent-hq",
+        "branch": "main",
+        "sha": "32f9e41",
+        "message": "feat: add CLI tools for OpenCode, Codex, Gemini, Kimi, and Pi with unified integration modules",
+        "author": "khanblair",
+        "timestamp": "2026-05-05T20:10:51Z",
+        "files_changed": 2837,
+        "added": 2826,
+        "modified": 0,
+        "removed": 11,
+        "extensions": [
+          "rs",
+          "rs",
+          "rs",
+          "rs",
+          "rs",
+          "rs",
+          "rs",
+          "rs",
+          "rs"
+        ],
+        "url": "https://github.com/khanblair/agent-hq/commit/32f9e411a51926f3d7b510602754ec6a8776ce78"
       }
     ],
     "mood": "focused",
