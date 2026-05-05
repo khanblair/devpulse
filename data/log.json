@@ -6715,6 +6715,24 @@
           "rs"
         ],
         "url": "https://github.com/khanblair/agent-hq/commit/f47cfc92b94a656eff6faba6c4ebdf6f6d5e41b4"
+      },
+      {
+        "repo": "agent-hq",
+        "branch": "main",
+        "sha": "9b70305",
+        "message": "feat: add provider details to config output and initialize SocratiCode documentation and context mapping",
+        "author": "khanblair",
+        "timestamp": "2026-05-05T15:26:25Z",
+        "files_changed": 941,
+        "added": 941,
+        "modified": 0,
+        "removed": 0,
+        "extensions": [
+          "json",
+          "rs",
+          "md"
+        ],
+        "url": "https://github.com/khanblair/agent-hq/commit/9b70305cb441936a56590faf648740d8928432ed"
       }
     ],
     "mood": null,
